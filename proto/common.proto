@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common;
 
-option go_package = "github.com/adityakw90/service-user-proto/gen/go/common";
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/common";
 
 message Empty {}
 
@@ -24,4 +24,14 @@ message Pagination {
   int32 limit = 2;        // The number of items per page
   string order_by = 3;    // what field to use for ordering
   string sort = 4;        // asc or desc
+}
+
+// Timestamp represents a point in time as Unix timestamp in seconds.
+message Timestamp {
+  int64 seconds = 1;
+}
+
+// UUID represents a universally unique identifier.
+message UUID {
+  string value = 1;
 }

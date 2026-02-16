@@ -168,6 +168,50 @@ func (m *CreatePermissionRequest) validate(all bool) error {
 
 	var errors []error
 
+	if l := utf8.RuneCountInString(m.GetResource()); l < 1 || l > 255 {
+		err := CreatePermissionRequestValidationError{
+			field:  "Resource",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if !_CreatePermissionRequest_Resource_Pattern.MatchString(m.GetResource()) {
+		err := CreatePermissionRequestValidationError{
+			field:  "Resource",
+			reason: "value does not match regex pattern \"^[a-z][a-z0-9_-]*$\"",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetAction()); l < 1 || l > 100 {
+		err := CreatePermissionRequestValidationError{
+			field:  "Action",
+			reason: "value length must be between 1 and 100 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetDescription()) > 1000 {
+		err := CreatePermissionRequestValidationError{
+			field:  "Description",
+			reason: "value length must be at most 1000 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return CreatePermissionRequestMultiError(errors)
 	}
@@ -247,6 +291,8 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = CreatePermissionRequestValidationError{}
+
+var _CreatePermissionRequest_Resource_Pattern = regexp.MustCompile("^[a-z][a-z0-9_-]*$")
 
 // Validate checks the field values on CreatePermissionResponse with the rules
 // defined in the proto definition for this message. If any rules are
@@ -372,6 +418,17 @@ func (m *GetPermissionRequest) validate(all bool) error {
 
 	var errors []error
 
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := GetPermissionRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return GetPermissionRequestMultiError(errors)
 	}
@@ -474,6 +531,61 @@ func (m *UpdatePermissionRequest) validate(all bool) error {
 
 	var errors []error
 
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := UpdatePermissionRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetResource()); l < 1 || l > 255 {
+		err := UpdatePermissionRequestValidationError{
+			field:  "Resource",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if !_UpdatePermissionRequest_Resource_Pattern.MatchString(m.GetResource()) {
+		err := UpdatePermissionRequestValidationError{
+			field:  "Resource",
+			reason: "value does not match regex pattern \"^[a-z][a-z0-9_-]*$\"",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetAction()); l < 1 || l > 100 {
+		err := UpdatePermissionRequestValidationError{
+			field:  "Action",
+			reason: "value length must be between 1 and 100 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetDescription()) > 1000 {
+		err := UpdatePermissionRequestValidationError{
+			field:  "Description",
+			reason: "value length must be at most 1000 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return UpdatePermissionRequestMultiError(errors)
 	}
@@ -553,6 +665,8 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = UpdatePermissionRequestValidationError{}
+
+var _UpdatePermissionRequest_Resource_Pattern = regexp.MustCompile("^[a-z][a-z0-9_-]*$")
 
 // Validate checks the field values on UpdatePermissionResponse with the rules
 // defined in the proto definition for this message. If any rules are
@@ -677,6 +791,17 @@ func (m *DeletePermissionRequest) validate(all bool) error {
 	}
 
 	var errors []error
+
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := DeletePermissionRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return DeletePermissionRequestMultiError(errors)
@@ -881,6 +1006,35 @@ func (m *ListPermissionsRequest) validate(all bool) error {
 	}
 
 	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetPagination()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ListPermissionsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ListPermissionsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPagination()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ListPermissionsRequestValidationError{
+				field:  "Pagination",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return ListPermissionsRequestMultiError(errors)

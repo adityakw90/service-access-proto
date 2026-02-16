@@ -14,6 +14,7 @@ package permission;
 
 import "common.proto";
 import "validate/validate.proto";
+import "google/api/annotations.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/permission";
 
@@ -157,19 +158,40 @@ message ListPermissionsResponse {
 
 // PermissionService provides CRUD operations for managing permissions.
 service PermissionService {
-  // CreatePermission creates a new permission with the specified resource and action.
-  // The resource-action pair must be unique.
-  rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse);
+  // CreatePermission creates a new permission.
+  rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse) {
+    option (google.api.http) = {
+      post: "/v1/permissions"
+      body: "*"
+    };
+  }
 
-  // GetPermission retrieves a permission by its public UID.
-  rpc GetPermission(GetPermissionRequest) returns (Permission);
+  // GetPermission retrieves a permission by UID.
+  rpc GetPermission(GetPermissionRequest) returns (Permission) {
+    option (google.api.http) = {
+      get: "/v1/permissions/{uid}"
+    };
+  }
 
-  // UpdatePermission modifies an existing permission's details.
-  rpc UpdatePermission(UpdatePermissionRequest) returns (UpdatePermissionResponse);
+  // UpdatePermission modifies an existing permission.
+  rpc UpdatePermission(UpdatePermissionRequest) returns (UpdatePermissionResponse) {
+    option (google.api.http) = {
+      put: "/v1/permissions/{uid}"
+      body: "*"
+    };
+  }
 
-  // DeletePermission permanently removes a permission by its UID.
-  rpc DeletePermission(DeletePermissionRequest) returns (DeletePermissionResponse);
+  // DeletePermission permanently removes a permission.
+  rpc DeletePermission(DeletePermissionRequest) returns (DeletePermissionResponse) {
+    option (google.api.http) = {
+      delete: "/v1/permissions/{uid}"
+    };
+  }
 
-  // ListPermissions returns a paginated list of all permissions.
-  rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
+  // ListPermissions returns a paginated list of permissions.
+  rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse) {
+    option (google.api.http) = {
+      get: "/v1/permissions"
+    };
+  }
 }

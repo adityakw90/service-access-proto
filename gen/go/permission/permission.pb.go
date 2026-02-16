@@ -20,6 +20,7 @@ package permission
 import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -642,7 +643,7 @@ var File_permission_proto protoreflect.FileDescriptor
 const file_permission_proto_rawDesc = "" +
 	"\n" +
 	"\x10permission.proto\x12\n" +
-	"permission\x1a\fcommon.proto\x1a\x17validate/validate.proto\"\xb2\x01\n" +
+	"permission\x1a\fcommon.proto\x1a\x17validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\"\xb2\x01\n" +
 	"\n" +
 	"Permission\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
@@ -687,13 +688,13 @@ const file_permission_proto_rawDesc = "" +
 	"pagination\"u\n" +
 	"\x17ListPermissionsResponse\x128\n" +
 	"\vpermissions\x18\x01 \x03(\v2\x16.permission.PermissionR\vpermissions\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xd7\x03\n" +
-	"\x11PermissionService\x12]\n" +
-	"\x10CreatePermission\x12#.permission.CreatePermissionRequest\x1a$.permission.CreatePermissionResponse\x12I\n" +
-	"\rGetPermission\x12 .permission.GetPermissionRequest\x1a\x16.permission.Permission\x12]\n" +
-	"\x10UpdatePermission\x12#.permission.UpdatePermissionRequest\x1a$.permission.UpdatePermissionResponse\x12]\n" +
-	"\x10DeletePermission\x12#.permission.DeletePermissionRequest\x1a$.permission.DeletePermissionResponse\x12Z\n" +
-	"\x0fListPermissions\x12\".permission.ListPermissionsRequest\x1a#.permission.ListPermissionsResponseB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xec\x04\n" +
+	"\x11PermissionService\x12y\n" +
+	"\x10CreatePermission\x12#.permission.CreatePermissionRequest\x1a$.permission.CreatePermissionResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/v1/permissions\x12h\n" +
+	"\rGetPermission\x12 .permission.GetPermissionRequest\x1a\x16.permission.Permission\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/permissions/{uid}\x12\x7f\n" +
+	"\x10UpdatePermission\x12#.permission.UpdatePermissionRequest\x1a$.permission.UpdatePermissionResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/v1/permissions/{uid}\x12|\n" +
+	"\x10DeletePermission\x12#.permission.DeletePermissionRequest\x1a$.permission.DeletePermissionResponse\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/v1/permissions/{uid}\x12s\n" +
+	"\x0fListPermissions\x12\".permission.ListPermissionsRequest\x1a#.permission.ListPermissionsResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/permissionsB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
 
 var (
 	file_permission_proto_rawDescOnce sync.Once

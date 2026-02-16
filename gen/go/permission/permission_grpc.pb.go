@@ -43,16 +43,15 @@ const (
 //
 // PermissionService provides CRUD operations for managing permissions.
 type PermissionServiceClient interface {
-	// CreatePermission creates a new permission with the specified resource and action.
-	// The resource-action pair must be unique.
+	// CreatePermission creates a new permission.
 	CreatePermission(ctx context.Context, in *CreatePermissionRequest, opts ...grpc.CallOption) (*CreatePermissionResponse, error)
-	// GetPermission retrieves a permission by its public UID.
+	// GetPermission retrieves a permission by UID.
 	GetPermission(ctx context.Context, in *GetPermissionRequest, opts ...grpc.CallOption) (*Permission, error)
-	// UpdatePermission modifies an existing permission's details.
+	// UpdatePermission modifies an existing permission.
 	UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*UpdatePermissionResponse, error)
-	// DeletePermission permanently removes a permission by its UID.
+	// DeletePermission permanently removes a permission.
 	DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*DeletePermissionResponse, error)
-	// ListPermissions returns a paginated list of all permissions.
+	// ListPermissions returns a paginated list of permissions.
 	ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error)
 }
 
@@ -120,16 +119,15 @@ func (c *permissionServiceClient) ListPermissions(ctx context.Context, in *ListP
 //
 // PermissionService provides CRUD operations for managing permissions.
 type PermissionServiceServer interface {
-	// CreatePermission creates a new permission with the specified resource and action.
-	// The resource-action pair must be unique.
+	// CreatePermission creates a new permission.
 	CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error)
-	// GetPermission retrieves a permission by its public UID.
+	// GetPermission retrieves a permission by UID.
 	GetPermission(context.Context, *GetPermissionRequest) (*Permission, error)
-	// UpdatePermission modifies an existing permission's details.
+	// UpdatePermission modifies an existing permission.
 	UpdatePermission(context.Context, *UpdatePermissionRequest) (*UpdatePermissionResponse, error)
-	// DeletePermission permanently removes a permission by its UID.
+	// DeletePermission permanently removes a permission.
 	DeletePermission(context.Context, *DeletePermissionRequest) (*DeletePermissionResponse, error)
-	// ListPermissions returns a paginated list of all permissions.
+	// ListPermissions returns a paginated list of permissions.
 	ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error)
 	mustEmbedUnimplementedPermissionServiceServer()
 }

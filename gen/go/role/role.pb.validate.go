@@ -167,6 +167,39 @@ func (m *CreateRoleRequest) validate(all bool) error {
 
 	var errors []error
 
+	if utf8.RuneCountInString(m.GetGroupUid()) < 1 {
+		err := CreateRoleRequestValidationError{
+			field:  "GroupUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := CreateRoleRequestValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetDescription()) > 1000 {
+		err := CreateRoleRequestValidationError{
+			field:  "Description",
+			reason: "value length must be at most 1000 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return CreateRoleRequestMultiError(errors)
 	}
@@ -371,7 +404,16 @@ func (m *GetRoleRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uid
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := GetRoleRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return GetRoleRequestMultiError(errors)
@@ -473,7 +515,38 @@ func (m *UpdateRoleRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uid
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := UpdateRoleRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := UpdateRoleRequestValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetDescription()) > 1000 {
+		err := UpdateRoleRequestValidationError{
+			field:  "Description",
+			reason: "value length must be at most 1000 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return UpdateRoleRequestMultiError(errors)
@@ -679,7 +752,16 @@ func (m *DeleteRoleRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uid
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := DeleteRoleRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return DeleteRoleRequestMultiError(errors)
@@ -885,6 +967,37 @@ func (m *ListRolesRequest) validate(all bool) error {
 
 	var errors []error
 
+	// no validation rules for GroupUid
+
+	if all {
+		switch v := interface{}(m.GetPagination()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ListRolesRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ListRolesRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPagination()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ListRolesRequestValidationError{
+				field:  "Pagination",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return ListRolesRequestMultiError(errors)
 	}
@@ -1087,7 +1200,27 @@ func (m *AssignRolePermissionRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for RoleUid
+	if utf8.RuneCountInString(m.GetRoleUid()) < 1 {
+		err := AssignRolePermissionRequestValidationError{
+			field:  "RoleUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetPermissionUid()) < 1 {
+		err := AssignRolePermissionRequestValidationError{
+			field:  "PermissionUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return AssignRolePermissionRequestMultiError(errors)
@@ -1295,9 +1428,27 @@ func (m *RevokeRolePermissionRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for RoleUid
+	if utf8.RuneCountInString(m.GetRoleUid()) < 1 {
+		err := RevokeRolePermissionRequestValidationError{
+			field:  "RoleUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for PermissionUid
+	if utf8.RuneCountInString(m.GetPermissionUid()) < 1 {
+		err := RevokeRolePermissionRequestValidationError{
+			field:  "PermissionUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return RevokeRolePermissionRequestMultiError(errors)
@@ -1505,7 +1656,45 @@ func (m *ListRolePermissionsRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for RoleUid
+	if utf8.RuneCountInString(m.GetRoleUid()) < 1 {
+		err := ListRolePermissionsRequestValidationError{
+			field:  "RoleUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetPagination()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ListRolePermissionsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ListRolePermissionsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPagination()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ListRolePermissionsRequestValidationError{
+				field:  "Pagination",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return ListRolePermissionsRequestMultiError(errors)

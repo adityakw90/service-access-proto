@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+// Group Service provides CRUD operations for managing permission groups.
+// A Group is a collection of permissions that can be assigned to Roles.
+//
+// Groups serve as organizational containers for related permissions.
+// For example, an "invoice-management" group might contain permissions
+// for reading, writing, and deleting invoices.
+//
+// Roles are always created within a specific Group, and a Role's
+// permissions must be a subset of its parent Group's permissions
+// (the Subset Constraint).
+package group;
+
+import "common.proto";
+import "validate/validate.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/group";
+
+// Group represents a collection of permissions.
+// Groups organize related permissions and serve as parents for Roles.
+message Group {
+  // uid is the public unique identifier for this group.
+  string uid = 1;
+
+  // name is the human-readable name of this group.
+  // Must be unique across all groups.
+  string name = 2;
+
+  // description explains the purpose and scope of this group.
+  string description = 3;
+
+  // created_at is the Unix timestamp (seconds) when this group was created.
+  int64 created_at = 4;
+
+  // updated_at is the Unix timestamp (seconds) of the last modification.
+  int64 updated_at = 5;
+}

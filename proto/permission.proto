@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+// Permission Service provides CRUD operations for managing access control permissions.
+// A permission defines a specific action that can be performed on a resource.
+//
+// Permissions are the fundamental unit of access control in this system.
+// They are assigned to Groups, and indirectly to Roles through their parent Group.
+//
+// Resource-Action Examples:
+// - resource: "invoices", action: "read" → permission to read invoices
+// - resource: "users", action: "write" → permission to modify users
+// - resource: "settings", action: "admin" → full administrative access
+package permission;
+
+import "common.proto";
+import "validate/validate.proto";
+
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/permission";
+
+// Permission represents a granular access control unit.
+// It defines what action can be performed on a specific resource.
+message Permission {
+  // uid is the public unique identifier for this permission.
+  // This UUID is used in API requests and remains stable across
+  // database migrations or internal ID changes.
+  string uid = 1;
+
+  // resource identifies the domain entity this permission applies to.
+  // Examples: "invoices", "users", "settings", "reports"
+  // Must be lowercase alphanumeric with hyphens/underscores.
+  string resource = 2;
+
+  // action specifies the operation allowed on the resource.
+  // Common values: "read", "write", "delete", "admin"
+  string action = 3;
+
+  // description provides a human-readable explanation of this permission's
+  // scope and purpose, useful for admin UI display and audit logs.
+  string description = 4;
+
+  // created_at is the Unix timestamp (seconds) when this permission was created.
+  int64 created_at = 5;
+
+  // updated_at is the Unix timestamp (seconds) of the last modification.
+  int64 updated_at = 6;
+}

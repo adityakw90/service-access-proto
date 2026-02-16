@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+// Access Control Service provides authorization and subject assignment operations.
+// This service is the main entry point for access control decisions.
+//
+// The CheckAccess RPC is called by other services to determine if a subject
+// (user, service, or system) is allowed to perform a specific action on a resource.
+//
+// Subject assignment operations (AssignRole, RevokeRole, ListSubjectRoles)
+// manage which roles are granted to which subjects.
+package access;
+
+import "common.proto";
+import "validate/validate.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/access";
+
+// AccessControlService provides authorization and subject assignment operations.
+service AccessControlService {
+  // CheckAccess determines if a subject is allowed to perform an action on a resource.
+  //
+  // This is the core authorization decision point. The service evaluates the subject's
+  // assigned roles and their permissions to determine if access should be granted.
+  //
+  // The reason field provides transparency for debugging and audit purposes,
+  // explaining why access was granted or denied.
+  rpc CheckAccess(CheckAccessRequest) returns (CheckAccessResponse) {
+    option (google.api.http) = {
+      post: "/v1/access/check"
+      body: "*"
+    };
+  }
+
+  // AssignRole assigns a role to a subject.
+  // The subject can be a user, service, or any entity that needs access.
+  rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse) {
+    option (google.api.http) = {
+      post: "/v1/access/roles/assign"
+      body: "*"
+    };
+  }
+
+  // RevokeRole removes a role assignment from a subject.
+  rpc RevokeRole(RevokeRoleRequest) returns (RevokeRoleResponse) {
+    option (google.api.http) = {
+      post: "/v1/access/roles/revoke"
+      body: "*"
+    };
+  }
+
+  // ListSubjectRoles retrieves all roles assigned to a subject.
+  // Useful for auditing and displaying subject permissions.
+  rpc ListSubjectRoles(ListSubjectRolesRequest) returns (ListSubjectRolesResponse) {
+    option (google.api.http) = {
+      get: "/v1/access/subjects/{subject_id}/roles"
+    };
+  }
+}
+
+// CheckAccessRequest contains the parameters for an authorization check.
+message CheckAccessRequest {
+  // subject_id uniquely identifies the entity requesting access.
+  // This could be a user ID, service account ID, or system identifier.
+  string subject_id = 1 [(validate.rules).string.min_len = 1];
+
+  // subject_type categorizes the subject (e.g., "user", "service", "system").
+  // This allows for different authorization policies per subject type.
+  string subject_type = 2 [
+    (validate.rules).string = {
+      min_len: 1,
+      max_len: 100
+    }
+  ];
+
+  // resource identifies the domain entity being accessed.
+  // Should match the resource field in Permission definitions.
+  string resource = 3 [
+    (validate.rules).string.min_len = 1
+  ];
+
+  // action specifies the operation being performed.
+  // Should match the action field in Permission definitions.
+  string action = 4 [
+    (validate.rules).string.min_len = 1
+  ];
+}
+
+// CheckAccessResponse contains the authorization decision.
+message CheckAccessResponse {
+  // allowed is true if the subject has permission for the requested action.
+  bool allowed = 1;
+
+  // reason provides an explanation for the decision.
+  // For granted access: may explain which roles/permissions granted access.
+  // For denied access: explains why access was denied (e.g., "no matching permissions").
+  string reason = 2;
+}
+
+// AssignRoleRequest assigns a role to a subject.
+message AssignRoleRequest {
+  // subject_id uniquely identifies the entity receiving the role.
+  string subject_id = 1 [(validate.rules).string.min_len = 1];
+
+  // subject_type categorizes the subject.
+  string subject_type = 2 [
+    (validate.rules).string = {
+      min_len: 1,
+      max_len: 100
+    }
+  ];
+
+  // role_uid identifies which role to assign.
+  // The role must exist.
+  string role_uid = 3 [(validate.rules).string.min_len = 1];
+}
+
+// AssignRoleResponse confirms the role assignment.
+message AssignRoleResponse {
+  // success indicates the assignment was successful.
+  bool success = 1;
+
+  // role_uid confirms which role was assigned.
+  string role_uid = 2;
+
+  // assigned_at is the Unix timestamp when the role was assigned.
+  int64 assigned_at = 3;
+}
+
+// RevokeRoleRequest removes a role assignment from a subject.
+message RevokeRoleRequest {
+  // subject_id uniquely identifies the entity.
+  string subject_id = 1 [(validate.rules).string.min_len = 1];
+
+  // subject_type categorizes the subject.
+  string subject_type = 2 [
+    (validate.rules).string = {
+      min_len: 1,
+      max_len: 100
+    }
+  ];
+
+  // role_uid identifies which role to revoke.
+  string role_uid = 3 [(validate.rules).string.min_len = 1];
+}
+
+// RevokeRoleResponse confirms the role revocation.
+message RevokeRoleResponse {
+  // success indicates the revocation was successful.
+  bool success = 1;
+
+  // revoked_at is the Unix timestamp when the role was revoked.
+  int64 revoked_at = 2;
+}
+
+// ListSubjectRolesRequest lists all roles for a subject.
+message ListSubjectRolesRequest {
+  // subject_id uniquely identifies the entity.
+  string subject_id = 1 [(validate.rules).string.min_len = 1];
+
+  // subject_type categorizes the subject.
+  string subject_type = 2 [
+    (validate.rules).string = {
+      min_len: 1,
+      max_len: 100
+    }
+  ];
+
+  // pagination controls the page size and ordering.
+  common.Pagination pagination = 3;
+}
+
+// SubjectRole represents a role assigned to a subject.
+message SubjectRole {
+  // subject_id identifies the entity.
+  string subject_id = 1;
+
+  // subject_type categorizes the subject.
+  string subject_type = 2;
+
+  // role_uid identifies the assigned role.
+  string role_uid = 3;
+
+  // assigned_at is the Unix timestamp when the role was assigned.
+  int64 assigned_at = 4;
+}
+
+// ListSubjectRolesResponse returns the subject's roles.
+message ListSubjectRolesResponse {
+  // subject_roles is the list of role assignments for this subject.
+  repeated SubjectRole subject_roles = 1;
+
+  // meta contains pagination metadata.
+  common.Meta meta = 2;
+}

@@ -12,10 +12,11 @@ go:
 	mkdir -p gen/go
 	protoc \
 		--proto_path=proto \
+		--proto_path=third_party \
 		--proto_path=/usr/local/include \
 		--go_out=. --go_opt=module=github.com/adityakw90/service-access-proto \
 		--go-grpc_out=. --go-grpc_opt=module=github.com/adityakw90/service-access-proto \
-		--validate_out=. --validate_opt=module=github.com/adityakw90/service-access-proto \
+		--validate_out=lang=go:. --validate_opt=module=github.com/adityakw90/service-access-proto \
 		--grpc-gateway_out=. --grpc-gateway_opt=module=github.com/adityakw90/service-access-proto \
 		--openapiv2_out=gen/go \
 		proto/*.proto

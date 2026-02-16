@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+// Role Service provides CRUD operations for managing roles within groups.
+// A Role is a named subset of permissions drawn from its parent Group.
+//
+// Roles are the primary mechanism for granting access to Subjects.
+// A Subject can be assigned multiple Roles, and their effective permissions
+// are the union of all assigned Roles' permissions.
+//
+// Key constraint: A Role's permissions must always be a subset of
+// its parent Group's permissions (the Subset Constraint). This is
+// enforced at the service implementation layer.
+package role;
+
+import "common.proto";
+import "validate/validate.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/role";
+
+// Role represents a named subset of permissions within a group.
+// Roles are assigned to Subjects to grant access.
+message Role {
+  // uid is the public unique identifier for this role.
+  string uid = 1;
+
+  // group_uid identifies the parent group that owns this role.
+  // A role always belongs to exactly one group.
+  string group_uid = 2;
+
+  // name is the human-readable name of this role.
+  // Must be unique within the parent group.
+  string name = 3;
+
+  // description explains the role's purpose and intended use.
+  string description = 4;
+
+  // created_at is the Unix timestamp (seconds) when this role was created.
+  int64 created_at = 5;
+
+  // updated_at is the Unix timestamp (seconds) of the last modification.
+  int64 updated_at = 6;
+}

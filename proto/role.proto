@@ -41,3 +41,97 @@ message Role {
   // updated_at is the Unix timestamp (seconds) of the last modification.
   int64 updated_at = 6;
 }
+
+// RoleService provides CRUD operations for managing roles.
+service RoleService {
+  // CreateRole creates a new role within a group.
+  rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse) {
+    option (google.api.http) = {
+      post: "/v1/roles"
+      body: "*"
+    };
+  }
+
+  // GetRole retrieves a role by its public UID.
+  rpc GetRole(GetRoleRequest) returns (Role) {
+    option (google.api.http) = {
+      get: "/v1/roles/{uid}"
+    };
+  }
+
+  // UpdateRole modifies an existing role's details.
+  rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {
+    option (google.api.http) = {
+      put: "/v1/roles/{uid}"
+      body: "*"
+    };
+  }
+
+  // DeleteRole permanently removes a role by its UID.
+  // This will cascade to remove all subject assignments for this role.
+  rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse) {
+    option (google.api.http) = {
+      delete: "/v1/roles/{uid}"
+    };
+  }
+
+  // ListRoles returns a paginated list of roles.
+  // Can optionally filter by group_uid.
+  rpc ListRoles(ListRolesRequest) returns (ListRolesResponse) {
+    option (google.api.http) = {
+      get: "/v1/roles"
+    };
+  }
+
+  // AssignRolePermission adds a permission to a role.
+  rpc AssignRolePermission(AssignRolePermissionRequest) returns (AssignRolePermissionResponse) {
+    option (google.api.http) = {
+      post: "/v1/roles/{role_uid}/permissions"
+      body: "*"
+    };
+  }
+
+  // RevokeRolePermission removes a permission from a role.
+  rpc RevokeRolePermission(RevokeRolePermissionRequest) returns (RevokeRolePermissionResponse) {
+    option (google.api.http) = {
+      delete: "/v1/roles/{role_uid}/permissions/{permission_uid}"
+    };
+  }
+
+  // ListRolePermissions returns all permissions assigned to a role.
+  rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse) {
+    option (google.api.http) = {
+      get: "/v1/roles/{role_uid}/permissions"
+    };
+  }
+}
+
+// Request/Response stubs - will be implemented in later tasks
+message CreateRoleRequest {}
+message CreateRoleResponse {}
+message GetRoleRequest {
+  string uid = 1;
+}
+message UpdateRoleRequest {
+  string uid = 1;
+}
+message UpdateRoleResponse {}
+message DeleteRoleRequest {
+  string uid = 1;
+}
+message DeleteRoleResponse {}
+message ListRolesRequest {}
+message ListRolesResponse {}
+message AssignRolePermissionRequest {
+  string role_uid = 1;
+}
+message AssignRolePermissionResponse {}
+message RevokeRolePermissionRequest {
+  string role_uid = 1;
+  string permission_uid = 2;
+}
+message RevokeRolePermissionResponse {}
+message ListRolePermissionsRequest {
+  string role_uid = 1;
+}
+message ListRolePermissionsResponse {}

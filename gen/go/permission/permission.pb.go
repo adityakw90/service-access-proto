@@ -197,8 +197,13 @@ func (x *CreatePermissionRequest) GetDescription() string {
 	return ""
 }
 
+// CreatePermissionResponse returns the created permission.
 type CreatePermissionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// permission is the newly created permission with its assigned UID.
+	Permission *Permission `protobuf:"bytes,1,opt,name=permission,proto3" json:"permission,omitempty"`
+	// meta contains optional metadata about the operation.
+	Meta          *common.Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -231,6 +236,20 @@ func (x *CreatePermissionResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreatePermissionResponse.ProtoReflect.Descriptor instead.
 func (*CreatePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_permission_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreatePermissionResponse) GetPermission() *Permission {
+	if x != nil {
+		return x.Permission
+	}
+	return nil
+}
+
+func (x *CreatePermissionResponse) GetMeta() *common.Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
 }
 
 // GetPermissionRequest is used to retrieve a permission by its UID.
@@ -352,8 +371,13 @@ func (x *UpdatePermissionRequest) GetDescription() string {
 	return ""
 }
 
+// UpdatePermissionResponse returns the updated permission.
 type UpdatePermissionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// permission is the updated permission with new values.
+	Permission *Permission `protobuf:"bytes,1,opt,name=permission,proto3" json:"permission,omitempty"`
+	// meta contains optional metadata about the operation.
+	Meta          *common.Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -386,6 +410,20 @@ func (x *UpdatePermissionResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdatePermissionResponse.ProtoReflect.Descriptor instead.
 func (*UpdatePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_permission_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdatePermissionResponse) GetPermission() *Permission {
+	if x != nil {
+		return x.Permission
+	}
+	return nil
+}
+
+func (x *UpdatePermissionResponse) GetMeta() *common.Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
 }
 
 // DeletePermissionRequest is used to delete a permission by its UID.
@@ -434,8 +472,15 @@ func (x *DeletePermissionRequest) GetUid() string {
 	return ""
 }
 
+// DeletePermissionResponse confirms the deletion.
 type DeletePermissionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// success indicates the deletion was successful.
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	// message provides an optional human-readable confirmation.
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	// deleted_at is the Unix timestamp when the permission was deleted.
+	DeletedAt     int64 `protobuf:"varint,3,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -468,6 +513,27 @@ func (x *DeletePermissionResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DeletePermissionResponse.ProtoReflect.Descriptor instead.
 func (*DeletePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_permission_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeletePermissionResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *DeletePermissionResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *DeletePermissionResponse) GetDeletedAt() int64 {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return 0
 }
 
 // ListPermissionsRequest is used to list permissions with pagination.
@@ -516,8 +582,13 @@ func (x *ListPermissionsRequest) GetPagination() *common.Pagination {
 	return nil
 }
 
+// ListPermissionsResponse returns a paginated list of permissions.
 type ListPermissionsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// permissions is the list of permissions for the current page.
+	Permissions []*Permission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	// meta contains pagination metadata (total, pages, etc.).
+	Meta          *common.Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -552,6 +623,20 @@ func (*ListPermissionsResponse) Descriptor() ([]byte, []int) {
 	return file_permission_proto_rawDescGZIP(), []int{9}
 }
 
+func (x *ListPermissionsResponse) GetPermissions() []*Permission {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
+}
+
+func (x *ListPermissionsResponse) GetMeta() *common.Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
 var File_permission_proto protoreflect.FileDescriptor
 
 const file_permission_proto_rawDesc = "" +
@@ -571,24 +656,38 @@ const file_permission_proto_rawDesc = "" +
 	"\x17CreatePermissionRequest\x12:\n" +
 	"\bresource\x18\x01 \x01(\tB\x1e\xfaB\x1br\x19\x10\x01\x18\xff\x012\x12^[a-z][a-z0-9_-]*$R\bresource\x12!\n" +
 	"\x06action\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\x06action\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"\x1a\n" +
-	"\x18CreatePermissionResponse\"1\n" +
+	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"t\n" +
+	"\x18CreatePermissionResponse\x126\n" +
+	"\n" +
+	"permission\x18\x01 \x01(\v2\x16.permission.PermissionR\n" +
+	"permission\x12 \n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"1\n" +
 	"\x14GetPermissionRequest\x12\x19\n" +
 	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"\xbf\x01\n" +
 	"\x17UpdatePermissionRequest\x12\x19\n" +
 	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\x12:\n" +
 	"\bresource\x18\x02 \x01(\tB\x1e\xfaB\x1br\x19\x10\x01\x18\xff\x012\x12^[a-z][a-z0-9_-]*$R\bresource\x12!\n" +
 	"\x06action\x18\x03 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\x06action\x12*\n" +
-	"\vdescription\x18\x04 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"\x1a\n" +
-	"\x18UpdatePermissionResponse\"4\n" +
+	"\vdescription\x18\x04 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"t\n" +
+	"\x18UpdatePermissionResponse\x126\n" +
+	"\n" +
+	"permission\x18\x01 \x01(\v2\x16.permission.PermissionR\n" +
+	"permission\x12 \n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"4\n" +
 	"\x17DeletePermissionRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"\x1a\n" +
-	"\x18DeletePermissionResponse\"L\n" +
+	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"m\n" +
+	"\x18DeletePermissionResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1d\n" +
+	"\n" +
+	"deleted_at\x18\x03 \x01(\x03R\tdeletedAt\"L\n" +
 	"\x16ListPermissionsRequest\x122\n" +
 	"\n" +
 	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\"\x19\n" +
-	"\x17ListPermissionsResponse2\xd7\x03\n" +
+	"pagination\"u\n" +
+	"\x17ListPermissionsResponse\x128\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x16.permission.PermissionR\vpermissions\x12 \n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xd7\x03\n" +
 	"\x11PermissionService\x12]\n" +
 	"\x10CreatePermission\x12#.permission.CreatePermissionRequest\x1a$.permission.CreatePermissionResponse\x12I\n" +
 	"\rGetPermission\x12 .permission.GetPermissionRequest\x1a\x16.permission.Permission\x12]\n" +
@@ -620,25 +719,32 @@ var file_permission_proto_goTypes = []any{
 	(*DeletePermissionResponse)(nil), // 7: permission.DeletePermissionResponse
 	(*ListPermissionsRequest)(nil),   // 8: permission.ListPermissionsRequest
 	(*ListPermissionsResponse)(nil),  // 9: permission.ListPermissionsResponse
-	(*common.Pagination)(nil),        // 10: common.Pagination
+	(*common.Meta)(nil),              // 10: common.Meta
+	(*common.Pagination)(nil),        // 11: common.Pagination
 }
 var file_permission_proto_depIdxs = []int32{
-	10, // 0: permission.ListPermissionsRequest.pagination:type_name -> common.Pagination
-	1,  // 1: permission.PermissionService.CreatePermission:input_type -> permission.CreatePermissionRequest
-	3,  // 2: permission.PermissionService.GetPermission:input_type -> permission.GetPermissionRequest
-	4,  // 3: permission.PermissionService.UpdatePermission:input_type -> permission.UpdatePermissionRequest
-	6,  // 4: permission.PermissionService.DeletePermission:input_type -> permission.DeletePermissionRequest
-	8,  // 5: permission.PermissionService.ListPermissions:input_type -> permission.ListPermissionsRequest
-	2,  // 6: permission.PermissionService.CreatePermission:output_type -> permission.CreatePermissionResponse
-	0,  // 7: permission.PermissionService.GetPermission:output_type -> permission.Permission
-	5,  // 8: permission.PermissionService.UpdatePermission:output_type -> permission.UpdatePermissionResponse
-	7,  // 9: permission.PermissionService.DeletePermission:output_type -> permission.DeletePermissionResponse
-	9,  // 10: permission.PermissionService.ListPermissions:output_type -> permission.ListPermissionsResponse
-	6,  // [6:11] is the sub-list for method output_type
-	1,  // [1:6] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	0,  // 0: permission.CreatePermissionResponse.permission:type_name -> permission.Permission
+	10, // 1: permission.CreatePermissionResponse.meta:type_name -> common.Meta
+	0,  // 2: permission.UpdatePermissionResponse.permission:type_name -> permission.Permission
+	10, // 3: permission.UpdatePermissionResponse.meta:type_name -> common.Meta
+	11, // 4: permission.ListPermissionsRequest.pagination:type_name -> common.Pagination
+	0,  // 5: permission.ListPermissionsResponse.permissions:type_name -> permission.Permission
+	10, // 6: permission.ListPermissionsResponse.meta:type_name -> common.Meta
+	1,  // 7: permission.PermissionService.CreatePermission:input_type -> permission.CreatePermissionRequest
+	3,  // 8: permission.PermissionService.GetPermission:input_type -> permission.GetPermissionRequest
+	4,  // 9: permission.PermissionService.UpdatePermission:input_type -> permission.UpdatePermissionRequest
+	6,  // 10: permission.PermissionService.DeletePermission:input_type -> permission.DeletePermissionRequest
+	8,  // 11: permission.PermissionService.ListPermissions:input_type -> permission.ListPermissionsRequest
+	2,  // 12: permission.PermissionService.CreatePermission:output_type -> permission.CreatePermissionResponse
+	0,  // 13: permission.PermissionService.GetPermission:output_type -> permission.Permission
+	5,  // 14: permission.PermissionService.UpdatePermission:output_type -> permission.UpdatePermissionResponse
+	7,  // 15: permission.PermissionService.DeletePermission:output_type -> permission.DeletePermissionResponse
+	9,  // 16: permission.PermissionService.ListPermissions:output_type -> permission.ListPermissionsResponse
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_permission_proto_init() }

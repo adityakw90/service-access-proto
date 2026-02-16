@@ -72,7 +72,14 @@ message CreatePermissionRequest {
   string description = 3 [(validate.rules).string.max_len = 1000];
 }
 
-message CreatePermissionResponse {}
+// CreatePermissionResponse returns the created permission.
+message CreatePermissionResponse {
+  // permission is the newly created permission with its assigned UID.
+  Permission permission = 1;
+
+  // meta contains optional metadata about the operation.
+  common.Meta meta = 2;
+}
 
 // GetPermissionRequest is used to retrieve a permission by its UID.
 message GetPermissionRequest {
@@ -106,7 +113,14 @@ message UpdatePermissionRequest {
   string description = 4 [(validate.rules).string.max_len = 1000];
 }
 
-message UpdatePermissionResponse {}
+// UpdatePermissionResponse returns the updated permission.
+message UpdatePermissionResponse {
+  // permission is the updated permission with new values.
+  Permission permission = 1;
+
+  // meta contains optional metadata about the operation.
+  common.Meta meta = 2;
+}
 
 // DeletePermissionRequest is used to delete a permission by its UID.
 message DeletePermissionRequest {
@@ -114,7 +128,17 @@ message DeletePermissionRequest {
   string uid = 1 [(validate.rules).string.min_len = 1];
 }
 
-message DeletePermissionResponse {}
+// DeletePermissionResponse confirms the deletion.
+message DeletePermissionResponse {
+  // success indicates the deletion was successful.
+  bool success = 1;
+
+  // message provides an optional human-readable confirmation.
+  string message = 2;
+
+  // deleted_at is the Unix timestamp when the permission was deleted.
+  int64 deleted_at = 3;
+}
 
 // ListPermissionsRequest is used to list permissions with pagination.
 message ListPermissionsRequest {
@@ -122,7 +146,14 @@ message ListPermissionsRequest {
   common.Pagination pagination = 1;
 }
 
-message ListPermissionsResponse {}
+// ListPermissionsResponse returns a paginated list of permissions.
+message ListPermissionsResponse {
+  // permissions is the list of permissions for the current page.
+  repeated Permission permissions = 1;
+
+  // meta contains pagination metadata (total, pages, etc.).
+  common.Meta meta = 2;
+}
 
 // PermissionService provides CRUD operations for managing permissions.
 service PermissionService {

@@ -142,3 +142,1551 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = GroupValidationError{}
+
+// Validate checks the field values on CreateGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CreateGroupRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CreateGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CreateGroupRequestMultiError, or nil if none found.
+func (m *CreateGroupRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CreateGroupRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return CreateGroupRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// CreateGroupRequestMultiError is an error wrapping multiple validation errors
+// returned by CreateGroupRequest.ValidateAll() if the designated constraints
+// aren't met.
+type CreateGroupRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CreateGroupRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CreateGroupRequestMultiError) AllErrors() []error { return m }
+
+// CreateGroupRequestValidationError is the validation error returned by
+// CreateGroupRequest.Validate if the designated constraints aren't met.
+type CreateGroupRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CreateGroupRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CreateGroupRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CreateGroupRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CreateGroupRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CreateGroupRequestValidationError) ErrorName() string {
+	return "CreateGroupRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CreateGroupRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCreateGroupRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CreateGroupRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CreateGroupRequestValidationError{}
+
+// Validate checks the field values on CreateGroupResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CreateGroupResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CreateGroupResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CreateGroupResponseMultiError, or nil if none found.
+func (m *CreateGroupResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CreateGroupResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return CreateGroupResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// CreateGroupResponseMultiError is an error wrapping multiple validation
+// errors returned by CreateGroupResponse.ValidateAll() if the designated
+// constraints aren't met.
+type CreateGroupResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CreateGroupResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CreateGroupResponseMultiError) AllErrors() []error { return m }
+
+// CreateGroupResponseValidationError is the validation error returned by
+// CreateGroupResponse.Validate if the designated constraints aren't met.
+type CreateGroupResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CreateGroupResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CreateGroupResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CreateGroupResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CreateGroupResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CreateGroupResponseValidationError) ErrorName() string {
+	return "CreateGroupResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CreateGroupResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCreateGroupResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CreateGroupResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CreateGroupResponseValidationError{}
+
+// Validate checks the field values on GetGroupRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *GetGroupRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetGroupRequestMultiError, or nil if none found.
+func (m *GetGroupRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetGroupRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Uid
+
+	if len(errors) > 0 {
+		return GetGroupRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetGroupRequestMultiError is an error wrapping multiple validation errors
+// returned by GetGroupRequest.ValidateAll() if the designated constraints
+// aren't met.
+type GetGroupRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetGroupRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetGroupRequestMultiError) AllErrors() []error { return m }
+
+// GetGroupRequestValidationError is the validation error returned by
+// GetGroupRequest.Validate if the designated constraints aren't met.
+type GetGroupRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetGroupRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetGroupRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetGroupRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetGroupRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetGroupRequestValidationError) ErrorName() string { return "GetGroupRequestValidationError" }
+
+// Error satisfies the builtin error interface
+func (e GetGroupRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetGroupRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetGroupRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetGroupRequestValidationError{}
+
+// Validate checks the field values on UpdateGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *UpdateGroupRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UpdateGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UpdateGroupRequestMultiError, or nil if none found.
+func (m *UpdateGroupRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UpdateGroupRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Uid
+
+	if len(errors) > 0 {
+		return UpdateGroupRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// UpdateGroupRequestMultiError is an error wrapping multiple validation errors
+// returned by UpdateGroupRequest.ValidateAll() if the designated constraints
+// aren't met.
+type UpdateGroupRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UpdateGroupRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UpdateGroupRequestMultiError) AllErrors() []error { return m }
+
+// UpdateGroupRequestValidationError is the validation error returned by
+// UpdateGroupRequest.Validate if the designated constraints aren't met.
+type UpdateGroupRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UpdateGroupRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UpdateGroupRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UpdateGroupRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UpdateGroupRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UpdateGroupRequestValidationError) ErrorName() string {
+	return "UpdateGroupRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UpdateGroupRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUpdateGroupRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UpdateGroupRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UpdateGroupRequestValidationError{}
+
+// Validate checks the field values on UpdateGroupResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *UpdateGroupResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UpdateGroupResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UpdateGroupResponseMultiError, or nil if none found.
+func (m *UpdateGroupResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UpdateGroupResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return UpdateGroupResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// UpdateGroupResponseMultiError is an error wrapping multiple validation
+// errors returned by UpdateGroupResponse.ValidateAll() if the designated
+// constraints aren't met.
+type UpdateGroupResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UpdateGroupResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UpdateGroupResponseMultiError) AllErrors() []error { return m }
+
+// UpdateGroupResponseValidationError is the validation error returned by
+// UpdateGroupResponse.Validate if the designated constraints aren't met.
+type UpdateGroupResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UpdateGroupResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UpdateGroupResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UpdateGroupResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UpdateGroupResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UpdateGroupResponseValidationError) ErrorName() string {
+	return "UpdateGroupResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UpdateGroupResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUpdateGroupResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UpdateGroupResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UpdateGroupResponseValidationError{}
+
+// Validate checks the field values on DeleteGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *DeleteGroupRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on DeleteGroupRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// DeleteGroupRequestMultiError, or nil if none found.
+func (m *DeleteGroupRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *DeleteGroupRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Uid
+
+	if len(errors) > 0 {
+		return DeleteGroupRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// DeleteGroupRequestMultiError is an error wrapping multiple validation errors
+// returned by DeleteGroupRequest.ValidateAll() if the designated constraints
+// aren't met.
+type DeleteGroupRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m DeleteGroupRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m DeleteGroupRequestMultiError) AllErrors() []error { return m }
+
+// DeleteGroupRequestValidationError is the validation error returned by
+// DeleteGroupRequest.Validate if the designated constraints aren't met.
+type DeleteGroupRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteGroupRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteGroupRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteGroupRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteGroupRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteGroupRequestValidationError) ErrorName() string {
+	return "DeleteGroupRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteGroupRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteGroupRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteGroupRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteGroupRequestValidationError{}
+
+// Validate checks the field values on DeleteGroupResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *DeleteGroupResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on DeleteGroupResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// DeleteGroupResponseMultiError, or nil if none found.
+func (m *DeleteGroupResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *DeleteGroupResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return DeleteGroupResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// DeleteGroupResponseMultiError is an error wrapping multiple validation
+// errors returned by DeleteGroupResponse.ValidateAll() if the designated
+// constraints aren't met.
+type DeleteGroupResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m DeleteGroupResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m DeleteGroupResponseMultiError) AllErrors() []error { return m }
+
+// DeleteGroupResponseValidationError is the validation error returned by
+// DeleteGroupResponse.Validate if the designated constraints aren't met.
+type DeleteGroupResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteGroupResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteGroupResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteGroupResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteGroupResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteGroupResponseValidationError) ErrorName() string {
+	return "DeleteGroupResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteGroupResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteGroupResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteGroupResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteGroupResponseValidationError{}
+
+// Validate checks the field values on ListGroupsRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ListGroupsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListGroupsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListGroupsRequestMultiError, or nil if none found.
+func (m *ListGroupsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListGroupsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ListGroupsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListGroupsRequestMultiError is an error wrapping multiple validation errors
+// returned by ListGroupsRequest.ValidateAll() if the designated constraints
+// aren't met.
+type ListGroupsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListGroupsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListGroupsRequestMultiError) AllErrors() []error { return m }
+
+// ListGroupsRequestValidationError is the validation error returned by
+// ListGroupsRequest.Validate if the designated constraints aren't met.
+type ListGroupsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListGroupsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListGroupsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListGroupsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListGroupsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListGroupsRequestValidationError) ErrorName() string {
+	return "ListGroupsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListGroupsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListGroupsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListGroupsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListGroupsRequestValidationError{}
+
+// Validate checks the field values on ListGroupsResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ListGroupsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListGroupsResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListGroupsResponseMultiError, or nil if none found.
+func (m *ListGroupsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListGroupsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ListGroupsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListGroupsResponseMultiError is an error wrapping multiple validation errors
+// returned by ListGroupsResponse.ValidateAll() if the designated constraints
+// aren't met.
+type ListGroupsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListGroupsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListGroupsResponseMultiError) AllErrors() []error { return m }
+
+// ListGroupsResponseValidationError is the validation error returned by
+// ListGroupsResponse.Validate if the designated constraints aren't met.
+type ListGroupsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListGroupsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListGroupsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListGroupsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListGroupsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListGroupsResponseValidationError) ErrorName() string {
+	return "ListGroupsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListGroupsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListGroupsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListGroupsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListGroupsResponseValidationError{}
+
+// Validate checks the field values on AssignGroupPermissionRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *AssignGroupPermissionRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on AssignGroupPermissionRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// AssignGroupPermissionRequestMultiError, or nil if none found.
+func (m *AssignGroupPermissionRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *AssignGroupPermissionRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for GroupUid
+
+	if len(errors) > 0 {
+		return AssignGroupPermissionRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// AssignGroupPermissionRequestMultiError is an error wrapping multiple
+// validation errors returned by AssignGroupPermissionRequest.ValidateAll() if
+// the designated constraints aren't met.
+type AssignGroupPermissionRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m AssignGroupPermissionRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m AssignGroupPermissionRequestMultiError) AllErrors() []error { return m }
+
+// AssignGroupPermissionRequestValidationError is the validation error returned
+// by AssignGroupPermissionRequest.Validate if the designated constraints
+// aren't met.
+type AssignGroupPermissionRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e AssignGroupPermissionRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e AssignGroupPermissionRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e AssignGroupPermissionRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e AssignGroupPermissionRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e AssignGroupPermissionRequestValidationError) ErrorName() string {
+	return "AssignGroupPermissionRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e AssignGroupPermissionRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sAssignGroupPermissionRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = AssignGroupPermissionRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = AssignGroupPermissionRequestValidationError{}
+
+// Validate checks the field values on AssignGroupPermissionResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *AssignGroupPermissionResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on AssignGroupPermissionResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// AssignGroupPermissionResponseMultiError, or nil if none found.
+func (m *AssignGroupPermissionResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *AssignGroupPermissionResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return AssignGroupPermissionResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// AssignGroupPermissionResponseMultiError is an error wrapping multiple
+// validation errors returned by AssignGroupPermissionResponse.ValidateAll()
+// if the designated constraints aren't met.
+type AssignGroupPermissionResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m AssignGroupPermissionResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m AssignGroupPermissionResponseMultiError) AllErrors() []error { return m }
+
+// AssignGroupPermissionResponseValidationError is the validation error
+// returned by AssignGroupPermissionResponse.Validate if the designated
+// constraints aren't met.
+type AssignGroupPermissionResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e AssignGroupPermissionResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e AssignGroupPermissionResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e AssignGroupPermissionResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e AssignGroupPermissionResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e AssignGroupPermissionResponseValidationError) ErrorName() string {
+	return "AssignGroupPermissionResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e AssignGroupPermissionResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sAssignGroupPermissionResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = AssignGroupPermissionResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = AssignGroupPermissionResponseValidationError{}
+
+// Validate checks the field values on RevokeGroupPermissionRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *RevokeGroupPermissionRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RevokeGroupPermissionRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// RevokeGroupPermissionRequestMultiError, or nil if none found.
+func (m *RevokeGroupPermissionRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RevokeGroupPermissionRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for GroupUid
+
+	// no validation rules for PermissionUid
+
+	if len(errors) > 0 {
+		return RevokeGroupPermissionRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// RevokeGroupPermissionRequestMultiError is an error wrapping multiple
+// validation errors returned by RevokeGroupPermissionRequest.ValidateAll() if
+// the designated constraints aren't met.
+type RevokeGroupPermissionRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RevokeGroupPermissionRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RevokeGroupPermissionRequestMultiError) AllErrors() []error { return m }
+
+// RevokeGroupPermissionRequestValidationError is the validation error returned
+// by RevokeGroupPermissionRequest.Validate if the designated constraints
+// aren't met.
+type RevokeGroupPermissionRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RevokeGroupPermissionRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RevokeGroupPermissionRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RevokeGroupPermissionRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RevokeGroupPermissionRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RevokeGroupPermissionRequestValidationError) ErrorName() string {
+	return "RevokeGroupPermissionRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RevokeGroupPermissionRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRevokeGroupPermissionRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RevokeGroupPermissionRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RevokeGroupPermissionRequestValidationError{}
+
+// Validate checks the field values on RevokeGroupPermissionResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *RevokeGroupPermissionResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RevokeGroupPermissionResponse with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the result is a list of violation errors wrapped in
+// RevokeGroupPermissionResponseMultiError, or nil if none found.
+func (m *RevokeGroupPermissionResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RevokeGroupPermissionResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return RevokeGroupPermissionResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// RevokeGroupPermissionResponseMultiError is an error wrapping multiple
+// validation errors returned by RevokeGroupPermissionResponse.ValidateAll()
+// if the designated constraints aren't met.
+type RevokeGroupPermissionResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RevokeGroupPermissionResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RevokeGroupPermissionResponseMultiError) AllErrors() []error { return m }
+
+// RevokeGroupPermissionResponseValidationError is the validation error
+// returned by RevokeGroupPermissionResponse.Validate if the designated
+// constraints aren't met.
+type RevokeGroupPermissionResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RevokeGroupPermissionResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RevokeGroupPermissionResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RevokeGroupPermissionResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RevokeGroupPermissionResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RevokeGroupPermissionResponseValidationError) ErrorName() string {
+	return "RevokeGroupPermissionResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RevokeGroupPermissionResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRevokeGroupPermissionResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RevokeGroupPermissionResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RevokeGroupPermissionResponseValidationError{}
+
+// Validate checks the field values on ListGroupPermissionsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ListGroupPermissionsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListGroupPermissionsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListGroupPermissionsRequestMultiError, or nil if none found.
+func (m *ListGroupPermissionsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListGroupPermissionsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for GroupUid
+
+	if len(errors) > 0 {
+		return ListGroupPermissionsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListGroupPermissionsRequestMultiError is an error wrapping multiple
+// validation errors returned by ListGroupPermissionsRequest.ValidateAll() if
+// the designated constraints aren't met.
+type ListGroupPermissionsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListGroupPermissionsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListGroupPermissionsRequestMultiError) AllErrors() []error { return m }
+
+// ListGroupPermissionsRequestValidationError is the validation error returned
+// by ListGroupPermissionsRequest.Validate if the designated constraints
+// aren't met.
+type ListGroupPermissionsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListGroupPermissionsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListGroupPermissionsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListGroupPermissionsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListGroupPermissionsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListGroupPermissionsRequestValidationError) ErrorName() string {
+	return "ListGroupPermissionsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListGroupPermissionsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListGroupPermissionsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListGroupPermissionsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListGroupPermissionsRequestValidationError{}
+
+// Validate checks the field values on ListGroupPermissionsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ListGroupPermissionsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListGroupPermissionsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListGroupPermissionsResponseMultiError, or nil if none found.
+func (m *ListGroupPermissionsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListGroupPermissionsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ListGroupPermissionsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListGroupPermissionsResponseMultiError is an error wrapping multiple
+// validation errors returned by ListGroupPermissionsResponse.ValidateAll() if
+// the designated constraints aren't met.
+type ListGroupPermissionsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListGroupPermissionsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListGroupPermissionsResponseMultiError) AllErrors() []error { return m }
+
+// ListGroupPermissionsResponseValidationError is the validation error returned
+// by ListGroupPermissionsResponse.Validate if the designated constraints
+// aren't met.
+type ListGroupPermissionsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListGroupPermissionsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListGroupPermissionsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListGroupPermissionsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListGroupPermissionsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListGroupPermissionsResponseValidationError) ErrorName() string {
+	return "ListGroupPermissionsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListGroupPermissionsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListGroupPermissionsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListGroupPermissionsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListGroupPermissionsResponseValidationError{}

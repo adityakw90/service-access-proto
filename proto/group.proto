@@ -37,3 +37,96 @@ message Group {
   // updated_at is the Unix timestamp (seconds) of the last modification.
   int64 updated_at = 5;
 }
+
+// GroupService provides CRUD operations for managing groups.
+service GroupService {
+  // CreateGroup creates a new permission group.
+  rpc CreateGroup(CreateGroupRequest) returns (CreateGroupResponse) {
+    option (google.api.http) = {
+      post: "/v1/groups"
+      body: "*"
+    };
+  }
+
+  // GetGroup retrieves a group by its public UID.
+  rpc GetGroup(GetGroupRequest) returns (Group) {
+    option (google.api.http) = {
+      get: "/v1/groups/{uid}"
+    };
+  }
+
+  // UpdateGroup modifies an existing group's details.
+  rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse) {
+    option (google.api.http) = {
+      put: "/v1/groups/{uid}"
+      body: "*"
+    };
+  }
+
+  // DeleteGroup permanently removes a group by its UID.
+  // This will cascade to delete all roles within the group.
+  rpc DeleteGroup(DeleteGroupRequest) returns (DeleteGroupResponse) {
+    option (google.api.http) = {
+      delete: "/v1/groups/{uid}"
+    };
+  }
+
+  // ListGroups returns a paginated list of all groups.
+  rpc ListGroups(ListGroupsRequest) returns (ListGroupsResponse) {
+    option (google.api.http) = {
+      get: "/v1/groups"
+    };
+  }
+
+  // AssignGroupPermission adds a permission to a group.
+  rpc AssignGroupPermission(AssignGroupPermissionRequest) returns (AssignGroupPermissionResponse) {
+    option (google.api.http) = {
+      post: "/v1/groups/{group_uid}/permissions"
+      body: "*"
+    };
+  }
+
+  // RevokeGroupPermission removes a permission from a group.
+  rpc RevokeGroupPermission(RevokeGroupPermissionRequest) returns (RevokeGroupPermissionResponse) {
+    option (google.api.http) = {
+      delete: "/v1/groups/{group_uid}/permissions/{permission_uid}"
+    };
+  }
+
+  // ListGroupPermissions returns all permissions assigned to a group.
+  rpc ListGroupPermissions(ListGroupPermissionsRequest) returns (ListGroupPermissionsResponse) {
+    option (google.api.http) = {
+      get: "/v1/groups/{group_uid}/permissions"
+    };
+  }
+}
+
+// Request/Response stubs - will be implemented in later tasks
+message CreateGroupRequest {}
+message CreateGroupResponse {}
+message GetGroupRequest {
+  string uid = 1;
+}
+message UpdateGroupRequest {
+  string uid = 1;
+}
+message UpdateGroupResponse {}
+message DeleteGroupRequest {
+  string uid = 1;
+}
+message DeleteGroupResponse {}
+message ListGroupsRequest {}
+message ListGroupsResponse {}
+message AssignGroupPermissionRequest {
+  string group_uid = 1;
+}
+message AssignGroupPermissionResponse {}
+message RevokeGroupPermissionRequest {
+  string group_uid = 1;
+  string permission_uid = 2;
+}
+message RevokeGroupPermissionResponse {}
+message ListGroupPermissionsRequest {
+  string group_uid = 1;
+}
+message ListGroupPermissionsResponse {}

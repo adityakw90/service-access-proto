@@ -18,7 +18,7 @@
 package group
 
 import (
-	_ "github.com/adityakw90/service-access-proto/gen/go/common"
+	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -119,9 +119,14 @@ func (x *Group) GetUpdatedAt() int64 {
 	return 0
 }
 
-// Request/Response stubs - will be implemented in later tasks
+// CreateGroupRequest contains the fields needed to create a new group.
 type CreateGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// name is the human-readable name of the group.
+	// Must be unique across all groups.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// description explains the group's purpose.
+	Description   string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -154,6 +159,20 @@ func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateGroupRequest.ProtoReflect.Descriptor instead.
 func (*CreateGroupRequest) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateGroupRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateGroupRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
 }
 
 type CreateGroupResponse struct {
@@ -192,9 +211,11 @@ func (*CreateGroupResponse) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{2}
 }
 
+// GetGroupRequest is used to retrieve a group by its UID.
 type GetGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// uid is the public unique identifier of the group.
+	Uid           string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -236,9 +257,15 @@ func (x *GetGroupRequest) GetUid() string {
 	return ""
 }
 
+// UpdateGroupRequest contains fields to update an existing group.
 type UpdateGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// uid identifies which group to update.
+	Uid string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	// name is the new name for the group.
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// description is the new description.
+	Description   string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -280,6 +307,20 @@ func (x *UpdateGroupRequest) GetUid() string {
 	return ""
 }
 
+func (x *UpdateGroupRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateGroupRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
 type UpdateGroupResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -316,9 +357,11 @@ func (*UpdateGroupResponse) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{5}
 }
 
+// DeleteGroupRequest is used to delete a group by its UID.
 type DeleteGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// uid identifies which group to delete.
+	Uid           string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -396,8 +439,11 @@ func (*DeleteGroupResponse) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{7}
 }
 
+// ListGroupsRequest is used to list groups with pagination.
 type ListGroupsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// pagination controls the page size and ordering.
+	Pagination    *common.Pagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -430,6 +476,13 @@ func (x *ListGroupsRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListGroupsRequest.ProtoReflect.Descriptor instead.
 func (*ListGroupsRequest) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListGroupsRequest) GetPagination() *common.Pagination {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
 }
 
 type ListGroupsResponse struct {
@@ -468,9 +521,13 @@ func (*ListGroupsResponse) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{9}
 }
 
+// AssignGroupPermissionRequest adds a permission to a group.
 type AssignGroupPermissionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GroupUid      string                 `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// group_uid identifies which group to receive the permission.
+	GroupUid string `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`
+	// permission_uid identifies which permission to assign.
+	PermissionUid string `protobuf:"bytes,2,opt,name=permission_uid,json=permissionUid,proto3" json:"permission_uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -512,6 +569,13 @@ func (x *AssignGroupPermissionRequest) GetGroupUid() string {
 	return ""
 }
 
+func (x *AssignGroupPermissionRequest) GetPermissionUid() string {
+	if x != nil {
+		return x.PermissionUid
+	}
+	return ""
+}
+
 type AssignGroupPermissionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -548,10 +612,13 @@ func (*AssignGroupPermissionResponse) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{11}
 }
 
+// RevokeGroupPermissionRequest removes a permission from a group.
 type RevokeGroupPermissionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GroupUid      string                 `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`
-	PermissionUid string                 `protobuf:"bytes,2,opt,name=permission_uid,json=permissionUid,proto3" json:"permission_uid,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// group_uid identifies which group to modify.
+	GroupUid string `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`
+	// permission_uid identifies which permission to revoke.
+	PermissionUid string `protobuf:"bytes,2,opt,name=permission_uid,json=permissionUid,proto3" json:"permission_uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -636,9 +703,13 @@ func (*RevokeGroupPermissionResponse) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{13}
 }
 
+// ListGroupPermissionsRequest is used to list a group's permissions.
 type ListGroupPermissionsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GroupUid      string                 `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// group_uid identifies which group's permissions to list.
+	GroupUid string `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`
+	// pagination controls the page size and ordering.
+	Pagination    *common.Pagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -678,6 +749,13 @@ func (x *ListGroupPermissionsRequest) GetGroupUid() string {
 		return x.GroupUid
 	}
 	return ""
+}
+
+func (x *ListGroupPermissionsRequest) GetPagination() *common.Pagination {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
 }
 
 type ListGroupPermissionsResponse struct {
@@ -728,28 +806,41 @@ const file_group_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x04 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\x03R\tupdatedAt\"\x14\n" +
-	"\x12CreateGroupRequest\"\x15\n" +
-	"\x13CreateGroupResponse\"#\n" +
-	"\x0fGetGroupRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"&\n" +
-	"\x12UpdateGroupRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x15\n" +
-	"\x13UpdateGroupResponse\"&\n" +
-	"\x12DeleteGroupRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x15\n" +
-	"\x13DeleteGroupResponse\"\x13\n" +
-	"\x11ListGroupsRequest\"\x14\n" +
-	"\x12ListGroupsResponse\";\n" +
-	"\x1cAssignGroupPermissionRequest\x12\x1b\n" +
-	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\"\x1f\n" +
-	"\x1dAssignGroupPermissionResponse\"b\n" +
-	"\x1cRevokeGroupPermissionRequest\x12\x1b\n" +
-	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"\x1f\n" +
-	"\x1dRevokeGroupPermissionResponse\":\n" +
-	"\x1bListGroupPermissionsRequest\x12\x1b\n" +
-	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\"\x1e\n" +
+	"updated_at\x18\x05 \x01(\x03R\tupdatedAt\"`\n" +
+	"\x12CreateGroupRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
+	"\xfaB\ar\x05\x10\x01\x18\xff\x01R\x04name\x12*\n" +
+	"\vdescription\x18\x02 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"\x15\n" +
+	"\x13CreateGroupResponse\",\n" +
+	"\x0fGetGroupRequest\x12\x19\n" +
+	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"{\n" +
+	"\x12UpdateGroupRequest\x12\x19\n" +
+	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xfaB\ar\x05\x10\x01\x18\xff\x01R\x04name\x12*\n" +
+	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"\x15\n" +
+	"\x13UpdateGroupResponse\"/\n" +
+	"\x12DeleteGroupRequest\x12\x19\n" +
+	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"\x15\n" +
+	"\x13DeleteGroupResponse\"G\n" +
+	"\x11ListGroupsRequest\x122\n" +
+	"\n" +
+	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
+	"pagination\"\x14\n" +
+	"\x12ListGroupsResponse\"t\n" +
+	"\x1cAssignGroupPermissionRequest\x12$\n" +
+	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x12.\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\rpermissionUid\"\x1f\n" +
+	"\x1dAssignGroupPermissionResponse\"t\n" +
+	"\x1cRevokeGroupPermissionRequest\x12$\n" +
+	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x12.\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\rpermissionUid\"\x1f\n" +
+	"\x1dRevokeGroupPermissionResponse\"w\n" +
+	"\x1bListGroupPermissionsRequest\x12$\n" +
+	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x122\n" +
+	"\n" +
+	"pagination\x18\x02 \x01(\v2\x12.common.PaginationR\n" +
+	"pagination\"\x1e\n" +
 	"\x1cListGroupPermissionsResponse2\x95\a\n" +
 	"\fGroupService\x12[\n" +
 	"\vCreateGroup\x12\x19.group.CreateGroupRequest\x1a\x1a.group.CreateGroupResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
@@ -794,29 +885,32 @@ var file_group_proto_goTypes = []any{
 	(*RevokeGroupPermissionResponse)(nil), // 13: group.RevokeGroupPermissionResponse
 	(*ListGroupPermissionsRequest)(nil),   // 14: group.ListGroupPermissionsRequest
 	(*ListGroupPermissionsResponse)(nil),  // 15: group.ListGroupPermissionsResponse
+	(*common.Pagination)(nil),             // 16: common.Pagination
 }
 var file_group_proto_depIdxs = []int32{
-	1,  // 0: group.GroupService.CreateGroup:input_type -> group.CreateGroupRequest
-	3,  // 1: group.GroupService.GetGroup:input_type -> group.GetGroupRequest
-	4,  // 2: group.GroupService.UpdateGroup:input_type -> group.UpdateGroupRequest
-	6,  // 3: group.GroupService.DeleteGroup:input_type -> group.DeleteGroupRequest
-	8,  // 4: group.GroupService.ListGroups:input_type -> group.ListGroupsRequest
-	10, // 5: group.GroupService.AssignGroupPermission:input_type -> group.AssignGroupPermissionRequest
-	12, // 6: group.GroupService.RevokeGroupPermission:input_type -> group.RevokeGroupPermissionRequest
-	14, // 7: group.GroupService.ListGroupPermissions:input_type -> group.ListGroupPermissionsRequest
-	2,  // 8: group.GroupService.CreateGroup:output_type -> group.CreateGroupResponse
-	0,  // 9: group.GroupService.GetGroup:output_type -> group.Group
-	5,  // 10: group.GroupService.UpdateGroup:output_type -> group.UpdateGroupResponse
-	7,  // 11: group.GroupService.DeleteGroup:output_type -> group.DeleteGroupResponse
-	9,  // 12: group.GroupService.ListGroups:output_type -> group.ListGroupsResponse
-	11, // 13: group.GroupService.AssignGroupPermission:output_type -> group.AssignGroupPermissionResponse
-	13, // 14: group.GroupService.RevokeGroupPermission:output_type -> group.RevokeGroupPermissionResponse
-	15, // 15: group.GroupService.ListGroupPermissions:output_type -> group.ListGroupPermissionsResponse
-	8,  // [8:16] is the sub-list for method output_type
-	0,  // [0:8] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	16, // 0: group.ListGroupsRequest.pagination:type_name -> common.Pagination
+	16, // 1: group.ListGroupPermissionsRequest.pagination:type_name -> common.Pagination
+	1,  // 2: group.GroupService.CreateGroup:input_type -> group.CreateGroupRequest
+	3,  // 3: group.GroupService.GetGroup:input_type -> group.GetGroupRequest
+	4,  // 4: group.GroupService.UpdateGroup:input_type -> group.UpdateGroupRequest
+	6,  // 5: group.GroupService.DeleteGroup:input_type -> group.DeleteGroupRequest
+	8,  // 6: group.GroupService.ListGroups:input_type -> group.ListGroupsRequest
+	10, // 7: group.GroupService.AssignGroupPermission:input_type -> group.AssignGroupPermissionRequest
+	12, // 8: group.GroupService.RevokeGroupPermission:input_type -> group.RevokeGroupPermissionRequest
+	14, // 9: group.GroupService.ListGroupPermissions:input_type -> group.ListGroupPermissionsRequest
+	2,  // 10: group.GroupService.CreateGroup:output_type -> group.CreateGroupResponse
+	0,  // 11: group.GroupService.GetGroup:output_type -> group.Group
+	5,  // 12: group.GroupService.UpdateGroup:output_type -> group.UpdateGroupResponse
+	7,  // 13: group.GroupService.DeleteGroup:output_type -> group.DeleteGroupResponse
+	9,  // 14: group.GroupService.ListGroups:output_type -> group.ListGroupsResponse
+	11, // 15: group.GroupService.AssignGroupPermission:output_type -> group.AssignGroupPermissionResponse
+	13, // 16: group.GroupService.RevokeGroupPermission:output_type -> group.RevokeGroupPermissionResponse
+	15, // 17: group.GroupService.ListGroupPermissions:output_type -> group.ListGroupPermissionsResponse
+	10, // [10:18] is the sub-list for method output_type
+	2,  // [2:10] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_group_proto_init() }

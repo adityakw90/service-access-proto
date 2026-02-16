@@ -165,6 +165,28 @@ func (m *CreateGroupRequest) validate(all bool) error {
 
 	var errors []error
 
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := CreateGroupRequestValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetDescription()) > 1000 {
+		err := CreateGroupRequestValidationError{
+			field:  "Description",
+			reason: "value length must be at most 1000 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return CreateGroupRequestMultiError(errors)
 	}
@@ -369,7 +391,16 @@ func (m *GetGroupRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uid
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := GetGroupRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return GetGroupRequestMultiError(errors)
@@ -471,7 +502,38 @@ func (m *UpdateGroupRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uid
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := UpdateGroupRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := UpdateGroupRequestValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetDescription()) > 1000 {
+		err := UpdateGroupRequestValidationError{
+			field:  "Description",
+			reason: "value length must be at most 1000 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return UpdateGroupRequestMultiError(errors)
@@ -677,7 +739,16 @@ func (m *DeleteGroupRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Uid
+	if utf8.RuneCountInString(m.GetUid()) < 1 {
+		err := DeleteGroupRequestValidationError{
+			field:  "Uid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return DeleteGroupRequestMultiError(errors)
@@ -883,6 +954,35 @@ func (m *ListGroupsRequest) validate(all bool) error {
 
 	var errors []error
 
+	if all {
+		switch v := interface{}(m.GetPagination()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ListGroupsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ListGroupsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPagination()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ListGroupsRequestValidationError{
+				field:  "Pagination",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return ListGroupsRequestMultiError(errors)
 	}
@@ -1087,7 +1187,27 @@ func (m *AssignGroupPermissionRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for GroupUid
+	if utf8.RuneCountInString(m.GetGroupUid()) < 1 {
+		err := AssignGroupPermissionRequestValidationError{
+			field:  "GroupUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetPermissionUid()) < 1 {
+		err := AssignGroupPermissionRequestValidationError{
+			field:  "PermissionUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return AssignGroupPermissionRequestMultiError(errors)
@@ -1295,9 +1415,27 @@ func (m *RevokeGroupPermissionRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for GroupUid
+	if utf8.RuneCountInString(m.GetGroupUid()) < 1 {
+		err := RevokeGroupPermissionRequestValidationError{
+			field:  "GroupUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for PermissionUid
+	if utf8.RuneCountInString(m.GetPermissionUid()) < 1 {
+		err := RevokeGroupPermissionRequestValidationError{
+			field:  "PermissionUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return RevokeGroupPermissionRequestMultiError(errors)
@@ -1505,7 +1643,45 @@ func (m *ListGroupPermissionsRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for GroupUid
+	if utf8.RuneCountInString(m.GetGroupUid()) < 1 {
+		err := ListGroupPermissionsRequestValidationError{
+			field:  "GroupUid",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetPagination()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ListGroupPermissionsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ListGroupPermissionsRequestValidationError{
+					field:  "Pagination",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPagination()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ListGroupPermissionsRequestValidationError{
+				field:  "Pagination",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return ListGroupPermissionsRequestMultiError(errors)

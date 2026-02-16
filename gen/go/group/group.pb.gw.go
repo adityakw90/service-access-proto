@@ -185,6 +185,8 @@ func local_request_GroupService_DeleteGroup_0(ctx context.Context, marshaler run
 	return msg, metadata, err
 }
 
+var filter_GroupService_ListGroups_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+
 func request_GroupService_ListGroups_0(ctx context.Context, marshaler runtime.Marshaler, client GroupServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq ListGroupsRequest
@@ -192,6 +194,12 @@ func request_GroupService_ListGroups_0(ctx context.Context, marshaler runtime.Ma
 	)
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_GroupService_ListGroups_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := client.ListGroups(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -202,6 +210,12 @@ func local_request_GroupService_ListGroups_0(ctx context.Context, marshaler runt
 		protoReq ListGroupsRequest
 		metadata runtime.ServerMetadata
 	)
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_GroupService_ListGroups_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
 	msg, err := server.ListGroups(ctx, &protoReq)
 	return msg, metadata, err
 }
@@ -306,6 +320,8 @@ func local_request_GroupService_RevokeGroupPermission_0(ctx context.Context, mar
 	return msg, metadata, err
 }
 
+var filter_GroupService_ListGroupPermissions_0 = &utilities.DoubleArray{Encoding: map[string]int{"group_uid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+
 func request_GroupService_ListGroupPermissions_0(ctx context.Context, marshaler runtime.Marshaler, client GroupServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq ListGroupPermissionsRequest
@@ -322,6 +338,12 @@ func request_GroupService_ListGroupPermissions_0(ctx context.Context, marshaler 
 	protoReq.GroupUid, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group_uid", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_GroupService_ListGroupPermissions_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := client.ListGroupPermissions(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -340,6 +362,12 @@ func local_request_GroupService_ListGroupPermissions_0(ctx context.Context, mars
 	protoReq.GroupUid, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group_uid", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_GroupService_ListGroupPermissions_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.ListGroupPermissions(ctx, &protoReq)
 	return msg, metadata, err

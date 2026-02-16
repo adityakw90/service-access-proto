@@ -44,3 +44,35 @@ message Permission {
   // updated_at is the Unix timestamp (seconds) of the last modification.
   int64 updated_at = 6;
 }
+
+// Request/Response messages for PermissionService
+// These will be fully implemented in Tasks 6 and 7
+
+message CreatePermissionRequest {}
+message CreatePermissionResponse {}
+message GetPermissionRequest {}
+message UpdatePermissionRequest {}
+message UpdatePermissionResponse {}
+message DeletePermissionRequest {}
+message DeletePermissionResponse {}
+message ListPermissionsRequest {}
+message ListPermissionsResponse {}
+
+// PermissionService provides CRUD operations for managing permissions.
+service PermissionService {
+  // CreatePermission creates a new permission with the specified resource and action.
+  // The resource-action pair must be unique.
+  rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse);
+
+  // GetPermission retrieves a permission by its public UID.
+  rpc GetPermission(GetPermissionRequest) returns (Permission);
+
+  // UpdatePermission modifies an existing permission's details.
+  rpc UpdatePermission(UpdatePermissionRequest) returns (UpdatePermissionResponse);
+
+  // DeletePermission permanently removes a permission by its UID.
+  rpc DeletePermission(DeletePermissionRequest) returns (DeletePermissionResponse);
+
+  // ListPermissions returns a paginated list of all permissions.
+  rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
+}

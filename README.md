@@ -8,26 +8,90 @@ Protobuf definitions and gRPC contracts for the Access Control Service.
 - `gen/`: Contains the generated code from the proto definitions.
   - `go/`: Generated Go code.
 
+## Generated Code Structure
+
+After running `make go`, the following structure is created:
+
+```
+gen/go/
+├── access/              # AccessControlService
+│   ├── access_control.pb.go
+│   ├── access_control.pb.gw.go
+│   └── access_control.pb.validate.go
+├── permission/          # PermissionService
+│   ├── permission.pb.go
+│   ├── permission.pb.gw.go
+│   └── permission.pb.validate.go
+├── group/               # GroupService
+│   ├── group.pb.go
+│   ├── group.pb.gw.go
+│   └── group.pb.validate.go
+├── role/                # RoleService
+│   ├── role.pb.go
+│   ├── role.pb.gw.go
+│   └── role.pb.validate.go
+└── common/              # Common types
+    ├── common.pb.go
+    └── common.pb.validate.go
+```
+
 ## Services Overview
 
 This repository defines the following gRPC services:
 
-### 1. <ServiceName> (`<service-name>.proto`)
+### 1. AccessControlService (`access_control.proto`)
 
-<Service Description>.
+Authorization and subject assignment operations.
 
-- **<MethodName>**: Short description.
-- **<MethodName>**: Short description.
-- **<MethodName>**: Short description.
-- **<MethodName>**: Short description.
+- **CheckAccess**: Verify if a subject has permission for an action on a resource
+- **AssignRole**: Grant a role to a subject
+- **RevokeRole**: Remove a role from a subject
+- **ListSubjectRoles**: List all roles assigned to a subject
+
+### 2. PermissionService (`permission.proto`)
+
+Full CRUD operations for managing permissions.
+
+- **CreatePermission**: Create a new permission
+- **GetPermission**: Retrieve a permission by UID
+- **UpdatePermission**: Update permission details
+- **DeletePermission**: Delete a permission
+- **ListPermissions**: List all permissions (paginated)
+
+### 3. GroupService (`group.proto`)
+
+Full CRUD operations for managing permission groups.
+
+- **CreateGroup**: Create a new permission group
+- **GetGroup**: Retrieve a group by UID
+- **UpdateGroup**: Update group details
+- **DeleteGroup**: Delete a group
+- **ListGroups**: List all groups (paginated)
+- **AssignGroupPermission**: Add a permission to a group
+- **RevokeGroupPermission**: Remove a permission from a group
+- **ListGroupPermissions**: List all permissions in a group
+
+### 4. RoleService (`role.proto`)
+
+Full CRUD operations for managing roles within groups.
+
+- **CreateRole**: Create a new role in a group
+- **GetRole**: Retrieve a role by UID
+- **UpdateRole**: Update role details
+- **DeleteRole**: Delete a role
+- **ListRoles**: List all roles (paginated, optional group filter)
+- **AssignRolePermission**: Add a permission to a role
+- **RevokeRolePermission**: Remove a permission from a role
+- **ListRolePermissions**: List all permissions in a role
 
 ### Common Definitions (`common.proto`)
 
 Contains shared message definitions used across multiple services:
 
-- **Pagination**: Standard pagination request parameters (page, limit, sort).
-- **Meta**: Pagination response metadata (total items, total pages).
-- **Success**: A simple success boolean response.
+- **Empty**: Empty message for operations with no parameters
+- **Success**: Simple success boolean response
+- **Pagination**: Standard pagination request parameters (page, limit, sort)
+- **Meta**: Pagination response metadata (total items, total pages)
 
 ## Installation
 
@@ -48,8 +112,21 @@ brew install protobuf
 ### 2. Install Go plugins
 
 ```bash
+# Core protobuf plugins
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.11
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.6.1
+
+# Field validation
+go install github.com/envoyproxy/protoc-gen-validate@latest
+
+# HTTP/JSON gateway
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
+```
+
+Or simply run:
+```bash
+make deps
 ```
 
 ## Usage

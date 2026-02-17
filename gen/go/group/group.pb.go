@@ -20,8 +20,6 @@ package group
 import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	permission "github.com/adityakw90/service-access-proto/gen/go/permission"
-	_ "github.com/envoyproxy/protoc-gen-validate/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -960,7 +958,7 @@ var File_group_proto protoreflect.FileDescriptor
 
 const file_group_proto_rawDesc = "" +
 	"\n" +
-	"\vgroup.proto\x12\x05group\x1a\fcommon.proto\x1a\x17validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x10permission.proto\"\x8d\x01\n" +
+	"\vgroup.proto\x12\x05group\x1a\fcommon.proto\x1a\x10permission.proto\"\x8d\x01\n" +
 	"\x05Group\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -968,26 +966,24 @@ const file_group_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x04 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\x03R\tupdatedAt\"`\n" +
-	"\x12CreateGroupRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xfaB\ar\x05\x10\x01\x18\xff\x01R\x04name\x12*\n" +
-	"\vdescription\x18\x02 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"[\n" +
+	"updated_at\x18\x05 \x01(\x03R\tupdatedAt\"J\n" +
+	"\x12CreateGroupRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\"[\n" +
 	"\x13CreateGroupResponse\x12\"\n" +
 	"\x05group\x18\x01 \x01(\v2\f.group.GroupR\x05group\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\",\n" +
-	"\x0fGetGroupRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"{\n" +
-	"\x12UpdateGroupRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xfaB\ar\x05\x10\x01\x18\xff\x01R\x04name\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"[\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"#\n" +
+	"\x0fGetGroupRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\\\n" +
+	"\x12UpdateGroupRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\"[\n" +
 	"\x13UpdateGroupResponse\x12\"\n" +
 	"\x05group\x18\x01 \x01(\v2\f.group.GroupR\x05group\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"/\n" +
-	"\x12DeleteGroupRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"h\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"&\n" +
+	"\x12DeleteGroupRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"h\n" +
 	"\x13DeleteGroupResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1d\n" +
@@ -999,43 +995,41 @@ const file_group_proto_rawDesc = "" +
 	"pagination\"\\\n" +
 	"\x12ListGroupsResponse\x12$\n" +
 	"\x06groups\x18\x01 \x03(\v2\f.group.GroupR\x06groups\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"t\n" +
-	"\x1cAssignGroupPermissionRequest\x12$\n" +
-	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x12.\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\rpermissionUid\"t\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"b\n" +
+	"\x1cAssignGroupPermissionRequest\x12\x1b\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"t\n" +
 	"\x1dAssignGroupPermissionResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1f\n" +
 	"\vassigned_at\x18\x03 \x01(\x03R\n" +
-	"assignedAt\"t\n" +
-	"\x1cRevokeGroupPermissionRequest\x12$\n" +
-	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x12.\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\rpermissionUid\"r\n" +
+	"assignedAt\"b\n" +
+	"\x1cRevokeGroupPermissionRequest\x12\x1b\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"r\n" +
 	"\x1dRevokeGroupPermissionResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1d\n" +
 	"\n" +
-	"revoked_at\x18\x03 \x01(\x03R\trevokedAt\"w\n" +
-	"\x1bListGroupPermissionsRequest\x12$\n" +
-	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x122\n" +
+	"revoked_at\x18\x03 \x01(\x03R\trevokedAt\"n\n" +
+	"\x1bListGroupPermissionsRequest\x12\x1b\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x122\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x12.common.PaginationR\n" +
 	"pagination\"z\n" +
 	"\x1cListGroupPermissionsResponse\x128\n" +
 	"\vpermissions\x18\x01 \x03(\v2\x16.permission.PermissionR\vpermissions\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\x95\a\n" +
-	"\fGroupService\x12[\n" +
-	"\vCreateGroup\x12\x19.group.CreateGroupRequest\x1a\x1a.group.CreateGroupResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
-	"/v1/groups\x12J\n" +
-	"\bGetGroup\x12\x16.group.GetGroupRequest\x1a\f.group.Group\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/groups/{uid}\x12a\n" +
-	"\vUpdateGroup\x12\x19.group.UpdateGroupRequest\x1a\x1a.group.UpdateGroupResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\x1a\x10/v1/groups/{uid}\x12^\n" +
-	"\vDeleteGroup\x12\x19.group.DeleteGroupRequest\x1a\x1a.group.DeleteGroupResponse\"\x18\x82\xd3\xe4\x93\x02\x12*\x10/v1/groups/{uid}\x12U\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xfe\x04\n" +
+	"\fGroupService\x12D\n" +
+	"\vCreateGroup\x12\x19.group.CreateGroupRequest\x1a\x1a.group.CreateGroupResponse\x120\n" +
+	"\bGetGroup\x12\x16.group.GetGroupRequest\x1a\f.group.Group\x12D\n" +
+	"\vUpdateGroup\x12\x19.group.UpdateGroupRequest\x1a\x1a.group.UpdateGroupResponse\x12D\n" +
+	"\vDeleteGroup\x12\x19.group.DeleteGroupRequest\x1a\x1a.group.DeleteGroupResponse\x12A\n" +
 	"\n" +
-	"ListGroups\x12\x18.group.ListGroupsRequest\x1a\x19.group.ListGroupsResponse\"\x12\x82\xd3\xe4\x93\x02\f\x12\n" +
-	"/v1/groups\x12\x91\x01\n" +
-	"\x15AssignGroupPermission\x12#.group.AssignGroupPermissionRequest\x1a$.group.AssignGroupPermissionResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/v1/groups/{group_uid}/permissions\x12\x9f\x01\n" +
-	"\x15RevokeGroupPermission\x12#.group.RevokeGroupPermissionRequest\x1a$.group.RevokeGroupPermissionResponse\";\x82\xd3\xe4\x93\x025*3/v1/groups/{group_uid}/permissions/{permission_uid}\x12\x8b\x01\n" +
-	"\x14ListGroupPermissions\x12\".group.ListGroupPermissionsRequest\x1a#.group.ListGroupPermissionsResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/v1/groups/{group_uid}/permissionsB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
+	"ListGroups\x12\x18.group.ListGroupsRequest\x1a\x19.group.ListGroupsResponse\x12b\n" +
+	"\x15AssignGroupPermission\x12#.group.AssignGroupPermissionRequest\x1a$.group.AssignGroupPermissionResponse\x12b\n" +
+	"\x15RevokeGroupPermission\x12#.group.RevokeGroupPermissionRequest\x1a$.group.RevokeGroupPermissionResponse\x12_\n" +
+	"\x14ListGroupPermissions\x12\".group.ListGroupPermissionsRequest\x1a#.group.ListGroupPermissionsResponseB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
 
 var (
 	file_group_proto_rawDescOnce sync.Once

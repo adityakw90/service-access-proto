@@ -20,8 +20,6 @@ package role
 import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	permission "github.com/adityakw90/service-access-proto/gen/go/permission"
-	_ "github.com/envoyproxy/protoc-gen-validate/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -990,7 +988,7 @@ var File_role_proto protoreflect.FileDescriptor
 const file_role_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"role.proto\x12\x04role\x1a\fcommon.proto\x1a\x17validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x10permission.proto\"\xa9\x01\n" +
+	"role.proto\x12\x04role\x1a\fcommon.proto\x1a\x10permission.proto\"\xa9\x01\n" +
 	"\x04Role\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1b\n" +
 	"\tgroup_uid\x18\x02 \x01(\tR\bgroupUid\x12\x12\n" +
@@ -999,29 +997,27 @@ const file_role_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\x03R\tupdatedAt\"\x85\x01\n" +
-	"\x11CreateRoleRequest\x12$\n" +
-	"\tgroup_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bgroupUid\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xfaB\ar\x05\x10\x01\x18\xff\x01R\x04name\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"V\n" +
+	"updated_at\x18\x06 \x01(\x03R\tupdatedAt\"f\n" +
+	"\x11CreateRoleRequest\x12\x1b\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\"V\n" +
 	"\x12CreateRoleResponse\x12\x1e\n" +
 	"\x04role\x18\x01 \x01(\v2\n" +
 	".role.RoleR\x04role\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"+\n" +
-	"\x0eGetRoleRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"z\n" +
-	"\x11UpdateRoleRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xfaB\ar\x05\x10\x01\x18\xff\x01R\x04name\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"V\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"\"\n" +
+	"\x0eGetRoleRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"[\n" +
+	"\x11UpdateRoleRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\"V\n" +
 	"\x12UpdateRoleResponse\x12\x1e\n" +
 	"\x04role\x18\x01 \x01(\v2\n" +
 	".role.RoleR\x04role\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\".\n" +
-	"\x11DeleteRoleRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"g\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"%\n" +
+	"\x11DeleteRoleRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"g\n" +
 	"\x12DeleteRoleResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1d\n" +
@@ -1035,44 +1031,44 @@ const file_role_proto_rawDesc = "" +
 	"\x11ListRolesResponse\x12 \n" +
 	"\x05roles\x18\x01 \x03(\v2\n" +
 	".role.RoleR\x05roles\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"q\n" +
-	"\x1bAssignRolePermissionRequest\x12\"\n" +
-	"\brole_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\aroleUid\x12.\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\rpermissionUid\"s\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"_\n" +
+	"\x1bAssignRolePermissionRequest\x12\x19\n" +
+	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x12%\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"s\n" +
 	"\x1cAssignRolePermissionResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1f\n" +
 	"\vassigned_at\x18\x03 \x01(\x03R\n" +
-	"assignedAt\"q\n" +
-	"\x1bRevokeRolePermissionRequest\x12\"\n" +
-	"\brole_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\aroleUid\x12.\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\rpermissionUid\"q\n" +
+	"assignedAt\"_\n" +
+	"\x1bRevokeRolePermissionRequest\x12\x19\n" +
+	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x12%\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"q\n" +
 	"\x1cRevokeRolePermissionResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1d\n" +
 	"\n" +
-	"revoked_at\x18\x03 \x01(\x03R\trevokedAt\"t\n" +
-	"\x1aListRolePermissionsRequest\x12\"\n" +
-	"\brole_uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\aroleUid\x122\n" +
+	"revoked_at\x18\x03 \x01(\x03R\trevokedAt\"k\n" +
+	"\x1aListRolePermissionsRequest\x12\x19\n" +
+	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x122\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x12.common.PaginationR\n" +
 	"pagination\"y\n" +
 	"\x1bListRolePermissionsResponse\x128\n" +
 	"\vpermissions\x18\x01 \x03(\v2\x16.permission.PermissionR\vpermissions\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xe1\x06\n" +
-	"\vRoleService\x12U\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xd5\x04\n" +
+	"\vRoleService\x12?\n" +
 	"\n" +
-	"CreateRole\x12\x17.role.CreateRoleRequest\x1a\x18.role.CreateRoleResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/roles\x12D\n" +
+	"CreateRole\x12\x17.role.CreateRoleRequest\x1a\x18.role.CreateRoleResponse\x12+\n" +
 	"\aGetRole\x12\x14.role.GetRoleRequest\x1a\n" +
-	".role.Role\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/roles/{uid}\x12[\n" +
+	".role.Role\x12?\n" +
 	"\n" +
-	"UpdateRole\x12\x17.role.UpdateRoleRequest\x1a\x18.role.UpdateRoleResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\x1a\x0f/v1/roles/{uid}\x12X\n" +
+	"UpdateRole\x12\x17.role.UpdateRoleRequest\x1a\x18.role.UpdateRoleResponse\x12?\n" +
 	"\n" +
-	"DeleteRole\x12\x17.role.DeleteRoleRequest\x1a\x18.role.DeleteRoleResponse\"\x17\x82\xd3\xe4\x93\x02\x11*\x0f/v1/roles/{uid}\x12O\n" +
-	"\tListRoles\x12\x16.role.ListRolesRequest\x1a\x17.role.ListRolesResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/roles\x12\x8a\x01\n" +
-	"\x14AssignRolePermission\x12!.role.AssignRolePermissionRequest\x1a\".role.AssignRolePermissionResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /v1/roles/{role_uid}/permissions\x12\x98\x01\n" +
-	"\x14RevokeRolePermission\x12!.role.RevokeRolePermissionRequest\x1a\".role.RevokeRolePermissionResponse\"9\x82\xd3\xe4\x93\x023*1/v1/roles/{role_uid}/permissions/{permission_uid}\x12\x84\x01\n" +
-	"\x13ListRolePermissions\x12 .role.ListRolePermissionsRequest\x1a!.role.ListRolePermissionsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /v1/roles/{role_uid}/permissionsB8Z6github.com/adityakw90/service-access-proto/gen/go/roleb\x06proto3"
+	"DeleteRole\x12\x17.role.DeleteRoleRequest\x1a\x18.role.DeleteRoleResponse\x12<\n" +
+	"\tListRoles\x12\x16.role.ListRolesRequest\x1a\x17.role.ListRolesResponse\x12]\n" +
+	"\x14AssignRolePermission\x12!.role.AssignRolePermissionRequest\x1a\".role.AssignRolePermissionResponse\x12]\n" +
+	"\x14RevokeRolePermission\x12!.role.RevokeRolePermissionRequest\x1a\".role.RevokeRolePermissionResponse\x12Z\n" +
+	"\x13ListRolePermissions\x12 .role.ListRolePermissionsRequest\x1a!.role.ListRolePermissionsResponseB8Z6github.com/adityakw90/service-access-proto/gen/go/roleb\x06proto3"
 
 var (
 	file_role_proto_rawDescOnce sync.Once

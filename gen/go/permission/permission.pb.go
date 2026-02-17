@@ -19,8 +19,6 @@ package permission
 
 import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
-	_ "github.com/envoyproxy/protoc-gen-validate/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -137,7 +135,6 @@ func (x *Permission) GetUpdatedAt() int64 {
 type CreatePermissionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// resource identifies the domain entity (e.g., "invoices", "users").
-	// Must be lowercase alphanumeric starting with a letter.
 	Resource string `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
 	// action specifies the operation (e.g., "read", "write", "delete", "admin").
 	Action string `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
@@ -643,7 +640,7 @@ var File_permission_proto protoreflect.FileDescriptor
 const file_permission_proto_rawDesc = "" +
 	"\n" +
 	"\x10permission.proto\x12\n" +
-	"permission\x1a\fcommon.proto\x1a\x17validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\"\xb2\x01\n" +
+	"permission\x1a\fcommon.proto\"\xb2\x01\n" +
 	"\n" +
 	"Permission\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
@@ -653,30 +650,30 @@ const file_permission_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\x03R\tupdatedAt\"\xa4\x01\n" +
-	"\x17CreatePermissionRequest\x12:\n" +
-	"\bresource\x18\x01 \x01(\tB\x1e\xfaB\x1br\x19\x10\x01\x18\xff\x012\x12^[a-z][a-z0-9_-]*$R\bresource\x12!\n" +
-	"\x06action\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\x06action\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"t\n" +
+	"updated_at\x18\x06 \x01(\x03R\tupdatedAt\"o\n" +
+	"\x17CreatePermissionRequest\x12\x1a\n" +
+	"\bresource\x18\x01 \x01(\tR\bresource\x12\x16\n" +
+	"\x06action\x18\x02 \x01(\tR\x06action\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\"t\n" +
 	"\x18CreatePermissionResponse\x126\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2\x16.permission.PermissionR\n" +
 	"permission\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"1\n" +
-	"\x14GetPermissionRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"\xbf\x01\n" +
-	"\x17UpdatePermissionRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\x12:\n" +
-	"\bresource\x18\x02 \x01(\tB\x1e\xfaB\x1br\x19\x10\x01\x18\xff\x012\x12^[a-z][a-z0-9_-]*$R\bresource\x12!\n" +
-	"\x06action\x18\x03 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\x06action\x12*\n" +
-	"\vdescription\x18\x04 \x01(\tB\b\xfaB\x05r\x03\x18\xe8\aR\vdescription\"t\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"(\n" +
+	"\x14GetPermissionRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x81\x01\n" +
+	"\x17UpdatePermissionRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
+	"\bresource\x18\x02 \x01(\tR\bresource\x12\x16\n" +
+	"\x06action\x18\x03 \x01(\tR\x06action\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\"t\n" +
 	"\x18UpdatePermissionResponse\x126\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2\x16.permission.PermissionR\n" +
 	"permission\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"4\n" +
-	"\x17DeletePermissionRequest\x12\x19\n" +
-	"\x03uid\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x03uid\"m\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"+\n" +
+	"\x17DeletePermissionRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"m\n" +
 	"\x18DeletePermissionResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1d\n" +
@@ -688,13 +685,13 @@ const file_permission_proto_rawDesc = "" +
 	"pagination\"u\n" +
 	"\x17ListPermissionsResponse\x128\n" +
 	"\vpermissions\x18\x01 \x03(\v2\x16.permission.PermissionR\vpermissions\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xec\x04\n" +
-	"\x11PermissionService\x12y\n" +
-	"\x10CreatePermission\x12#.permission.CreatePermissionRequest\x1a$.permission.CreatePermissionResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/v1/permissions\x12h\n" +
-	"\rGetPermission\x12 .permission.GetPermissionRequest\x1a\x16.permission.Permission\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/permissions/{uid}\x12\x7f\n" +
-	"\x10UpdatePermission\x12#.permission.UpdatePermissionRequest\x1a$.permission.UpdatePermissionResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/v1/permissions/{uid}\x12|\n" +
-	"\x10DeletePermission\x12#.permission.DeletePermissionRequest\x1a$.permission.DeletePermissionResponse\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/v1/permissions/{uid}\x12s\n" +
-	"\x0fListPermissions\x12\".permission.ListPermissionsRequest\x1a#.permission.ListPermissionsResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/permissionsB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xd7\x03\n" +
+	"\x11PermissionService\x12]\n" +
+	"\x10CreatePermission\x12#.permission.CreatePermissionRequest\x1a$.permission.CreatePermissionResponse\x12I\n" +
+	"\rGetPermission\x12 .permission.GetPermissionRequest\x1a\x16.permission.Permission\x12]\n" +
+	"\x10UpdatePermission\x12#.permission.UpdatePermissionRequest\x1a$.permission.UpdatePermissionResponse\x12]\n" +
+	"\x10DeletePermission\x12#.permission.DeletePermissionRequest\x1a$.permission.DeletePermissionResponse\x12Z\n" +
+	"\x0fListPermissions\x12\".permission.ListPermissionsRequest\x1a#.permission.ListPermissionsResponseB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
 
 var (
 	file_permission_proto_rawDescOnce sync.Once

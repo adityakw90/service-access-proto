@@ -57,49 +57,13 @@ func (m *CheckAccessRequest) validate(all bool) error {
 
 	var errors []error
 
-	if utf8.RuneCountInString(m.GetSubjectId()) < 1 {
-		err := CheckAccessRequestValidationError{
-			field:  "SubjectId",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectId
 
-	if l := utf8.RuneCountInString(m.GetSubjectType()); l < 1 || l > 100 {
-		err := CheckAccessRequestValidationError{
-			field:  "SubjectType",
-			reason: "value length must be between 1 and 100 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectType
 
-	if utf8.RuneCountInString(m.GetResource()) < 1 {
-		err := CheckAccessRequestValidationError{
-			field:  "Resource",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Resource
 
-	if utf8.RuneCountInString(m.GetAction()) < 1 {
-		err := CheckAccessRequestValidationError{
-			field:  "Action",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Action
 
 	if len(errors) > 0 {
 		return CheckAccessRequestMultiError(errors)
@@ -309,38 +273,11 @@ func (m *AssignRoleRequest) validate(all bool) error {
 
 	var errors []error
 
-	if utf8.RuneCountInString(m.GetSubjectId()) < 1 {
-		err := AssignRoleRequestValidationError{
-			field:  "SubjectId",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectId
 
-	if l := utf8.RuneCountInString(m.GetSubjectType()); l < 1 || l > 100 {
-		err := AssignRoleRequestValidationError{
-			field:  "SubjectType",
-			reason: "value length must be between 1 and 100 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectType
 
-	if utf8.RuneCountInString(m.GetRoleUid()) < 1 {
-		err := AssignRoleRequestValidationError{
-			field:  "RoleUid",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for RoleUid
 
 	if len(errors) > 0 {
 		return AssignRoleRequestMultiError(errors)
@@ -552,38 +489,11 @@ func (m *RevokeRoleRequest) validate(all bool) error {
 
 	var errors []error
 
-	if utf8.RuneCountInString(m.GetSubjectId()) < 1 {
-		err := RevokeRoleRequestValidationError{
-			field:  "SubjectId",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectId
 
-	if l := utf8.RuneCountInString(m.GetSubjectType()); l < 1 || l > 100 {
-		err := RevokeRoleRequestValidationError{
-			field:  "SubjectType",
-			reason: "value length must be between 1 and 100 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectType
 
-	if utf8.RuneCountInString(m.GetRoleUid()) < 1 {
-		err := RevokeRoleRequestValidationError{
-			field:  "RoleUid",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for RoleUid
 
 	if len(errors) > 0 {
 		return RevokeRoleRequestMultiError(errors)
@@ -793,27 +703,9 @@ func (m *ListSubjectRolesRequest) validate(all bool) error {
 
 	var errors []error
 
-	if utf8.RuneCountInString(m.GetSubjectId()) < 1 {
-		err := ListSubjectRolesRequestValidationError{
-			field:  "SubjectId",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectId
 
-	if l := utf8.RuneCountInString(m.GetSubjectType()); l < 1 || l > 100 {
-		err := ListSubjectRolesRequestValidationError{
-			field:  "SubjectType",
-			reason: "value length must be between 1 and 100 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for SubjectType
 
 	if all {
 		switch v := interface{}(m.GetPagination()).(type) {

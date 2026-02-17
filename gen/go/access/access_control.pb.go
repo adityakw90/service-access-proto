@@ -17,8 +17,6 @@ package access
 
 import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
-	_ "github.com/envoyproxy/protoc-gen-validate/validate"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -611,39 +609,39 @@ var File_access_control_proto protoreflect.FileDescriptor
 
 const file_access_control_proto_rawDesc = "" +
 	"\n" +
-	"\x14access_control.proto\x12\x06access\x1a\fcommon.proto\x1a\x17validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\"\xb0\x01\n" +
-	"\x12CheckAccessRequest\x12&\n" +
+	"\x14access_control.proto\x12\x06access\x1a\fcommon.proto\"\x8a\x01\n" +
+	"\x12CheckAccessRequest\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\tsubjectId\x12,\n" +
-	"\fsubject_type\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\vsubjectType\x12#\n" +
-	"\bresource\x18\x03 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\bresource\x12\x1f\n" +
-	"\x06action\x18\x04 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\x06action\"G\n" +
+	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
+	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x1a\n" +
+	"\bresource\x18\x03 \x01(\tR\bresource\x12\x16\n" +
+	"\x06action\x18\x04 \x01(\tR\x06action\"G\n" +
 	"\x13CheckAccessResponse\x12\x18\n" +
 	"\aallowed\x18\x01 \x01(\bR\aallowed\x12\x16\n" +
-	"\x06reason\x18\x02 \x01(\tR\x06reason\"\x8d\x01\n" +
-	"\x11AssignRoleRequest\x12&\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\"p\n" +
+	"\x11AssignRoleRequest\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\tsubjectId\x12,\n" +
-	"\fsubject_type\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\vsubjectType\x12\"\n" +
-	"\brole_uid\x18\x03 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\aroleUid\"j\n" +
+	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
+	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
+	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"j\n" +
 	"\x12AssignRoleResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x19\n" +
 	"\brole_uid\x18\x02 \x01(\tR\aroleUid\x12\x1f\n" +
 	"\vassigned_at\x18\x03 \x01(\x03R\n" +
-	"assignedAt\"\x8d\x01\n" +
-	"\x11RevokeRoleRequest\x12&\n" +
+	"assignedAt\"p\n" +
+	"\x11RevokeRoleRequest\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\tsubjectId\x12,\n" +
-	"\fsubject_type\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\vsubjectType\x12\"\n" +
-	"\brole_uid\x18\x03 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\aroleUid\"M\n" +
+	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
+	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
+	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"M\n" +
 	"\x12RevokeRoleResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\n" +
-	"revoked_at\x18\x02 \x01(\x03R\trevokedAt\"\xa3\x01\n" +
-	"\x17ListSubjectRolesRequest\x12&\n" +
+	"revoked_at\x18\x02 \x01(\x03R\trevokedAt\"\x8f\x01\n" +
+	"\x17ListSubjectRolesRequest\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x01 \x01(\tB\a\xfaB\x04r\x02\x10\x01R\tsubjectId\x12,\n" +
-	"\fsubject_type\x18\x02 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x18dR\vsubjectType\x122\n" +
+	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
+	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x122\n" +
 	"\n" +
 	"pagination\x18\x03 \x01(\v2\x12.common.PaginationR\n" +
 	"pagination\"\x8b\x01\n" +
@@ -656,14 +654,14 @@ const file_access_control_proto_rawDesc = "" +
 	"assignedAt\"v\n" +
 	"\x18ListSubjectRolesResponse\x128\n" +
 	"\rsubject_roles\x18\x01 \x03(\v2\x13.access.SubjectRoleR\fsubjectRoles\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xd5\x03\n" +
-	"\x14AccessControlService\x12c\n" +
-	"\vCheckAccess\x12\x1a.access.CheckAccessRequest\x1a\x1b.access.CheckAccessResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/access/check\x12g\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xbf\x02\n" +
+	"\x14AccessControlService\x12F\n" +
+	"\vCheckAccess\x12\x1a.access.CheckAccessRequest\x1a\x1b.access.CheckAccessResponse\x12C\n" +
 	"\n" +
-	"AssignRole\x12\x19.access.AssignRoleRequest\x1a\x1a.access.AssignRoleResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/v1/access/roles/assign\x12g\n" +
+	"AssignRole\x12\x19.access.AssignRoleRequest\x1a\x1a.access.AssignRoleResponse\x12C\n" +
 	"\n" +
-	"RevokeRole\x12\x19.access.RevokeRoleRequest\x1a\x1a.access.RevokeRoleResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/v1/access/roles/revoke\x12\x85\x01\n" +
-	"\x10ListSubjectRoles\x12\x1f.access.ListSubjectRolesRequest\x1a .access.ListSubjectRolesResponse\".\x82\xd3\xe4\x93\x02(\x12&/v1/access/subjects/{subject_id}/rolesB:Z8github.com/adityakw90/service-access-proto/gen/go/accessb\x06proto3"
+	"RevokeRole\x12\x19.access.RevokeRoleRequest\x1a\x1a.access.RevokeRoleResponse\x12U\n" +
+	"\x10ListSubjectRoles\x12\x1f.access.ListSubjectRolesRequest\x1a .access.ListSubjectRolesResponseB:Z8github.com/adityakw90/service-access-proto/gen/go/accessb\x06proto3"
 
 var (
 	file_access_control_proto_rawDescOnce sync.Once

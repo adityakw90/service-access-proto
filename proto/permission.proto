@@ -12,6 +12,7 @@ syntax = "proto3";
 // - resource: "settings", action: "admin" → full administrative access
 package permission;
 
+import "google/protobuf/timestamp.proto";
 import "common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/permission";
@@ -19,116 +20,61 @@ option go_package = "github.com/adityakw90/service-access-proto/gen/go/permissio
 // Permission represents a granular access control unit.
 // It defines what action can be performed on a specific resource.
 message Permission {
-  // uid is the public unique identifier for this permission.
-  // This UUID is used in API requests and remains stable across
-  // database migrations or internal ID changes.
-  string uid = 1;
-
-  // resource identifies the domain entity this permission applies to.
-  // Examples: "invoices", "users", "settings", "reports"
-  // Must be lowercase alphanumeric with hyphens/underscores.
-  string resource = 2;
-
-  // action specifies the operation allowed on the resource.
-  // Common values: "read", "write", "delete", "admin"
-  string action = 3;
-
-  // description provides a human-readable explanation of this permission's
-  // scope and purpose, useful for admin UI display and audit logs.
-  string description = 4;
-
-  // created_at is the Unix timestamp (seconds) when this permission was created.
-  int64 created_at = 5;
-
-  // updated_at is the Unix timestamp (seconds) of the last modification.
-  int64 updated_at = 6;
+  string uid = 1; // uid is the public unique identifier for this permission
+  string resource = 2; // resource identifies the domain entity this permission applies to
+  string action = 3; // action specifies the operation allowed on the resource
+  string description = 4; // description provides a human-readable explanation of this permission's
+  google.protobuf.Timestamp created_at = 5; // timestamp of the creation
+  google.protobuf.Timestamp updated_at = 6; // timestamp of the last update
 }
-
-// Request/Response messages for PermissionService
-// These will be fully implemented in Tasks 6 and 7
 
 // CreatePermissionRequest contains the fields needed to create a new permission.
 message CreatePermissionRequest {
-  // resource identifies the domain entity (e.g., "invoices", "users").
-  string resource = 1;
-
-  // action specifies the operation (e.g., "read", "write", "delete", "admin").
-  string action = 2;
-
-  // description is an optional human-readable explanation.
-  string description = 3;
+  string resource = 1; // resource identifies the domain entity (e.g., "invoices", "users").
+  string action = 2; // action specifies the operation (e.g., "read", "write", "delete", "admin").
+  string description = 3; // description is an optional human-readable explanation.
 }
 
 // CreatePermissionResponse returns the created permission.
 message CreatePermissionResponse {
-  // permission is the newly created permission with its assigned UID.
-  Permission permission = 1;
-
-  // meta contains optional metadata about the operation.
-  common.Meta meta = 2;
+  string uid = 1; // uid of the created permission
 }
 
 // GetPermissionRequest is used to retrieve a permission by its UID.
 message GetPermissionRequest {
-  // uid is the public unique identifier of the permission.
-  string uid = 1;
+  string uid = 1; // uid is the public unique identifier of the permission.
 }
 
 // UpdatePermissionRequest contains fields to update an existing permission.
 message UpdatePermissionRequest {
-  // uid identifies which permission to update.
-  string uid = 1;
-
-  // resource is the new resource identifier.
-  string resource = 2;
-
-  // action is the new action identifier.
-  string action = 3;
-
-  // description is the new description.
-  string description = 4;
-}
-
-// UpdatePermissionResponse returns the updated permission.
-message UpdatePermissionResponse {
-  // permission is the updated permission with new values.
-  Permission permission = 1;
-
-  // meta contains optional metadata about the operation.
-  common.Meta meta = 2;
+  string uid = 1; // uid identifies which permission to update.
+  string resource = 2; // resource is the new resource identifier.
+  string action = 3; // action is the new action identifier.
+  string description = 4; // description is the new description.
 }
 
 // DeletePermissionRequest is used to delete a permission by its UID.
 message DeletePermissionRequest {
-  // uid identifies which permission to delete.
-  string uid = 1;
-}
-
-// DeletePermissionResponse confirms the deletion.
-message DeletePermissionResponse {
-  // success indicates the deletion was successful.
-  bool success = 1;
-
-  // message provides an optional human-readable confirmation.
-  string message = 2;
-
-  // deleted_at is the Unix timestamp when the permission was deleted.
-  int64 deleted_at = 3;
+  string uid = 1; // uid identifies which permission to delete.
 }
 
 // ListPermissionsRequest is used to list permissions with pagination.
 message ListPermissionsRequest {
-  // pagination controls the page size and ordering.
-  common.Pagination pagination = 1;
+  common.Pagination pagination = 1; // pagination controls the page size and ordering.
+  FilterRequest filter=2; // filter for the list of permissions
+}
+
+message FilterRequest {
+  repeated string uids = 1; // list of uids to get
+  optional string resource = 2; // exact match
+  optional string action = 3; // exact match
+  optional string query = 4; // query is a general search term that can match any field.
 }
 
 // ListPermissionsResponse returns a paginated list of permissions.
 message ListPermissionsResponse {
-  // permissions is the list of permissions for the current page.
-  repeated Permission permissions = 1;
-
-  // meta contains pagination metadata (total, pages, etc.).
-  common.Meta meta = 2;
+  repeated Permission items = 1; // list of permissions
+  common.Meta meta = 2; // meta contains pagination metadata (total, pages, etc.).
 }
 
 // PermissionService provides CRUD operations for managing permissions.
@@ -140,10 +86,10 @@ service PermissionService {
   rpc GetPermission(GetPermissionRequest) returns (Permission);
 
   // UpdatePermission modifies an existing permission.
-  rpc UpdatePermission(UpdatePermissionRequest) returns (UpdatePermissionResponse);
+  rpc UpdatePermission(UpdatePermissionRequest) returns (common.Success);
 
   // DeletePermission permanently removes a permission.
-  rpc DeletePermission(DeletePermissionRequest) returns (DeletePermissionResponse);
+  rpc DeletePermission(DeletePermissionRequest) returns (common.Success);
 
   // ListPermissions returns a paginated list of permissions.
   rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);

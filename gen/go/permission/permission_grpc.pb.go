@@ -19,6 +19,7 @@ package permission
 
 import (
 	context "context"
+	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -48,9 +49,9 @@ type PermissionServiceClient interface {
 	// GetPermission retrieves a permission by UID.
 	GetPermission(ctx context.Context, in *GetPermissionRequest, opts ...grpc.CallOption) (*Permission, error)
 	// UpdatePermission modifies an existing permission.
-	UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*UpdatePermissionResponse, error)
+	UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// DeletePermission permanently removes a permission.
-	DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*DeletePermissionResponse, error)
+	DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// ListPermissions returns a paginated list of permissions.
 	ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error)
 }
@@ -83,9 +84,9 @@ func (c *permissionServiceClient) GetPermission(ctx context.Context, in *GetPerm
 	return out, nil
 }
 
-func (c *permissionServiceClient) UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*UpdatePermissionResponse, error) {
+func (c *permissionServiceClient) UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdatePermissionResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, PermissionService_UpdatePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -93,9 +94,9 @@ func (c *permissionServiceClient) UpdatePermission(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *permissionServiceClient) DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*DeletePermissionResponse, error) {
+func (c *permissionServiceClient) DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeletePermissionResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, PermissionService_DeletePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -124,9 +125,9 @@ type PermissionServiceServer interface {
 	// GetPermission retrieves a permission by UID.
 	GetPermission(context.Context, *GetPermissionRequest) (*Permission, error)
 	// UpdatePermission modifies an existing permission.
-	UpdatePermission(context.Context, *UpdatePermissionRequest) (*UpdatePermissionResponse, error)
+	UpdatePermission(context.Context, *UpdatePermissionRequest) (*common.Success, error)
 	// DeletePermission permanently removes a permission.
-	DeletePermission(context.Context, *DeletePermissionRequest) (*DeletePermissionResponse, error)
+	DeletePermission(context.Context, *DeletePermissionRequest) (*common.Success, error)
 	// ListPermissions returns a paginated list of permissions.
 	ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error)
 	mustEmbedUnimplementedPermissionServiceServer()
@@ -145,10 +146,10 @@ func (UnimplementedPermissionServiceServer) CreatePermission(context.Context, *C
 func (UnimplementedPermissionServiceServer) GetPermission(context.Context, *GetPermissionRequest) (*Permission, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetPermission not implemented")
 }
-func (UnimplementedPermissionServiceServer) UpdatePermission(context.Context, *UpdatePermissionRequest) (*UpdatePermissionResponse, error) {
+func (UnimplementedPermissionServiceServer) UpdatePermission(context.Context, *UpdatePermissionRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdatePermission not implemented")
 }
-func (UnimplementedPermissionServiceServer) DeletePermission(context.Context, *DeletePermissionRequest) (*DeletePermissionResponse, error) {
+func (UnimplementedPermissionServiceServer) DeletePermission(context.Context, *DeletePermissionRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeletePermission not implemented")
 }
 func (UnimplementedPermissionServiceServer) ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error) {

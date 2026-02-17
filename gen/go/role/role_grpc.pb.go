@@ -19,6 +19,7 @@ package role
 
 import (
 	context "context"
+	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -51,17 +52,17 @@ type RoleServiceClient interface {
 	// GetRole retrieves a role by its public UID.
 	GetRole(ctx context.Context, in *GetRoleRequest, opts ...grpc.CallOption) (*Role, error)
 	// UpdateRole modifies an existing role's details.
-	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error)
+	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// DeleteRole permanently removes a role by its UID.
 	// This will cascade to remove all subject assignments for this role.
-	DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*DeleteRoleResponse, error)
+	DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// ListRoles returns a paginated list of roles.
 	// Can optionally filter by group_uid.
 	ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error)
 	// AssignRolePermission adds a permission to a role.
-	AssignRolePermission(ctx context.Context, in *AssignRolePermissionRequest, opts ...grpc.CallOption) (*AssignRolePermissionResponse, error)
+	AssignRolePermission(ctx context.Context, in *AssignRolePermissionRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// RevokeRolePermission removes a permission from a role.
-	RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*RevokeRolePermissionResponse, error)
+	RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// ListRolePermissions returns all permissions assigned to a role.
 	ListRolePermissions(ctx context.Context, in *ListRolePermissionsRequest, opts ...grpc.CallOption) (*ListRolePermissionsResponse, error)
 }
@@ -94,9 +95,9 @@ func (c *roleServiceClient) GetRole(ctx context.Context, in *GetRoleRequest, opt
 	return out, nil
 }
 
-func (c *roleServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error) {
+func (c *roleServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateRoleResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, RoleService_UpdateRole_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -104,9 +105,9 @@ func (c *roleServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleReques
 	return out, nil
 }
 
-func (c *roleServiceClient) DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*DeleteRoleResponse, error) {
+func (c *roleServiceClient) DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteRoleResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, RoleService_DeleteRole_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -124,9 +125,9 @@ func (c *roleServiceClient) ListRoles(ctx context.Context, in *ListRolesRequest,
 	return out, nil
 }
 
-func (c *roleServiceClient) AssignRolePermission(ctx context.Context, in *AssignRolePermissionRequest, opts ...grpc.CallOption) (*AssignRolePermissionResponse, error) {
+func (c *roleServiceClient) AssignRolePermission(ctx context.Context, in *AssignRolePermissionRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignRolePermissionResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, RoleService_AssignRolePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -134,9 +135,9 @@ func (c *roleServiceClient) AssignRolePermission(ctx context.Context, in *Assign
 	return out, nil
 }
 
-func (c *roleServiceClient) RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*RevokeRolePermissionResponse, error) {
+func (c *roleServiceClient) RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RevokeRolePermissionResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, RoleService_RevokeRolePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -165,17 +166,17 @@ type RoleServiceServer interface {
 	// GetRole retrieves a role by its public UID.
 	GetRole(context.Context, *GetRoleRequest) (*Role, error)
 	// UpdateRole modifies an existing role's details.
-	UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error)
+	UpdateRole(context.Context, *UpdateRoleRequest) (*common.Success, error)
 	// DeleteRole permanently removes a role by its UID.
 	// This will cascade to remove all subject assignments for this role.
-	DeleteRole(context.Context, *DeleteRoleRequest) (*DeleteRoleResponse, error)
+	DeleteRole(context.Context, *DeleteRoleRequest) (*common.Success, error)
 	// ListRoles returns a paginated list of roles.
 	// Can optionally filter by group_uid.
 	ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error)
 	// AssignRolePermission adds a permission to a role.
-	AssignRolePermission(context.Context, *AssignRolePermissionRequest) (*AssignRolePermissionResponse, error)
+	AssignRolePermission(context.Context, *AssignRolePermissionRequest) (*common.Success, error)
 	// RevokeRolePermission removes a permission from a role.
-	RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*RevokeRolePermissionResponse, error)
+	RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*common.Success, error)
 	// ListRolePermissions returns all permissions assigned to a role.
 	ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error)
 	mustEmbedUnimplementedRoleServiceServer()
@@ -194,19 +195,19 @@ func (UnimplementedRoleServiceServer) CreateRole(context.Context, *CreateRoleReq
 func (UnimplementedRoleServiceServer) GetRole(context.Context, *GetRoleRequest) (*Role, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetRole not implemented")
 }
-func (UnimplementedRoleServiceServer) UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error) {
+func (UnimplementedRoleServiceServer) UpdateRole(context.Context, *UpdateRoleRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateRole not implemented")
 }
-func (UnimplementedRoleServiceServer) DeleteRole(context.Context, *DeleteRoleRequest) (*DeleteRoleResponse, error) {
+func (UnimplementedRoleServiceServer) DeleteRole(context.Context, *DeleteRoleRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteRole not implemented")
 }
 func (UnimplementedRoleServiceServer) ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListRoles not implemented")
 }
-func (UnimplementedRoleServiceServer) AssignRolePermission(context.Context, *AssignRolePermissionRequest) (*AssignRolePermissionResponse, error) {
+func (UnimplementedRoleServiceServer) AssignRolePermission(context.Context, *AssignRolePermissionRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method AssignRolePermission not implemented")
 }
-func (UnimplementedRoleServiceServer) RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*RevokeRolePermissionResponse, error) {
+func (UnimplementedRoleServiceServer) RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method RevokeRolePermission not implemented")
 }
 func (UnimplementedRoleServiceServer) ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error) {

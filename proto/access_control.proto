@@ -12,7 +12,6 @@ package access;
 
 import "common.proto";
 import "validate/validate.proto";
-import "google/api/annotations.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/access";
 
@@ -25,37 +24,18 @@ service AccessControlService {
   //
   // The reason field provides transparency for debugging and audit purposes,
   // explaining why access was granted or denied.
-  rpc CheckAccess(CheckAccessRequest) returns (CheckAccessResponse) {
-    option (google.api.http) = {
-      post: "/v1/access/check"
-      body: "*"
-    };
-  }
+  rpc CheckAccess(CheckAccessRequest) returns (CheckAccessResponse);
 
   // AssignRole assigns a role to a subject.
   // The subject can be a user, service, or any entity that needs access.
-  rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse) {
-    option (google.api.http) = {
-      post: "/v1/access/roles/assign"
-      body: "*"
-    };
-  }
+  rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse);
 
   // RevokeRole removes a role assignment from a subject.
-  rpc RevokeRole(RevokeRoleRequest) returns (RevokeRoleResponse) {
-    option (google.api.http) = {
-      post: "/v1/access/roles/revoke"
-      body: "*"
-    };
-  }
+  rpc RevokeRole(RevokeRoleRequest) returns (RevokeRoleResponse);
 
   // ListSubjectRoles retrieves all roles assigned to a subject.
   // Useful for auditing and displaying subject permissions.
-  rpc ListSubjectRoles(ListSubjectRolesRequest) returns (ListSubjectRolesResponse) {
-    option (google.api.http) = {
-      get: "/v1/access/subjects/{subject_id}/roles"
-    };
-  }
+  rpc ListSubjectRoles(ListSubjectRolesRequest) returns (ListSubjectRolesResponse);
 }
 
 // CheckAccessRequest contains the parameters for an authorization check.

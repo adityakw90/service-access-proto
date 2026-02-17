@@ -205,257 +205,8 @@ func (x *GroupPermission) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// CreateGroupRequest contains the fields needed to create a new group.
-type CreateGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`               // human-readable name of this group, must be unique across all groups
-	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"` // description explains the purpose and scope of this group
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateGroupRequest) Reset() {
-	*x = CreateGroupRequest{}
-	mi := &file_group_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateGroupRequest) ProtoMessage() {}
-
-func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateGroupRequest.ProtoReflect.Descriptor instead.
-func (*CreateGroupRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CreateGroupRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *CreateGroupRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-// CreateGroupResponse returns the created group.
-type CreateGroupResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the created group
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateGroupResponse) Reset() {
-	*x = CreateGroupResponse{}
-	mi := &file_group_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateGroupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateGroupResponse) ProtoMessage() {}
-
-func (x *CreateGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateGroupResponse.ProtoReflect.Descriptor instead.
-func (*CreateGroupResponse) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *CreateGroupResponse) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-// GetGroupRequest is used to retrieve a group by its UID.
-type GetGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the group to retrieve
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetGroupRequest) Reset() {
-	*x = GetGroupRequest{}
-	mi := &file_group_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetGroupRequest) ProtoMessage() {}
-
-func (x *GetGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetGroupRequest.ProtoReflect.Descriptor instead.
-func (*GetGroupRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetGroupRequest) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-// UpdateGroupRequest contains fields to update an existing group.
-type UpdateGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                 // uid of the group to update
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`               // new name for the group
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // new description for the group
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateGroupRequest) Reset() {
-	*x = UpdateGroupRequest{}
-	mi := &file_group_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateGroupRequest) ProtoMessage() {}
-
-func (x *UpdateGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateGroupRequest.ProtoReflect.Descriptor instead.
-func (*UpdateGroupRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateGroupRequest) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *UpdateGroupRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *UpdateGroupRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-// DeleteGroupRequest is used to delete a group by its UID.
-type DeleteGroupRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the group to delete
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteGroupRequest) Reset() {
-	*x = DeleteGroupRequest{}
-	mi := &file_group_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteGroupRequest) ProtoMessage() {}
-
-func (x *DeleteGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteGroupRequest.ProtoReflect.Descriptor instead.
-func (*DeleteGroupRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteGroupRequest) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-// ListGroupsRequest is used to list groups with pagination.
-type ListGroupsRequest struct {
+// ListRequest is used to list groups with pagination.
+type ListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Pagination    *common.Pagination     `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"` // pagination controls the page size and ordering.
 	Filter        *FilterRequest         `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`         // filter for the list of groups
@@ -463,21 +214,21 @@ type ListGroupsRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGroupsRequest) Reset() {
-	*x = ListGroupsRequest{}
-	mi := &file_group_proto_msgTypes[7]
+func (x *ListRequest) Reset() {
+	*x = ListRequest{}
+	mi := &file_group_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGroupsRequest) String() string {
+func (x *ListRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGroupsRequest) ProtoMessage() {}
+func (*ListRequest) ProtoMessage() {}
 
-func (x *ListGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[7]
+func (x *ListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -488,19 +239,19 @@ func (x *ListGroupsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGroupsRequest.ProtoReflect.Descriptor instead.
-func (*ListGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
+func (*ListRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListGroupsRequest) GetPagination() *common.Pagination {
+func (x *ListRequest) GetPagination() *common.Pagination {
 	if x != nil {
 		return x.Pagination
 	}
 	return nil
 }
 
-func (x *ListGroupsRequest) GetFilter() *FilterRequest {
+func (x *ListRequest) GetFilter() *FilterRequest {
 	if x != nil {
 		return x.Filter
 	}
@@ -518,7 +269,7 @@ type FilterRequest struct {
 
 func (x *FilterRequest) Reset() {
 	*x = FilterRequest{}
-	mi := &file_group_proto_msgTypes[8]
+	mi := &file_group_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -530,7 +281,7 @@ func (x *FilterRequest) String() string {
 func (*FilterRequest) ProtoMessage() {}
 
 func (x *FilterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[8]
+	mi := &file_group_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -543,7 +294,7 @@ func (x *FilterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterRequest.ProtoReflect.Descriptor instead.
 func (*FilterRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{8}
+	return file_group_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *FilterRequest) GetUids() []string {
@@ -567,8 +318,8 @@ func (x *FilterRequest) GetQuery() string {
 	return ""
 }
 
-// ListGroupsResponse returns a paginated list of groups.
-type ListGroupsResponse struct {
+// ListResponse returns a paginated list of groups.
+type ListResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Items         []*Group               `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"` // list of groups
 	Meta          *common.Meta           `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`   // meta contains pagination metadata.
@@ -576,20 +327,276 @@ type ListGroupsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGroupsResponse) Reset() {
-	*x = ListGroupsResponse{}
+func (x *ListResponse) Reset() {
+	*x = ListResponse{}
+	mi := &file_group_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListResponse) ProtoMessage() {}
+
+func (x *ListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
+func (*ListResponse) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListResponse) GetItems() []*Group {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListResponse) GetMeta() *common.Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+// GetRequest is used to retrieve a group by its UID.
+type GetRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the group to retrieve
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRequest) Reset() {
+	*x = GetRequest{}
+	mi := &file_group_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRequest) ProtoMessage() {}
+
+func (x *GetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
+func (*GetRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetRequest) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+// CreateRequest contains the fields needed to create a new group.
+type CreateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`               // human-readable name of this group, must be unique across all groups
+	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"` // description explains the purpose and scope of this group
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateRequest) Reset() {
+	*x = CreateRequest{}
+	mi := &file_group_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRequest) ProtoMessage() {}
+
+func (x *CreateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
+func (*CreateRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreateRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+// CreateResponse returns the created group.
+type CreateResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the created group
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateResponse) Reset() {
+	*x = CreateResponse{}
+	mi := &file_group_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateResponse) ProtoMessage() {}
+
+func (x *CreateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
+func (*CreateResponse) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CreateResponse) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+// UpdateRequest contains fields to update an existing group.
+type UpdateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                 // uid of the group to update
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`               // new name for the group
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // new description for the group
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateRequest) Reset() {
+	*x = UpdateRequest{}
+	mi := &file_group_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRequest) ProtoMessage() {}
+
+func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
+func (*UpdateRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *UpdateRequest) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *UpdateRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+// DeleteRequest is used to delete a group by its UID.
+type DeleteRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the group to delete
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRequest) Reset() {
+	*x = DeleteRequest{}
 	mi := &file_group_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGroupsResponse) String() string {
+func (x *DeleteRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGroupsResponse) ProtoMessage() {}
+func (*DeleteRequest) ProtoMessage() {}
 
-func (x *ListGroupsResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_group_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -601,27 +608,73 @@ func (x *ListGroupsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGroupsResponse.ProtoReflect.Descriptor instead.
-func (*ListGroupsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRequest) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *ListGroupsResponse) GetItems() []*Group {
+func (x *DeleteRequest) GetUid() string {
 	if x != nil {
-		return x.Items
+		return x.Uid
+	}
+	return ""
+}
+
+// UpdatePermissionRequest contains fields to update an existing group permission.
+type UpdatePermissionRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	GroupUid       string                 `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`                   // group_uid identifies which group to receive the permission.
+	PermissionUids []string               `protobuf:"bytes,2,rep,name=permission_uids,json=permissionUids,proto3" json:"permission_uids,omitempty"` // permission_uids identify which permissions to assign.
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdatePermissionRequest) Reset() {
+	*x = UpdatePermissionRequest{}
+	mi := &file_group_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePermissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePermissionRequest) ProtoMessage() {}
+
+func (x *UpdatePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePermissionRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdatePermissionRequest) GetGroupUid() string {
+	if x != nil {
+		return x.GroupUid
+	}
+	return ""
+}
+
+func (x *UpdatePermissionRequest) GetPermissionUids() []string {
+	if x != nil {
+		return x.PermissionUids
 	}
 	return nil
 }
 
-func (x *ListGroupsResponse) GetMeta() *common.Meta {
-	if x != nil {
-		return x.Meta
-	}
-	return nil
-}
-
-// AssignGroupPermissionRequest adds a permission to a group.
-type AssignGroupPermissionRequest struct {
+// AssignPermissionRequest adds a permission to a group.
+type AssignPermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GroupUid      string                 `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`                // group_uid identifies which group to receive the permission.
 	PermissionUid string                 `protobuf:"bytes,2,opt,name=permission_uid,json=permissionUid,proto3" json:"permission_uid,omitempty"` // permission_uid identifies which permission to assign.
@@ -629,21 +682,21 @@ type AssignGroupPermissionRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AssignGroupPermissionRequest) Reset() {
-	*x = AssignGroupPermissionRequest{}
-	mi := &file_group_proto_msgTypes[10]
+func (x *AssignPermissionRequest) Reset() {
+	*x = AssignPermissionRequest{}
+	mi := &file_group_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AssignGroupPermissionRequest) String() string {
+func (x *AssignPermissionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AssignGroupPermissionRequest) ProtoMessage() {}
+func (*AssignPermissionRequest) ProtoMessage() {}
 
-func (x *AssignGroupPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[10]
+func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -654,48 +707,48 @@ func (x *AssignGroupPermissionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AssignGroupPermissionRequest.ProtoReflect.Descriptor instead.
-func (*AssignGroupPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{10}
+// Deprecated: Use AssignPermissionRequest.ProtoReflect.Descriptor instead.
+func (*AssignPermissionRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *AssignGroupPermissionRequest) GetGroupUid() string {
+func (x *AssignPermissionRequest) GetGroupUid() string {
 	if x != nil {
 		return x.GroupUid
 	}
 	return ""
 }
 
-func (x *AssignGroupPermissionRequest) GetPermissionUid() string {
+func (x *AssignPermissionRequest) GetPermissionUid() string {
 	if x != nil {
 		return x.PermissionUid
 	}
 	return ""
 }
 
-// RevokeGroupPermissionRequest removes a permission from a group.
-type RevokeGroupPermissionRequest struct {
+// RevokePermissionRequest removes a permission from a group.
+type RevokePermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the group permission to revoke
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RevokeGroupPermissionRequest) Reset() {
-	*x = RevokeGroupPermissionRequest{}
-	mi := &file_group_proto_msgTypes[11]
+func (x *RevokePermissionRequest) Reset() {
+	*x = RevokePermissionRequest{}
+	mi := &file_group_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RevokeGroupPermissionRequest) String() string {
+func (x *RevokePermissionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RevokeGroupPermissionRequest) ProtoMessage() {}
+func (*RevokePermissionRequest) ProtoMessage() {}
 
-func (x *RevokeGroupPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[11]
+func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -706,20 +759,20 @@ func (x *RevokeGroupPermissionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RevokeGroupPermissionRequest.ProtoReflect.Descriptor instead.
-func (*RevokeGroupPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{11}
+// Deprecated: Use RevokePermissionRequest.ProtoReflect.Descriptor instead.
+func (*RevokePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *RevokeGroupPermissionRequest) GetUid() string {
+func (x *RevokePermissionRequest) GetUid() string {
 	if x != nil {
 		return x.Uid
 	}
 	return ""
 }
 
-// ListGroupPermissionsRequest is used to list a group's permissions.
-type ListGroupPermissionsRequest struct {
+// ListPermissionsRequest is used to list a group's permissions.
+type ListPermissionsRequest struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	GroupUid      string                   `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"` // group_uid identifies which group's permissions to list.
 	Pagination    *common.Pagination       `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`             // pagination controls the page size and ordering.
@@ -728,21 +781,21 @@ type ListGroupPermissionsRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGroupPermissionsRequest) Reset() {
-	*x = ListGroupPermissionsRequest{}
-	mi := &file_group_proto_msgTypes[12]
+func (x *ListPermissionsRequest) Reset() {
+	*x = ListPermissionsRequest{}
+	mi := &file_group_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGroupPermissionsRequest) String() string {
+func (x *ListPermissionsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGroupPermissionsRequest) ProtoMessage() {}
+func (*ListPermissionsRequest) ProtoMessage() {}
 
-func (x *ListGroupPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[12]
+func (x *ListPermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -753,26 +806,26 @@ func (x *ListGroupPermissionsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGroupPermissionsRequest.ProtoReflect.Descriptor instead.
-func (*ListGroupPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{12}
+// Deprecated: Use ListPermissionsRequest.ProtoReflect.Descriptor instead.
+func (*ListPermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *ListGroupPermissionsRequest) GetGroupUid() string {
+func (x *ListPermissionsRequest) GetGroupUid() string {
 	if x != nil {
 		return x.GroupUid
 	}
 	return ""
 }
 
-func (x *ListGroupPermissionsRequest) GetPagination() *common.Pagination {
+func (x *ListPermissionsRequest) GetPagination() *common.Pagination {
 	if x != nil {
 		return x.Pagination
 	}
 	return nil
 }
 
-func (x *ListGroupPermissionsRequest) GetFilter() *FilterPermissionRequest {
+func (x *ListPermissionsRequest) GetFilter() *FilterPermissionRequest {
 	if x != nil {
 		return x.Filter
 	}
@@ -792,7 +845,7 @@ type FilterPermissionRequest struct {
 
 func (x *FilterPermissionRequest) Reset() {
 	*x = FilterPermissionRequest{}
-	mi := &file_group_proto_msgTypes[13]
+	mi := &file_group_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -804,7 +857,7 @@ func (x *FilterPermissionRequest) String() string {
 func (*FilterPermissionRequest) ProtoMessage() {}
 
 func (x *FilterPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[13]
+	mi := &file_group_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -817,7 +870,7 @@ func (x *FilterPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterPermissionRequest.ProtoReflect.Descriptor instead.
 func (*FilterPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{13}
+	return file_group_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *FilterPermissionRequest) GetUids() []string {
@@ -855,9 +908,9 @@ func (x *FilterPermissionRequest) GetQuery() string {
 	return ""
 }
 
-// ListGroupPermissionsResponse returns the group's permissions.
+// ListPermissionsResponse returns the group's permissions.
 // Reuses the permission.ListPermissionsResponse pattern.
-type ListGroupPermissionsResponse struct {
+type ListPermissionsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Items         []*GroupPermission     `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"` // list of permissions
 	Meta          *common.Meta           `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`   // meta contains pagination metadata.
@@ -865,21 +918,21 @@ type ListGroupPermissionsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGroupPermissionsResponse) Reset() {
-	*x = ListGroupPermissionsResponse{}
-	mi := &file_group_proto_msgTypes[14]
+func (x *ListPermissionsResponse) Reset() {
+	*x = ListPermissionsResponse{}
+	mi := &file_group_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGroupPermissionsResponse) String() string {
+func (x *ListPermissionsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGroupPermissionsResponse) ProtoMessage() {}
+func (*ListPermissionsResponse) ProtoMessage() {}
 
-func (x *ListGroupPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[14]
+func (x *ListPermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_group_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -890,19 +943,19 @@ func (x *ListGroupPermissionsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGroupPermissionsResponse.ProtoReflect.Descriptor instead.
-func (*ListGroupPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{14}
+// Deprecated: Use ListPermissionsResponse.ProtoReflect.Descriptor instead.
+func (*ListPermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_group_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ListGroupPermissionsResponse) GetItems() []*GroupPermission {
+func (x *ListPermissionsResponse) GetItems() []*GroupPermission {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListGroupPermissionsResponse) GetMeta() *common.Meta {
+func (x *ListPermissionsResponse) GetMeta() *common.Meta {
 	if x != nil {
 		return x.Meta
 	}
@@ -930,21 +983,8 @@ const file_group_proto_rawDesc = "" +
 	"\x11permission_action\x18\x05 \x01(\tR\x10permissionAction\x125\n" +
 	"\x16permission_description\x18\x06 \x01(\tR\x15permissionDescription\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"J\n" +
-	"\x12CreateGroupRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\"'\n" +
-	"\x13CreateGroupResponse\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"#\n" +
-	"\x0fGetGroupRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\\\n" +
-	"\x12UpdateGroupRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\"&\n" +
-	"\x12DeleteGroupRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"u\n" +
-	"\x11ListGroupsRequest\x122\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"o\n" +
+	"\vListRequest\x122\n" +
 	"\n" +
 	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
 	"pagination\x12,\n" +
@@ -954,16 +994,33 @@ const file_group_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
 	"\x05query\x18\x03 \x01(\tH\x01R\x05query\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
-	"\x06_query\"Z\n" +
-	"\x12ListGroupsResponse\x12\"\n" +
+	"\x06_query\"T\n" +
+	"\fListResponse\x12\"\n" +
 	"\x05items\x18\x01 \x03(\v2\f.group.GroupR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"b\n" +
-	"\x1cAssignGroupPermissionRequest\x12\x1b\n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"\x1e\n" +
+	"\n" +
+	"GetRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"E\n" +
+	"\rCreateRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\"\"\n" +
+	"\x0eCreateResponse\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"W\n" +
+	"\rUpdateRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\"!\n" +
+	"\rDeleteRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"_\n" +
+	"\x17UpdatePermissionRequest\x12\x1b\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12'\n" +
+	"\x0fpermission_uids\x18\x02 \x03(\tR\x0epermissionUids\"]\n" +
+	"\x17AssignPermissionRequest\x12\x1b\n" +
 	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"0\n" +
-	"\x1cRevokeGroupPermissionRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xa6\x01\n" +
-	"\x1bListGroupPermissionsRequest\x12\x1b\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"+\n" +
+	"\x17RevokePermissionRequest\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xa1\x01\n" +
+	"\x16ListPermissionsRequest\x12\x1b\n" +
 	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x122\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x12.common.PaginationR\n" +
@@ -977,20 +1034,20 @@ const file_group_proto_rawDesc = "" +
 	"\x05query\x18\x05 \x01(\tH\x02R\x05query\x88\x01\x01B\v\n" +
 	"\t_resourceB\t\n" +
 	"\a_actionB\b\n" +
-	"\x06_query\"n\n" +
-	"\x1cListGroupPermissionsResponse\x12,\n" +
+	"\x06_query\"i\n" +
+	"\x17ListPermissionsResponse\x12,\n" +
 	"\x05items\x18\x01 \x03(\v2\x16.group.GroupPermissionR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xbe\x04\n" +
-	"\fGroupService\x12D\n" +
-	"\vCreateGroup\x12\x19.group.CreateGroupRequest\x1a\x1a.group.CreateGroupResponse\x120\n" +
-	"\bGetGroup\x12\x16.group.GetGroupRequest\x1a\f.group.Group\x129\n" +
-	"\vUpdateGroup\x12\x19.group.UpdateGroupRequest\x1a\x0f.common.Success\x129\n" +
-	"\vDeleteGroup\x12\x19.group.DeleteGroupRequest\x1a\x0f.common.Success\x12A\n" +
-	"\n" +
-	"ListGroups\x12\x18.group.ListGroupsRequest\x1a\x19.group.ListGroupsResponse\x12M\n" +
-	"\x15AssignGroupPermission\x12#.group.AssignGroupPermissionRequest\x1a\x0f.common.Success\x12M\n" +
-	"\x15RevokeGroupPermission\x12#.group.RevokeGroupPermissionRequest\x1a\x0f.common.Success\x12_\n" +
-	"\x14ListGroupPermissions\x12\".group.ListGroupPermissionsRequest\x1a#.group.ListGroupPermissionsResponseB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xa1\x04\n" +
+	"\fGroupService\x12/\n" +
+	"\x04List\x12\x12.group.ListRequest\x1a\x13.group.ListResponse\x12&\n" +
+	"\x03Get\x12\x11.group.GetRequest\x1a\f.group.Group\x125\n" +
+	"\x06Create\x12\x14.group.CreateRequest\x1a\x15.group.CreateResponse\x12/\n" +
+	"\x06Update\x12\x14.group.UpdateRequest\x1a\x0f.common.Success\x12/\n" +
+	"\x06Delete\x12\x14.group.DeleteRequest\x1a\x0f.common.Success\x12P\n" +
+	"\x0fListPermissions\x12\x1d.group.ListPermissionsRequest\x1a\x1e.group.ListPermissionsResponse\x12C\n" +
+	"\x10UpdatePermission\x12\x1e.group.UpdatePermissionRequest\x1a\x0f.common.Success\x12C\n" +
+	"\x10AssignPermission\x12\x1e.group.AssignPermissionRequest\x1a\x0f.common.Success\x12C\n" +
+	"\x10RevokePermission\x12\x1e.group.RevokePermissionRequest\x1a\x0f.common.SuccessB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
 
 var (
 	file_group_proto_rawDescOnce sync.Once
@@ -1004,58 +1061,61 @@ func file_group_proto_rawDescGZIP() []byte {
 	return file_group_proto_rawDescData
 }
 
-var file_group_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_group_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_group_proto_goTypes = []any{
-	(*Group)(nil),                        // 0: group.Group
-	(*GroupPermission)(nil),              // 1: group.GroupPermission
-	(*CreateGroupRequest)(nil),           // 2: group.CreateGroupRequest
-	(*CreateGroupResponse)(nil),          // 3: group.CreateGroupResponse
-	(*GetGroupRequest)(nil),              // 4: group.GetGroupRequest
-	(*UpdateGroupRequest)(nil),           // 5: group.UpdateGroupRequest
-	(*DeleteGroupRequest)(nil),           // 6: group.DeleteGroupRequest
-	(*ListGroupsRequest)(nil),            // 7: group.ListGroupsRequest
-	(*FilterRequest)(nil),                // 8: group.FilterRequest
-	(*ListGroupsResponse)(nil),           // 9: group.ListGroupsResponse
-	(*AssignGroupPermissionRequest)(nil), // 10: group.AssignGroupPermissionRequest
-	(*RevokeGroupPermissionRequest)(nil), // 11: group.RevokeGroupPermissionRequest
-	(*ListGroupPermissionsRequest)(nil),  // 12: group.ListGroupPermissionsRequest
-	(*FilterPermissionRequest)(nil),      // 13: group.FilterPermissionRequest
-	(*ListGroupPermissionsResponse)(nil), // 14: group.ListGroupPermissionsResponse
-	(*timestamppb.Timestamp)(nil),        // 15: google.protobuf.Timestamp
-	(*common.Pagination)(nil),            // 16: common.Pagination
-	(*common.Meta)(nil),                  // 17: common.Meta
-	(*common.Success)(nil),               // 18: common.Success
+	(*Group)(nil),                   // 0: group.Group
+	(*GroupPermission)(nil),         // 1: group.GroupPermission
+	(*ListRequest)(nil),             // 2: group.ListRequest
+	(*FilterRequest)(nil),           // 3: group.FilterRequest
+	(*ListResponse)(nil),            // 4: group.ListResponse
+	(*GetRequest)(nil),              // 5: group.GetRequest
+	(*CreateRequest)(nil),           // 6: group.CreateRequest
+	(*CreateResponse)(nil),          // 7: group.CreateResponse
+	(*UpdateRequest)(nil),           // 8: group.UpdateRequest
+	(*DeleteRequest)(nil),           // 9: group.DeleteRequest
+	(*UpdatePermissionRequest)(nil), // 10: group.UpdatePermissionRequest
+	(*AssignPermissionRequest)(nil), // 11: group.AssignPermissionRequest
+	(*RevokePermissionRequest)(nil), // 12: group.RevokePermissionRequest
+	(*ListPermissionsRequest)(nil),  // 13: group.ListPermissionsRequest
+	(*FilterPermissionRequest)(nil), // 14: group.FilterPermissionRequest
+	(*ListPermissionsResponse)(nil), // 15: group.ListPermissionsResponse
+	(*timestamppb.Timestamp)(nil),   // 16: google.protobuf.Timestamp
+	(*common.Pagination)(nil),       // 17: common.Pagination
+	(*common.Meta)(nil),             // 18: common.Meta
+	(*common.Success)(nil),          // 19: common.Success
 }
 var file_group_proto_depIdxs = []int32{
-	15, // 0: group.Group.created_at:type_name -> google.protobuf.Timestamp
-	15, // 1: group.Group.updated_at:type_name -> google.protobuf.Timestamp
-	15, // 2: group.GroupPermission.created_at:type_name -> google.protobuf.Timestamp
-	16, // 3: group.ListGroupsRequest.pagination:type_name -> common.Pagination
-	8,  // 4: group.ListGroupsRequest.filter:type_name -> group.FilterRequest
-	0,  // 5: group.ListGroupsResponse.items:type_name -> group.Group
-	17, // 6: group.ListGroupsResponse.meta:type_name -> common.Meta
-	16, // 7: group.ListGroupPermissionsRequest.pagination:type_name -> common.Pagination
-	13, // 8: group.ListGroupPermissionsRequest.filter:type_name -> group.FilterPermissionRequest
-	1,  // 9: group.ListGroupPermissionsResponse.items:type_name -> group.GroupPermission
-	17, // 10: group.ListGroupPermissionsResponse.meta:type_name -> common.Meta
-	2,  // 11: group.GroupService.CreateGroup:input_type -> group.CreateGroupRequest
-	4,  // 12: group.GroupService.GetGroup:input_type -> group.GetGroupRequest
-	5,  // 13: group.GroupService.UpdateGroup:input_type -> group.UpdateGroupRequest
-	6,  // 14: group.GroupService.DeleteGroup:input_type -> group.DeleteGroupRequest
-	7,  // 15: group.GroupService.ListGroups:input_type -> group.ListGroupsRequest
-	10, // 16: group.GroupService.AssignGroupPermission:input_type -> group.AssignGroupPermissionRequest
-	11, // 17: group.GroupService.RevokeGroupPermission:input_type -> group.RevokeGroupPermissionRequest
-	12, // 18: group.GroupService.ListGroupPermissions:input_type -> group.ListGroupPermissionsRequest
-	3,  // 19: group.GroupService.CreateGroup:output_type -> group.CreateGroupResponse
-	0,  // 20: group.GroupService.GetGroup:output_type -> group.Group
-	18, // 21: group.GroupService.UpdateGroup:output_type -> common.Success
-	18, // 22: group.GroupService.DeleteGroup:output_type -> common.Success
-	9,  // 23: group.GroupService.ListGroups:output_type -> group.ListGroupsResponse
-	18, // 24: group.GroupService.AssignGroupPermission:output_type -> common.Success
-	18, // 25: group.GroupService.RevokeGroupPermission:output_type -> common.Success
-	14, // 26: group.GroupService.ListGroupPermissions:output_type -> group.ListGroupPermissionsResponse
-	19, // [19:27] is the sub-list for method output_type
-	11, // [11:19] is the sub-list for method input_type
+	16, // 0: group.Group.created_at:type_name -> google.protobuf.Timestamp
+	16, // 1: group.Group.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 2: group.GroupPermission.created_at:type_name -> google.protobuf.Timestamp
+	17, // 3: group.ListRequest.pagination:type_name -> common.Pagination
+	3,  // 4: group.ListRequest.filter:type_name -> group.FilterRequest
+	0,  // 5: group.ListResponse.items:type_name -> group.Group
+	18, // 6: group.ListResponse.meta:type_name -> common.Meta
+	17, // 7: group.ListPermissionsRequest.pagination:type_name -> common.Pagination
+	14, // 8: group.ListPermissionsRequest.filter:type_name -> group.FilterPermissionRequest
+	1,  // 9: group.ListPermissionsResponse.items:type_name -> group.GroupPermission
+	18, // 10: group.ListPermissionsResponse.meta:type_name -> common.Meta
+	2,  // 11: group.GroupService.List:input_type -> group.ListRequest
+	5,  // 12: group.GroupService.Get:input_type -> group.GetRequest
+	6,  // 13: group.GroupService.Create:input_type -> group.CreateRequest
+	8,  // 14: group.GroupService.Update:input_type -> group.UpdateRequest
+	9,  // 15: group.GroupService.Delete:input_type -> group.DeleteRequest
+	13, // 16: group.GroupService.ListPermissions:input_type -> group.ListPermissionsRequest
+	10, // 17: group.GroupService.UpdatePermission:input_type -> group.UpdatePermissionRequest
+	11, // 18: group.GroupService.AssignPermission:input_type -> group.AssignPermissionRequest
+	12, // 19: group.GroupService.RevokePermission:input_type -> group.RevokePermissionRequest
+	4,  // 20: group.GroupService.List:output_type -> group.ListResponse
+	0,  // 21: group.GroupService.Get:output_type -> group.Group
+	7,  // 22: group.GroupService.Create:output_type -> group.CreateResponse
+	19, // 23: group.GroupService.Update:output_type -> common.Success
+	19, // 24: group.GroupService.Delete:output_type -> common.Success
+	15, // 25: group.GroupService.ListPermissions:output_type -> group.ListPermissionsResponse
+	19, // 26: group.GroupService.UpdatePermission:output_type -> common.Success
+	19, // 27: group.GroupService.AssignPermission:output_type -> common.Success
+	19, // 28: group.GroupService.RevokePermission:output_type -> common.Success
+	20, // [20:29] is the sub-list for method output_type
+	11, // [11:20] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
 	11, // [11:11] is the sub-list for extension extendee
 	0,  // [0:11] is the sub-list for field type_name
@@ -1066,15 +1126,15 @@ func file_group_proto_init() {
 	if File_group_proto != nil {
 		return
 	}
-	file_group_proto_msgTypes[8].OneofWrappers = []any{}
-	file_group_proto_msgTypes[13].OneofWrappers = []any{}
+	file_group_proto_msgTypes[3].OneofWrappers = []any{}
+	file_group_proto_msgTypes[14].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_group_proto_rawDesc), len(file_group_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -16,24 +16,21 @@ After running `make go`, the following structure is created:
 gen/go/
 ├── access/              # AccessControlService
 │   ├── access_control.pb.go
-│   ├── access_control.pb.gw.go
-│   └── access_control.pb.validate.go
+│   └── access_control_grpc.pb.go
 ├── permission/          # PermissionService
 │   ├── permission.pb.go
-│   ├── permission.pb.gw.go
-│   └── permission.pb.validate.go
+│   └── permission_grpc.pb.go
 ├── group/               # GroupService
 │   ├── group.pb.go
-│   ├── group.pb.gw.go
-│   └── group.pb.validate.go
+│   └── group_grpc.pb.go
 ├── role/                # RoleService
 │   ├── role.pb.go
-│   ├── role.pb.gw.go
-│   └── role.pb.validate.go
+│   └── role_grpc.pb.go
 └── common/              # Common types
-    ├── common.pb.go
-    └── common.pb.validate.go
+    └── common.pb.go
 ```
+
+> **Note:** This package provides pure gRPC contracts. HTTP/JSON gateway endpoints and proto-level validation have been removed. See [docs/MIGRATION.md](docs/MIGRATION.md) for details.
 
 ## Services Overview
 
@@ -112,16 +109,8 @@ brew install protobuf
 ### 2. Install Go plugins
 
 ```bash
-# Core protobuf plugins
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.11
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.6.1
-
-# Field validation
-go install github.com/envoyproxy/protoc-gen-validate@latest
-
-# HTTP/JSON gateway
-go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest
-go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
 ```
 
 Or simply run:
@@ -141,4 +130,10 @@ This command will:
 
 1. Create the `gen/go` directory if it doesn't exist.
 2. Compile all `.proto` files in the `proto/` directory.
-3. Output the generated Go code into `gen/go`, preserving the package structure defined by `go_package`.
+3. Output the generated Go code into `gen/go`.
+
+To clean the generated code:
+
+```bash
+make clean
+```

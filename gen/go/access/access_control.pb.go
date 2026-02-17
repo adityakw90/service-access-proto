@@ -19,6 +19,7 @@ import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -31,28 +32,89 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// SubjectRole represents a role assigned to a subject.
+type SubjectRole struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SubjectId     string                 `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`       // subject_id is the id of the entity. e.g "user-123", "service-abc"
+	SubjectType   string                 `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"` // subject_type is the type of the entity. e.g "user", "service", "system"
+	RoleUid       string                 `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`             // role_uid is the id of the role. e.g "role-123", "role-abc"
+	AssignedAt    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=assigned_at,json=assignedAt,proto3" json:"assigned_at,omitempty"`    // assigned_at is the Unix timestamp when the role was assigned
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SubjectRole) Reset() {
+	*x = SubjectRole{}
+	mi := &file_access_control_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubjectRole) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubjectRole) ProtoMessage() {}
+
+func (x *SubjectRole) ProtoReflect() protoreflect.Message {
+	mi := &file_access_control_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubjectRole.ProtoReflect.Descriptor instead.
+func (*SubjectRole) Descriptor() ([]byte, []int) {
+	return file_access_control_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *SubjectRole) GetSubjectId() string {
+	if x != nil {
+		return x.SubjectId
+	}
+	return ""
+}
+
+func (x *SubjectRole) GetSubjectType() string {
+	if x != nil {
+		return x.SubjectType
+	}
+	return ""
+}
+
+func (x *SubjectRole) GetRoleUid() string {
+	if x != nil {
+		return x.RoleUid
+	}
+	return ""
+}
+
+func (x *SubjectRole) GetAssignedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.AssignedAt
+	}
+	return nil
+}
+
 // CheckAccessRequest contains the parameters for an authorization check.
 type CheckAccessRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// subject_id uniquely identifies the entity requesting access.
-	// This could be a user ID, service account ID, or system identifier.
-	SubjectId string `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	// subject_type categorizes the subject (e.g., "user", "service", "system").
-	// This allows for different authorization policies per subject type.
-	SubjectType string `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"`
-	// resource identifies the domain entity being accessed.
-	// Should match the resource field in Permission definitions.
-	Resource string `protobuf:"bytes,3,opt,name=resource,proto3" json:"resource,omitempty"`
-	// action specifies the operation being performed.
-	// Should match the action field in Permission definitions.
-	Action        string `protobuf:"bytes,4,opt,name=action,proto3" json:"action,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SubjectId     string                 `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`       // subject_id is the id of the entity requesting access. e.g "user-123", "service-abc"
+	SubjectType   string                 `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"` // subject_type is the type of the entity requesting access. e.g "user", "service", "system"
+	Resource      string                 `protobuf:"bytes,3,opt,name=resource,proto3" json:"resource,omitempty"`                          // resource is the resource being accessed. e.g "user-123", "service-abc"
+	Action        string                 `protobuf:"bytes,4,opt,name=action,proto3" json:"action,omitempty"`                              // action is the action being performed. e.g "read", "write", "delete"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CheckAccessRequest) Reset() {
 	*x = CheckAccessRequest{}
-	mi := &file_access_control_proto_msgTypes[0]
+	mi := &file_access_control_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -64,7 +126,7 @@ func (x *CheckAccessRequest) String() string {
 func (*CheckAccessRequest) ProtoMessage() {}
 
 func (x *CheckAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[0]
+	mi := &file_access_control_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -77,7 +139,7 @@ func (x *CheckAccessRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAccessRequest.ProtoReflect.Descriptor instead.
 func (*CheckAccessRequest) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{0}
+	return file_access_control_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CheckAccessRequest) GetSubjectId() string {
@@ -110,20 +172,16 @@ func (x *CheckAccessRequest) GetAction() string {
 
 // CheckAccessResponse contains the authorization decision.
 type CheckAccessResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// allowed is true if the subject has permission for the requested action.
-	Allowed bool `protobuf:"varint,1,opt,name=allowed,proto3" json:"allowed,omitempty"`
-	// reason provides an explanation for the decision.
-	// For granted access: may explain which roles/permissions granted access.
-	// For denied access: explains why access was denied (e.g., "no matching permissions").
-	Reason        string `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Allowed       bool                   `protobuf:"varint,1,opt,name=allowed,proto3" json:"allowed,omitempty"` // allowed is true if the subject has permission for the requested action
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`    // reason provides an explanation for the decision. For granted access: may explain which roles/permissions granted access. For denied access: explains why access was denied (e.g., "no matching permissions")
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CheckAccessResponse) Reset() {
 	*x = CheckAccessResponse{}
-	mi := &file_access_control_proto_msgTypes[1]
+	mi := &file_access_control_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -135,7 +193,7 @@ func (x *CheckAccessResponse) String() string {
 func (*CheckAccessResponse) ProtoMessage() {}
 
 func (x *CheckAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[1]
+	mi := &file_access_control_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -148,7 +206,7 @@ func (x *CheckAccessResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAccessResponse.ProtoReflect.Descriptor instead.
 func (*CheckAccessResponse) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{1}
+	return file_access_control_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CheckAccessResponse) GetAllowed() bool {
@@ -167,21 +225,17 @@ func (x *CheckAccessResponse) GetReason() string {
 
 // AssignRoleRequest assigns a role to a subject.
 type AssignRoleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// subject_id uniquely identifies the entity receiving the role.
-	SubjectId string `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	// subject_type categorizes the subject.
-	SubjectType string `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"`
-	// role_uid identifies which role to assign.
-	// The role must exist.
-	RoleUid       string `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SubjectId     string                 `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`       // subject_id is the id of the entity receiving the role. e.g "user-123", "service-abc"
+	SubjectType   string                 `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"` // subject_type is the type of the entity receiving the role. e.g "user", "service", "system"
+	RoleUid       string                 `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`             // role_uid is the id of the role to assign. e.g "role-123", "role-abc"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *AssignRoleRequest) Reset() {
 	*x = AssignRoleRequest{}
-	mi := &file_access_control_proto_msgTypes[2]
+	mi := &file_access_control_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -193,7 +247,7 @@ func (x *AssignRoleRequest) String() string {
 func (*AssignRoleRequest) ProtoMessage() {}
 
 func (x *AssignRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[2]
+	mi := &file_access_control_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -206,7 +260,7 @@ func (x *AssignRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignRoleRequest.ProtoReflect.Descriptor instead.
 func (*AssignRoleRequest) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{2}
+	return file_access_control_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AssignRoleRequest) GetSubjectId() string {
@@ -230,79 +284,12 @@ func (x *AssignRoleRequest) GetRoleUid() string {
 	return ""
 }
 
-// AssignRoleResponse confirms the role assignment.
-type AssignRoleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// success indicates the assignment was successful.
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	// role_uid confirms which role was assigned.
-	RoleUid string `protobuf:"bytes,2,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`
-	// assigned_at is the Unix timestamp when the role was assigned.
-	AssignedAt    int64 `protobuf:"varint,3,opt,name=assigned_at,json=assignedAt,proto3" json:"assigned_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignRoleResponse) Reset() {
-	*x = AssignRoleResponse{}
-	mi := &file_access_control_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignRoleResponse) ProtoMessage() {}
-
-func (x *AssignRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignRoleResponse.ProtoReflect.Descriptor instead.
-func (*AssignRoleResponse) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *AssignRoleResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *AssignRoleResponse) GetRoleUid() string {
-	if x != nil {
-		return x.RoleUid
-	}
-	return ""
-}
-
-func (x *AssignRoleResponse) GetAssignedAt() int64 {
-	if x != nil {
-		return x.AssignedAt
-	}
-	return 0
-}
-
 // RevokeRoleRequest removes a role assignment from a subject.
 type RevokeRoleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// subject_id uniquely identifies the entity.
-	SubjectId string `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	// subject_type categorizes the subject.
-	SubjectType string `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"`
-	// role_uid identifies which role to revoke.
-	RoleUid       string `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SubjectId     string                 `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`       // subject_id is the id of the entity revoking the role. e.g "user-123", "service-abc"
+	SubjectType   string                 `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"` // subject_type is the type of the entity revoking the role. e.g "user", "service", "system"
+	RoleUid       string                 `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`             // role_uid is the id of the role to revoke. e.g "role-123", "role-abc"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -358,77 +345,18 @@ func (x *RevokeRoleRequest) GetRoleUid() string {
 	return ""
 }
 
-// RevokeRoleResponse confirms the role revocation.
-type RevokeRoleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// success indicates the revocation was successful.
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	// revoked_at is the Unix timestamp when the role was revoked.
-	RevokedAt     int64 `protobuf:"varint,2,opt,name=revoked_at,json=revokedAt,proto3" json:"revoked_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevokeRoleResponse) Reset() {
-	*x = RevokeRoleResponse{}
-	mi := &file_access_control_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevokeRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevokeRoleResponse) ProtoMessage() {}
-
-func (x *RevokeRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevokeRoleResponse.ProtoReflect.Descriptor instead.
-func (*RevokeRoleResponse) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *RevokeRoleResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *RevokeRoleResponse) GetRevokedAt() int64 {
-	if x != nil {
-		return x.RevokedAt
-	}
-	return 0
-}
-
 // ListSubjectRolesRequest lists all roles for a subject.
 type ListSubjectRolesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// subject_id uniquely identifies the entity.
-	SubjectId string `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	// subject_type categorizes the subject.
-	SubjectType string `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"`
-	// pagination controls the page size and ordering.
-	Pagination    *common.Pagination `protobuf:"bytes,3,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Pagination    *common.Pagination     `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"` // pagination controls the page size and ordering
+	Filter        *FilterRequest         `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`         // filter controls the filtering of roles
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListSubjectRolesRequest) Reset() {
 	*x = ListSubjectRolesRequest{}
-	mi := &file_access_control_proto_msgTypes[6]
+	mi := &file_access_control_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -440,7 +368,7 @@ func (x *ListSubjectRolesRequest) String() string {
 func (*ListSubjectRolesRequest) ProtoMessage() {}
 
 func (x *ListSubjectRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[6]
+	mi := &file_access_control_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -453,21 +381,7 @@ func (x *ListSubjectRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSubjectRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListSubjectRolesRequest) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ListSubjectRolesRequest) GetSubjectId() string {
-	if x != nil {
-		return x.SubjectId
-	}
-	return ""
-}
-
-func (x *ListSubjectRolesRequest) GetSubjectType() string {
-	if x != nil {
-		return x.SubjectType
-	}
-	return ""
+	return file_access_control_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListSubjectRolesRequest) GetPagination() *common.Pagination {
@@ -477,36 +391,38 @@ func (x *ListSubjectRolesRequest) GetPagination() *common.Pagination {
 	return nil
 }
 
-// SubjectRole represents a role assigned to a subject.
-type SubjectRole struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// subject_id identifies the entity.
-	SubjectId string `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	// subject_type categorizes the subject.
-	SubjectType string `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"`
-	// role_uid identifies the assigned role.
-	RoleUid string `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`
-	// assigned_at is the Unix timestamp when the role was assigned.
-	AssignedAt    int64 `protobuf:"varint,4,opt,name=assigned_at,json=assignedAt,proto3" json:"assigned_at,omitempty"`
+func (x *ListSubjectRolesRequest) GetFilter() *FilterRequest {
+	if x != nil {
+		return x.Filter
+	}
+	return nil
+}
+
+type FilterRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SubjectId     *string                `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3,oneof" json:"subject_id,omitempty"`       // subject_id is the id of the entity. e.g "user-123", "service-abc"
+	SubjectType   *string                `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3,oneof" json:"subject_type,omitempty"` // subject_type is the type of the entity. e.g "user", "service", "system"
+	RoleUid       *string                `protobuf:"bytes,3,opt,name=role_uid,json=roleUid,proto3,oneof" json:"role_uid,omitempty"`             // role_uid is the id of the role. e.g "role-123", "role-abc"
+	Query         *string                `protobuf:"bytes,4,opt,name=query,proto3,oneof" json:"query,omitempty"`                                // query for the role to retrieve, fuzzy match
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SubjectRole) Reset() {
-	*x = SubjectRole{}
-	mi := &file_access_control_proto_msgTypes[7]
+func (x *FilterRequest) Reset() {
+	*x = FilterRequest{}
+	mi := &file_access_control_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SubjectRole) String() string {
+func (x *FilterRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SubjectRole) ProtoMessage() {}
+func (*FilterRequest) ProtoMessage() {}
 
-func (x *SubjectRole) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[7]
+func (x *FilterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_access_control_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -517,53 +433,51 @@ func (x *SubjectRole) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SubjectRole.ProtoReflect.Descriptor instead.
-func (*SubjectRole) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use FilterRequest.ProtoReflect.Descriptor instead.
+func (*FilterRequest) Descriptor() ([]byte, []int) {
+	return file_access_control_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *SubjectRole) GetSubjectId() string {
-	if x != nil {
-		return x.SubjectId
+func (x *FilterRequest) GetSubjectId() string {
+	if x != nil && x.SubjectId != nil {
+		return *x.SubjectId
 	}
 	return ""
 }
 
-func (x *SubjectRole) GetSubjectType() string {
-	if x != nil {
-		return x.SubjectType
+func (x *FilterRequest) GetSubjectType() string {
+	if x != nil && x.SubjectType != nil {
+		return *x.SubjectType
 	}
 	return ""
 }
 
-func (x *SubjectRole) GetRoleUid() string {
-	if x != nil {
-		return x.RoleUid
+func (x *FilterRequest) GetRoleUid() string {
+	if x != nil && x.RoleUid != nil {
+		return *x.RoleUid
 	}
 	return ""
 }
 
-func (x *SubjectRole) GetAssignedAt() int64 {
-	if x != nil {
-		return x.AssignedAt
+func (x *FilterRequest) GetQuery() string {
+	if x != nil && x.Query != nil {
+		return *x.Query
 	}
-	return 0
+	return ""
 }
 
 // ListSubjectRolesResponse returns the subject's roles.
 type ListSubjectRolesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// subject_roles is the list of role assignments for this subject.
-	SubjectRoles []*SubjectRole `protobuf:"bytes,1,rep,name=subject_roles,json=subjectRoles,proto3" json:"subject_roles,omitempty"`
-	// meta contains pagination metadata.
-	Meta          *common.Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*SubjectRole         `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"` // items is the list of role assignments for this subject.
+	Meta          *common.Meta           `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`   // meta contains pagination metadata.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListSubjectRolesResponse) Reset() {
 	*x = ListSubjectRolesResponse{}
-	mi := &file_access_control_proto_msgTypes[8]
+	mi := &file_access_control_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -575,7 +489,7 @@ func (x *ListSubjectRolesResponse) String() string {
 func (*ListSubjectRolesResponse) ProtoMessage() {}
 
 func (x *ListSubjectRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_access_control_proto_msgTypes[8]
+	mi := &file_access_control_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -588,12 +502,12 @@ func (x *ListSubjectRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSubjectRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListSubjectRolesResponse) Descriptor() ([]byte, []int) {
-	return file_access_control_proto_rawDescGZIP(), []int{8}
+	return file_access_control_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ListSubjectRolesResponse) GetSubjectRoles() []*SubjectRole {
+func (x *ListSubjectRolesResponse) GetItems() []*SubjectRole {
 	if x != nil {
-		return x.SubjectRoles
+		return x.Items
 	}
 	return nil
 }
@@ -609,7 +523,14 @@ var File_access_control_proto protoreflect.FileDescriptor
 
 const file_access_control_proto_rawDesc = "" +
 	"\n" +
-	"\x14access_control.proto\x12\x06access\x1a\fcommon.proto\"\x8a\x01\n" +
+	"\x14access_control.proto\x12\x06access\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xa7\x01\n" +
+	"\vSubjectRole\x12\x1d\n" +
+	"\n" +
+	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
+	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
+	"\brole_uid\x18\x03 \x01(\tR\aroleUid\x12;\n" +
+	"\vassigned_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"assignedAt\"\x8a\x01\n" +
 	"\x12CheckAccessRequest\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
@@ -623,44 +544,36 @@ const file_access_control_proto_rawDesc = "" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
 	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
-	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"j\n" +
-	"\x12AssignRoleResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x19\n" +
-	"\brole_uid\x18\x02 \x01(\tR\aroleUid\x12\x1f\n" +
-	"\vassigned_at\x18\x03 \x01(\x03R\n" +
-	"assignedAt\"p\n" +
+	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"p\n" +
 	"\x11RevokeRoleRequest\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
 	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
-	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"M\n" +
-	"\x12RevokeRoleResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
+	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"|\n" +
+	"\x17ListSubjectRolesRequest\x122\n" +
 	"\n" +
-	"revoked_at\x18\x02 \x01(\x03R\trevokedAt\"\x8f\x01\n" +
-	"\x17ListSubjectRolesRequest\x12\x1d\n" +
+	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
+	"pagination\x12-\n" +
+	"\x06filter\x18\x02 \x01(\v2\x15.access.FilterRequestR\x06filter\"\xcd\x01\n" +
+	"\rFilterRequest\x12\"\n" +
 	"\n" +
-	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
-	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x122\n" +
-	"\n" +
-	"pagination\x18\x03 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\"\x8b\x01\n" +
-	"\vSubjectRole\x12\x1d\n" +
-	"\n" +
-	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
-	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
-	"\brole_uid\x18\x03 \x01(\tR\aroleUid\x12\x1f\n" +
-	"\vassigned_at\x18\x04 \x01(\x03R\n" +
-	"assignedAt\"v\n" +
-	"\x18ListSubjectRolesResponse\x128\n" +
-	"\rsubject_roles\x18\x01 \x03(\v2\x13.access.SubjectRoleR\fsubjectRoles\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xbf\x02\n" +
+	"subject_id\x18\x01 \x01(\tH\x00R\tsubjectId\x88\x01\x01\x12&\n" +
+	"\fsubject_type\x18\x02 \x01(\tH\x01R\vsubjectType\x88\x01\x01\x12\x1e\n" +
+	"\brole_uid\x18\x03 \x01(\tH\x02R\aroleUid\x88\x01\x01\x12\x19\n" +
+	"\x05query\x18\x04 \x01(\tH\x03R\x05query\x88\x01\x01B\r\n" +
+	"\v_subject_idB\x0f\n" +
+	"\r_subject_typeB\v\n" +
+	"\t_role_uidB\b\n" +
+	"\x06_query\"g\n" +
+	"\x18ListSubjectRolesResponse\x12)\n" +
+	"\x05items\x18\x01 \x03(\v2\x13.access.SubjectRoleR\x05items\x12 \n" +
+	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xa9\x02\n" +
 	"\x14AccessControlService\x12F\n" +
-	"\vCheckAccess\x12\x1a.access.CheckAccessRequest\x1a\x1b.access.CheckAccessResponse\x12C\n" +
+	"\vCheckAccess\x12\x1a.access.CheckAccessRequest\x1a\x1b.access.CheckAccessResponse\x128\n" +
 	"\n" +
-	"AssignRole\x12\x19.access.AssignRoleRequest\x1a\x1a.access.AssignRoleResponse\x12C\n" +
+	"AssignRole\x12\x19.access.AssignRoleRequest\x1a\x0f.common.Success\x128\n" +
 	"\n" +
-	"RevokeRole\x12\x19.access.RevokeRoleRequest\x1a\x1a.access.RevokeRoleResponse\x12U\n" +
+	"RevokeRole\x12\x19.access.RevokeRoleRequest\x1a\x0f.common.Success\x12U\n" +
 	"\x10ListSubjectRoles\x12\x1f.access.ListSubjectRolesRequest\x1a .access.ListSubjectRolesResponseB:Z8github.com/adityakw90/service-access-proto/gen/go/accessb\x06proto3"
 
 var (
@@ -675,37 +588,40 @@ func file_access_control_proto_rawDescGZIP() []byte {
 	return file_access_control_proto_rawDescData
 }
 
-var file_access_control_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_access_control_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_access_control_proto_goTypes = []any{
-	(*CheckAccessRequest)(nil),       // 0: access.CheckAccessRequest
-	(*CheckAccessResponse)(nil),      // 1: access.CheckAccessResponse
-	(*AssignRoleRequest)(nil),        // 2: access.AssignRoleRequest
-	(*AssignRoleResponse)(nil),       // 3: access.AssignRoleResponse
+	(*SubjectRole)(nil),              // 0: access.SubjectRole
+	(*CheckAccessRequest)(nil),       // 1: access.CheckAccessRequest
+	(*CheckAccessResponse)(nil),      // 2: access.CheckAccessResponse
+	(*AssignRoleRequest)(nil),        // 3: access.AssignRoleRequest
 	(*RevokeRoleRequest)(nil),        // 4: access.RevokeRoleRequest
-	(*RevokeRoleResponse)(nil),       // 5: access.RevokeRoleResponse
-	(*ListSubjectRolesRequest)(nil),  // 6: access.ListSubjectRolesRequest
-	(*SubjectRole)(nil),              // 7: access.SubjectRole
-	(*ListSubjectRolesResponse)(nil), // 8: access.ListSubjectRolesResponse
+	(*ListSubjectRolesRequest)(nil),  // 5: access.ListSubjectRolesRequest
+	(*FilterRequest)(nil),            // 6: access.FilterRequest
+	(*ListSubjectRolesResponse)(nil), // 7: access.ListSubjectRolesResponse
+	(*timestamppb.Timestamp)(nil),    // 8: google.protobuf.Timestamp
 	(*common.Pagination)(nil),        // 9: common.Pagination
 	(*common.Meta)(nil),              // 10: common.Meta
+	(*common.Success)(nil),           // 11: common.Success
 }
 var file_access_control_proto_depIdxs = []int32{
-	9,  // 0: access.ListSubjectRolesRequest.pagination:type_name -> common.Pagination
-	7,  // 1: access.ListSubjectRolesResponse.subject_roles:type_name -> access.SubjectRole
-	10, // 2: access.ListSubjectRolesResponse.meta:type_name -> common.Meta
-	0,  // 3: access.AccessControlService.CheckAccess:input_type -> access.CheckAccessRequest
-	2,  // 4: access.AccessControlService.AssignRole:input_type -> access.AssignRoleRequest
-	4,  // 5: access.AccessControlService.RevokeRole:input_type -> access.RevokeRoleRequest
-	6,  // 6: access.AccessControlService.ListSubjectRoles:input_type -> access.ListSubjectRolesRequest
-	1,  // 7: access.AccessControlService.CheckAccess:output_type -> access.CheckAccessResponse
-	3,  // 8: access.AccessControlService.AssignRole:output_type -> access.AssignRoleResponse
-	5,  // 9: access.AccessControlService.RevokeRole:output_type -> access.RevokeRoleResponse
-	8,  // 10: access.AccessControlService.ListSubjectRoles:output_type -> access.ListSubjectRolesResponse
-	7,  // [7:11] is the sub-list for method output_type
-	3,  // [3:7] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	8,  // 0: access.SubjectRole.assigned_at:type_name -> google.protobuf.Timestamp
+	9,  // 1: access.ListSubjectRolesRequest.pagination:type_name -> common.Pagination
+	6,  // 2: access.ListSubjectRolesRequest.filter:type_name -> access.FilterRequest
+	0,  // 3: access.ListSubjectRolesResponse.items:type_name -> access.SubjectRole
+	10, // 4: access.ListSubjectRolesResponse.meta:type_name -> common.Meta
+	1,  // 5: access.AccessControlService.CheckAccess:input_type -> access.CheckAccessRequest
+	3,  // 6: access.AccessControlService.AssignRole:input_type -> access.AssignRoleRequest
+	4,  // 7: access.AccessControlService.RevokeRole:input_type -> access.RevokeRoleRequest
+	5,  // 8: access.AccessControlService.ListSubjectRoles:input_type -> access.ListSubjectRolesRequest
+	2,  // 9: access.AccessControlService.CheckAccess:output_type -> access.CheckAccessResponse
+	11, // 10: access.AccessControlService.AssignRole:output_type -> common.Success
+	11, // 11: access.AccessControlService.RevokeRole:output_type -> common.Success
+	7,  // 12: access.AccessControlService.ListSubjectRoles:output_type -> access.ListSubjectRolesResponse
+	9,  // [9:13] is the sub-list for method output_type
+	5,  // [5:9] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_access_control_proto_init() }
@@ -713,13 +629,14 @@ func file_access_control_proto_init() {
 	if File_access_control_proto != nil {
 		return
 	}
+	file_access_control_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_control_proto_rawDesc), len(file_access_control_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -10,9 +10,67 @@ syntax = "proto3";
 // manage which roles are granted to which subjects.
 package access;
 
+import "google/protobuf/timestamp.proto";
 import "common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/access";
+
+
+
+// SubjectRole represents a role assigned to a subject.
+message SubjectRole {
+  string subject_id = 1; // subject_id is the id of the entity. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity. e.g "user", "service", "system"
+  string role_uid = 3; // role_uid is the id of the role. e.g "role-123", "role-abc"
+  google.protobuf.Timestamp assigned_at = 4; // assigned_at is the Unix timestamp when the role was assigned
+}
+
+// CheckAccessRequest contains the parameters for an authorization check.
+message CheckAccessRequest {
+  string subject_id = 1; // subject_id is the id of the entity requesting access. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity requesting access. e.g "user", "service", "system"
+  string resource = 3; // resource is the resource being accessed. e.g "user-123", "service-abc"
+  string action = 4; // action is the action being performed. e.g "read", "write", "delete"
+}
+
+// CheckAccessResponse contains the authorization decision.
+message CheckAccessResponse {
+  bool allowed = 1; // allowed is true if the subject has permission for the requested action
+  string reason = 2; // reason provides an explanation for the decision. For granted access: may explain which roles/permissions granted access. For denied access: explains why access was denied (e.g., "no matching permissions")
+}
+
+// AssignRoleRequest assigns a role to a subject.
+message AssignRoleRequest {
+  string subject_id = 1; // subject_id is the id of the entity receiving the role. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity receiving the role. e.g "user", "service", "system"
+  string role_uid = 3; // role_uid is the id of the role to assign. e.g "role-123", "role-abc"
+}
+
+// RevokeRoleRequest removes a role assignment from a subject.
+message RevokeRoleRequest {
+  string subject_id = 1; // subject_id is the id of the entity revoking the role. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity revoking the role. e.g "user", "service", "system"
+  string role_uid = 3; // role_uid is the id of the role to revoke. e.g "role-123", "role-abc"
+}
+
+// ListSubjectRolesRequest lists all roles for a subject.
+message ListSubjectRolesRequest {
+  common.Pagination pagination = 1; // pagination controls the page size and ordering
+  FilterRequest filter = 2; // filter controls the filtering of roles
+}
+
+message FilterRequest {
+  optional string subject_id = 1; // subject_id is the id of the entity. e.g "user-123", "service-abc"
+  optional string subject_type = 2; // subject_type is the type of the entity. e.g "user", "service", "system"
+  optional string role_uid = 3; // role_uid is the id of the role. e.g "role-123", "role-abc"
+  optional string query = 4; // query for the role to retrieve, fuzzy match
+}
+
+// ListSubjectRolesResponse returns the subject's roles.
+message ListSubjectRolesResponse {
+  repeated SubjectRole items = 1; // items is the list of role assignments for this subject.
+  common.Meta meta = 2; // meta contains pagination metadata.
+}
 
 // AccessControlService provides authorization and subject assignment operations.
 service AccessControlService {
@@ -27,124 +85,12 @@ service AccessControlService {
 
   // AssignRole assigns a role to a subject.
   // The subject can be a user, service, or any entity that needs access.
-  rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse);
+  rpc AssignRole(AssignRoleRequest) returns (common.Success);
 
   // RevokeRole removes a role assignment from a subject.
-  rpc RevokeRole(RevokeRoleRequest) returns (RevokeRoleResponse);
+  rpc RevokeRole(RevokeRoleRequest) returns (common.Success);
 
   // ListSubjectRoles retrieves all roles assigned to a subject.
   // Useful for auditing and displaying subject permissions.
   rpc ListSubjectRoles(ListSubjectRolesRequest) returns (ListSubjectRolesResponse);
-}
-
-// CheckAccessRequest contains the parameters for an authorization check.
-message CheckAccessRequest {
-  // subject_id uniquely identifies the entity requesting access.
-  // This could be a user ID, service account ID, or system identifier.
-  string subject_id = 1;
-
-  // subject_type categorizes the subject (e.g., "user", "service", "system").
-  // This allows for different authorization policies per subject type.
-  string subject_type = 2;
-
-  // resource identifies the domain entity being accessed.
-  // Should match the resource field in Permission definitions.
-  string resource = 3;
-
-  // action specifies the operation being performed.
-  // Should match the action field in Permission definitions.
-  string action = 4;
-}
-
-// CheckAccessResponse contains the authorization decision.
-message CheckAccessResponse {
-  // allowed is true if the subject has permission for the requested action.
-  bool allowed = 1;
-
-  // reason provides an explanation for the decision.
-  // For granted access: may explain which roles/permissions granted access.
-  // For denied access: explains why access was denied (e.g., "no matching permissions").
-  string reason = 2;
-}
-
-// AssignRoleRequest assigns a role to a subject.
-message AssignRoleRequest {
-  // subject_id uniquely identifies the entity receiving the role.
-  string subject_id = 1;
-
-  // subject_type categorizes the subject.
-  string subject_type = 2;
-
-  // role_uid identifies which role to assign.
-  // The role must exist.
-  string role_uid = 3;
-}
-
-// AssignRoleResponse confirms the role assignment.
-message AssignRoleResponse {
-  // success indicates the assignment was successful.
-  bool success = 1;
-
-  // role_uid confirms which role was assigned.
-  string role_uid = 2;
-
-  // assigned_at is the Unix timestamp when the role was assigned.
-  int64 assigned_at = 3;
-}
-
-// RevokeRoleRequest removes a role assignment from a subject.
-message RevokeRoleRequest {
-  // subject_id uniquely identifies the entity.
-  string subject_id = 1;
-
-  // subject_type categorizes the subject.
-  string subject_type = 2;
-
-  // role_uid identifies which role to revoke.
-  string role_uid = 3;
-}
-
-// RevokeRoleResponse confirms the role revocation.
-message RevokeRoleResponse {
-  // success indicates the revocation was successful.
-  bool success = 1;
-
-  // revoked_at is the Unix timestamp when the role was revoked.
-  int64 revoked_at = 2;
-}
-
-// ListSubjectRolesRequest lists all roles for a subject.
-message ListSubjectRolesRequest {
-  // subject_id uniquely identifies the entity.
-  string subject_id = 1;
-
-  // subject_type categorizes the subject.
-  string subject_type = 2;
-
-  // pagination controls the page size and ordering.
-  common.Pagination pagination = 3;
-}
-
-// SubjectRole represents a role assigned to a subject.
-message SubjectRole {
-  // subject_id identifies the entity.
-  string subject_id = 1;
-
-  // subject_type categorizes the subject.
-  string subject_type = 2;
-
-  // role_uid identifies the assigned role.
-  string role_uid = 3;
-
-  // assigned_at is the Unix timestamp when the role was assigned.
-  int64 assigned_at = 4;
-}
-
-// ListSubjectRolesResponse returns the subject's roles.
-message ListSubjectRolesResponse {
-  // subject_roles is the list of role assignments for this subject.
-  repeated SubjectRole subject_roles = 1;
-
-  // meta contains pagination metadata.
-  common.Meta meta = 2;
 }

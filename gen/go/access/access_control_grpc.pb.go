@@ -17,6 +17,7 @@ package access
 
 import (
 	context "context"
+	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -50,9 +51,9 @@ type AccessControlServiceClient interface {
 	CheckAccess(ctx context.Context, in *CheckAccessRequest, opts ...grpc.CallOption) (*CheckAccessResponse, error)
 	// AssignRole assigns a role to a subject.
 	// The subject can be a user, service, or any entity that needs access.
-	AssignRole(ctx context.Context, in *AssignRoleRequest, opts ...grpc.CallOption) (*AssignRoleResponse, error)
+	AssignRole(ctx context.Context, in *AssignRoleRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// RevokeRole removes a role assignment from a subject.
-	RevokeRole(ctx context.Context, in *RevokeRoleRequest, opts ...grpc.CallOption) (*RevokeRoleResponse, error)
+	RevokeRole(ctx context.Context, in *RevokeRoleRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// ListSubjectRoles retrieves all roles assigned to a subject.
 	// Useful for auditing and displaying subject permissions.
 	ListSubjectRoles(ctx context.Context, in *ListSubjectRolesRequest, opts ...grpc.CallOption) (*ListSubjectRolesResponse, error)
@@ -76,9 +77,9 @@ func (c *accessControlServiceClient) CheckAccess(ctx context.Context, in *CheckA
 	return out, nil
 }
 
-func (c *accessControlServiceClient) AssignRole(ctx context.Context, in *AssignRoleRequest, opts ...grpc.CallOption) (*AssignRoleResponse, error) {
+func (c *accessControlServiceClient) AssignRole(ctx context.Context, in *AssignRoleRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignRoleResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, AccessControlService_AssignRole_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -86,9 +87,9 @@ func (c *accessControlServiceClient) AssignRole(ctx context.Context, in *AssignR
 	return out, nil
 }
 
-func (c *accessControlServiceClient) RevokeRole(ctx context.Context, in *RevokeRoleRequest, opts ...grpc.CallOption) (*RevokeRoleResponse, error) {
+func (c *accessControlServiceClient) RevokeRole(ctx context.Context, in *RevokeRoleRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RevokeRoleResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, AccessControlService_RevokeRole_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -122,9 +123,9 @@ type AccessControlServiceServer interface {
 	CheckAccess(context.Context, *CheckAccessRequest) (*CheckAccessResponse, error)
 	// AssignRole assigns a role to a subject.
 	// The subject can be a user, service, or any entity that needs access.
-	AssignRole(context.Context, *AssignRoleRequest) (*AssignRoleResponse, error)
+	AssignRole(context.Context, *AssignRoleRequest) (*common.Success, error)
 	// RevokeRole removes a role assignment from a subject.
-	RevokeRole(context.Context, *RevokeRoleRequest) (*RevokeRoleResponse, error)
+	RevokeRole(context.Context, *RevokeRoleRequest) (*common.Success, error)
 	// ListSubjectRoles retrieves all roles assigned to a subject.
 	// Useful for auditing and displaying subject permissions.
 	ListSubjectRoles(context.Context, *ListSubjectRolesRequest) (*ListSubjectRolesResponse, error)
@@ -141,10 +142,10 @@ type UnimplementedAccessControlServiceServer struct{}
 func (UnimplementedAccessControlServiceServer) CheckAccess(context.Context, *CheckAccessRequest) (*CheckAccessResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CheckAccess not implemented")
 }
-func (UnimplementedAccessControlServiceServer) AssignRole(context.Context, *AssignRoleRequest) (*AssignRoleResponse, error) {
+func (UnimplementedAccessControlServiceServer) AssignRole(context.Context, *AssignRoleRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method AssignRole not implemented")
 }
-func (UnimplementedAccessControlServiceServer) RevokeRole(context.Context, *RevokeRoleRequest) (*RevokeRoleResponse, error) {
+func (UnimplementedAccessControlServiceServer) RevokeRole(context.Context, *RevokeRoleRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method RevokeRole not implemented")
 }
 func (UnimplementedAccessControlServiceServer) ListSubjectRoles(context.Context, *ListSubjectRolesRequest) (*ListSubjectRolesResponse, error) {

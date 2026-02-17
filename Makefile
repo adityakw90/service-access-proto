@@ -9,7 +9,6 @@ go:
 	mkdir -p gen/go
 	protoc \
 		--proto_path=proto \
-		--proto_path=/usr/local/include \
 		--go_out=. --go_opt=module=github.com/adityakw90/service-access-proto \
 		--go-grpc_out=. --go-grpc_opt=module=github.com/adityakw90/service-access-proto \
 		proto/*.proto

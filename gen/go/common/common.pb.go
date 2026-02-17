@@ -239,96 +239,6 @@ func (x *Pagination) GetSort() string {
 	return ""
 }
 
-// Timestamp represents a point in time as Unix timestamp in seconds.
-type Timestamp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seconds       int64                  `protobuf:"varint,1,opt,name=seconds,proto3" json:"seconds,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Timestamp) Reset() {
-	*x = Timestamp{}
-	mi := &file_common_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Timestamp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Timestamp) ProtoMessage() {}
-
-func (x *Timestamp) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Timestamp.ProtoReflect.Descriptor instead.
-func (*Timestamp) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *Timestamp) GetSeconds() int64 {
-	if x != nil {
-		return x.Seconds
-	}
-	return 0
-}
-
-// UUID represents a universally unique identifier.
-type UUID struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UUID) Reset() {
-	*x = UUID{}
-	mi := &file_common_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UUID) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UUID) ProtoMessage() {}
-
-func (x *UUID) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UUID.ProtoReflect.Descriptor instead.
-func (*UUID) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UUID) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
 var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
@@ -347,11 +257,7 @@ const file_common_proto_rawDesc = "" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x19\n" +
 	"\border_by\x18\x03 \x01(\tR\aorderBy\x12\x12\n" +
-	"\x04sort\x18\x04 \x01(\tR\x04sort\"%\n" +
-	"\tTimestamp\x12\x18\n" +
-	"\aseconds\x18\x01 \x01(\x03R\aseconds\"\x1c\n" +
-	"\x04UUID\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\tR\x05valueB:Z8github.com/adityakw90/service-access-proto/gen/go/commonb\x06proto3"
+	"\x04sort\x18\x04 \x01(\tR\x04sortB:Z8github.com/adityakw90/service-access-proto/gen/go/commonb\x06proto3"
 
 var (
 	file_common_proto_rawDescOnce sync.Once
@@ -365,14 +271,12 @@ func file_common_proto_rawDescGZIP() []byte {
 	return file_common_proto_rawDescData
 }
 
-var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_common_proto_goTypes = []any{
 	(*Empty)(nil),      // 0: common.Empty
 	(*Success)(nil),    // 1: common.Success
 	(*Meta)(nil),       // 2: common.Meta
 	(*Pagination)(nil), // 3: common.Pagination
-	(*Timestamp)(nil),  // 4: common.Timestamp
-	(*UUID)(nil),       // 5: common.UUID
 }
 var file_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -393,7 +297,7 @@ func file_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

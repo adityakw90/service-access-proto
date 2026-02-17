@@ -25,13 +25,3 @@ message Pagination {
   string order_by = 3;    // what field to use for ordering
   string sort = 4;        // asc or desc
 }
-
-// Timestamp represents a point in time as Unix timestamp in seconds.
-message Timestamp {
-  int64 seconds = 1;
-}
-
-// UUID represents a universally unique identifier.
-message UUID {
-  string value = 1;
-}

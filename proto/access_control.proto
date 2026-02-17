@@ -11,7 +11,6 @@ syntax = "proto3";
 package access;
 
 import "common.proto";
-import "validate/validate.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/access";
 
@@ -42,28 +41,19 @@ service AccessControlService {
 message CheckAccessRequest {
   // subject_id uniquely identifies the entity requesting access.
   // This could be a user ID, service account ID, or system identifier.
-  string subject_id = 1 [(validate.rules).string.min_len = 1];
+  string subject_id = 1;
 
   // subject_type categorizes the subject (e.g., "user", "service", "system").
   // This allows for different authorization policies per subject type.
-  string subject_type = 2 [
-    (validate.rules).string = {
-      min_len: 1,
-      max_len: 100
-    }
-  ];
+  string subject_type = 2;
 
   // resource identifies the domain entity being accessed.
   // Should match the resource field in Permission definitions.
-  string resource = 3 [
-    (validate.rules).string.min_len = 1
-  ];
+  string resource = 3;
 
   // action specifies the operation being performed.
   // Should match the action field in Permission definitions.
-  string action = 4 [
-    (validate.rules).string.min_len = 1
-  ];
+  string action = 4;
 }
 
 // CheckAccessResponse contains the authorization decision.
@@ -80,19 +70,14 @@ message CheckAccessResponse {
 // AssignRoleRequest assigns a role to a subject.
 message AssignRoleRequest {
   // subject_id uniquely identifies the entity receiving the role.
-  string subject_id = 1 [(validate.rules).string.min_len = 1];
+  string subject_id = 1;
 
   // subject_type categorizes the subject.
-  string subject_type = 2 [
-    (validate.rules).string = {
-      min_len: 1,
-      max_len: 100
-    }
-  ];
+  string subject_type = 2;
 
   // role_uid identifies which role to assign.
   // The role must exist.
-  string role_uid = 3 [(validate.rules).string.min_len = 1];
+  string role_uid = 3;
 }
 
 // AssignRoleResponse confirms the role assignment.
@@ -110,18 +95,13 @@ message AssignRoleResponse {
 // RevokeRoleRequest removes a role assignment from a subject.
 message RevokeRoleRequest {
   // subject_id uniquely identifies the entity.
-  string subject_id = 1 [(validate.rules).string.min_len = 1];
+  string subject_id = 1;
 
   // subject_type categorizes the subject.
-  string subject_type = 2 [
-    (validate.rules).string = {
-      min_len: 1,
-      max_len: 100
-    }
-  ];
+  string subject_type = 2;
 
   // role_uid identifies which role to revoke.
-  string role_uid = 3 [(validate.rules).string.min_len = 1];
+  string role_uid = 3;
 }
 
 // RevokeRoleResponse confirms the role revocation.
@@ -136,15 +116,10 @@ message RevokeRoleResponse {
 // ListSubjectRolesRequest lists all roles for a subject.
 message ListSubjectRolesRequest {
   // subject_id uniquely identifies the entity.
-  string subject_id = 1 [(validate.rules).string.min_len = 1];
+  string subject_id = 1;
 
   // subject_type categorizes the subject.
-  string subject_type = 2 [
-    (validate.rules).string = {
-      min_len: 1,
-      max_len: 100
-    }
-  ];
+  string subject_type = 2;
 
   // pagination controls the page size and ordering.
   common.Pagination pagination = 3;

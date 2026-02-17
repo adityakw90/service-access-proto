@@ -19,6 +19,7 @@ package group
 
 import (
 	context "context"
+	common "github.com/adityakw90/service-access-proto/gen/go/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -51,16 +52,16 @@ type GroupServiceClient interface {
 	// GetGroup retrieves a group by its public UID.
 	GetGroup(ctx context.Context, in *GetGroupRequest, opts ...grpc.CallOption) (*Group, error)
 	// UpdateGroup modifies an existing group's details.
-	UpdateGroup(ctx context.Context, in *UpdateGroupRequest, opts ...grpc.CallOption) (*UpdateGroupResponse, error)
+	UpdateGroup(ctx context.Context, in *UpdateGroupRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// DeleteGroup permanently removes a group by its UID.
 	// This will cascade to delete all roles within the group.
-	DeleteGroup(ctx context.Context, in *DeleteGroupRequest, opts ...grpc.CallOption) (*DeleteGroupResponse, error)
+	DeleteGroup(ctx context.Context, in *DeleteGroupRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// ListGroups returns a paginated list of all groups.
 	ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error)
 	// AssignGroupPermission adds a permission to a group.
-	AssignGroupPermission(ctx context.Context, in *AssignGroupPermissionRequest, opts ...grpc.CallOption) (*AssignGroupPermissionResponse, error)
+	AssignGroupPermission(ctx context.Context, in *AssignGroupPermissionRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// RevokeGroupPermission removes a permission from a group.
-	RevokeGroupPermission(ctx context.Context, in *RevokeGroupPermissionRequest, opts ...grpc.CallOption) (*RevokeGroupPermissionResponse, error)
+	RevokeGroupPermission(ctx context.Context, in *RevokeGroupPermissionRequest, opts ...grpc.CallOption) (*common.Success, error)
 	// ListGroupPermissions returns all permissions assigned to a group.
 	ListGroupPermissions(ctx context.Context, in *ListGroupPermissionsRequest, opts ...grpc.CallOption) (*ListGroupPermissionsResponse, error)
 }
@@ -93,9 +94,9 @@ func (c *groupServiceClient) GetGroup(ctx context.Context, in *GetGroupRequest, 
 	return out, nil
 }
 
-func (c *groupServiceClient) UpdateGroup(ctx context.Context, in *UpdateGroupRequest, opts ...grpc.CallOption) (*UpdateGroupResponse, error) {
+func (c *groupServiceClient) UpdateGroup(ctx context.Context, in *UpdateGroupRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateGroupResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, GroupService_UpdateGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -103,9 +104,9 @@ func (c *groupServiceClient) UpdateGroup(ctx context.Context, in *UpdateGroupReq
 	return out, nil
 }
 
-func (c *groupServiceClient) DeleteGroup(ctx context.Context, in *DeleteGroupRequest, opts ...grpc.CallOption) (*DeleteGroupResponse, error) {
+func (c *groupServiceClient) DeleteGroup(ctx context.Context, in *DeleteGroupRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteGroupResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, GroupService_DeleteGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -123,9 +124,9 @@ func (c *groupServiceClient) ListGroups(ctx context.Context, in *ListGroupsReque
 	return out, nil
 }
 
-func (c *groupServiceClient) AssignGroupPermission(ctx context.Context, in *AssignGroupPermissionRequest, opts ...grpc.CallOption) (*AssignGroupPermissionResponse, error) {
+func (c *groupServiceClient) AssignGroupPermission(ctx context.Context, in *AssignGroupPermissionRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignGroupPermissionResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, GroupService_AssignGroupPermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -133,9 +134,9 @@ func (c *groupServiceClient) AssignGroupPermission(ctx context.Context, in *Assi
 	return out, nil
 }
 
-func (c *groupServiceClient) RevokeGroupPermission(ctx context.Context, in *RevokeGroupPermissionRequest, opts ...grpc.CallOption) (*RevokeGroupPermissionResponse, error) {
+func (c *groupServiceClient) RevokeGroupPermission(ctx context.Context, in *RevokeGroupPermissionRequest, opts ...grpc.CallOption) (*common.Success, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RevokeGroupPermissionResponse)
+	out := new(common.Success)
 	err := c.cc.Invoke(ctx, GroupService_RevokeGroupPermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -164,16 +165,16 @@ type GroupServiceServer interface {
 	// GetGroup retrieves a group by its public UID.
 	GetGroup(context.Context, *GetGroupRequest) (*Group, error)
 	// UpdateGroup modifies an existing group's details.
-	UpdateGroup(context.Context, *UpdateGroupRequest) (*UpdateGroupResponse, error)
+	UpdateGroup(context.Context, *UpdateGroupRequest) (*common.Success, error)
 	// DeleteGroup permanently removes a group by its UID.
 	// This will cascade to delete all roles within the group.
-	DeleteGroup(context.Context, *DeleteGroupRequest) (*DeleteGroupResponse, error)
+	DeleteGroup(context.Context, *DeleteGroupRequest) (*common.Success, error)
 	// ListGroups returns a paginated list of all groups.
 	ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error)
 	// AssignGroupPermission adds a permission to a group.
-	AssignGroupPermission(context.Context, *AssignGroupPermissionRequest) (*AssignGroupPermissionResponse, error)
+	AssignGroupPermission(context.Context, *AssignGroupPermissionRequest) (*common.Success, error)
 	// RevokeGroupPermission removes a permission from a group.
-	RevokeGroupPermission(context.Context, *RevokeGroupPermissionRequest) (*RevokeGroupPermissionResponse, error)
+	RevokeGroupPermission(context.Context, *RevokeGroupPermissionRequest) (*common.Success, error)
 	// ListGroupPermissions returns all permissions assigned to a group.
 	ListGroupPermissions(context.Context, *ListGroupPermissionsRequest) (*ListGroupPermissionsResponse, error)
 	mustEmbedUnimplementedGroupServiceServer()
@@ -192,19 +193,19 @@ func (UnimplementedGroupServiceServer) CreateGroup(context.Context, *CreateGroup
 func (UnimplementedGroupServiceServer) GetGroup(context.Context, *GetGroupRequest) (*Group, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetGroup not implemented")
 }
-func (UnimplementedGroupServiceServer) UpdateGroup(context.Context, *UpdateGroupRequest) (*UpdateGroupResponse, error) {
+func (UnimplementedGroupServiceServer) UpdateGroup(context.Context, *UpdateGroupRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateGroup not implemented")
 }
-func (UnimplementedGroupServiceServer) DeleteGroup(context.Context, *DeleteGroupRequest) (*DeleteGroupResponse, error) {
+func (UnimplementedGroupServiceServer) DeleteGroup(context.Context, *DeleteGroupRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteGroup not implemented")
 }
 func (UnimplementedGroupServiceServer) ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListGroups not implemented")
 }
-func (UnimplementedGroupServiceServer) AssignGroupPermission(context.Context, *AssignGroupPermissionRequest) (*AssignGroupPermissionResponse, error) {
+func (UnimplementedGroupServiceServer) AssignGroupPermission(context.Context, *AssignGroupPermissionRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method AssignGroupPermission not implemented")
 }
-func (UnimplementedGroupServiceServer) RevokeGroupPermission(context.Context, *RevokeGroupPermissionRequest) (*RevokeGroupPermissionResponse, error) {
+func (UnimplementedGroupServiceServer) RevokeGroupPermission(context.Context, *RevokeGroupPermissionRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method RevokeGroupPermission not implemented")
 }
 func (UnimplementedGroupServiceServer) ListGroupPermissions(context.Context, *ListGroupPermissionsRequest) (*ListGroupPermissionsResponse, error) {

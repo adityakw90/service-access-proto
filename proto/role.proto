@@ -38,38 +38,8 @@ message RolePermission {
   google.protobuf.Timestamp created_at = 7; // Unix timestamp when this group permission was created
 }
 
-
-// CreateRoleRequest contains the fields needed to create a new role.
-message CreateRoleRequest {
-  string group_uid = 1; // group uid for the group that owns this role
-  string name = 2; // human-readable name of this role, must be unique within the parent group
-  string description = 3; // description explains the role's purpose and intended use
-}
-
-// CreateRoleResponse returns the created role.
-message CreateRoleResponse {
-  string uid = 1; // uid of the created role
-}
-
-// GetRoleRequest is used to retrieve a role by its UID.
-message GetRoleRequest {
-  string uid = 1; // uid of the role to retrieve
-}
-
-// UpdateRoleRequest contains fields to update an existing role.
-message UpdateRoleRequest {
-  string uid = 1; // uid of the role to update
-  string name = 2; // new name for the role
-  string description = 3; // new description for the role
-}
-
-// DeleteRoleRequest is used to delete a role by its UID.
-message DeleteRoleRequest {
-  string uid = 1; // uid of the role to delete
-}
-
-// ListRolesRequest is used to list roles with optional filtering.
-message ListRolesRequest {
+// ListRequest is used to list roles with optional filtering.
+message ListRequest {
   common.Pagination pagination = 1; // pagination controls the page size and ordering
   FilterRequest filter = 2; // filter controls the filtering of roles
 }
@@ -81,26 +51,61 @@ message FilterRequest {
   optional string query = 4; // query for the role to retrieve, fuzzy match
 }
 
-// ListRolesResponse returns a paginated list of roles.
-message ListRolesResponse {
+// ListResponse returns a paginated list of roles.
+message ListResponse {
   repeated Role items = 1; // list of roles
   common.Meta meta = 2; // pagination metadata
 }
 
-// AssignRolePermissionRequest adds a permission to a role.
-message AssignRolePermissionRequest {
+// GetRequest is used to retrieve a role by its UID.
+message GetRequest {
+  string uid = 1; // uid of the role to retrieve
+}
+
+// CreateRequest contains the fields needed to create a new role.
+message CreateRequest {
+  string group_uid = 1; // group uid for the group that owns this role
+  string name = 2; // human-readable name of this role, must be unique within the parent group
+  string description = 3; // description explains the role's purpose and intended use
+}
+
+// CreateResponse returns the created role.
+message CreateResponse {
+  string uid = 1; // uid of the created role
+}
+
+// UpdateRequest contains fields to update an existing role.
+message UpdateRequest {
+  string uid = 1; // uid of the role to update
+  string name = 2; // new name for the role
+  string description = 3; // new description for the role
+}
+
+// DeleteRequest is used to delete a role by its UID.
+message DeleteRequest {
+  string uid = 1; // uid of the role to delete
+}
+
+// UpdatePermissionRequest contains fields to update an existing role permission.
+message UpdatePermissionRequest {
+  string role_uid = 1; // role_uid identifies which role to receive the permission.
+  repeated string permission_uids = 2; // permission_uids identify which permissions to assign.
+}
+
+// AssignPermissionRequest adds a permission to a role.
+message AssignPermissionRequest {
   string role_uid = 1; // role uid for the role that owns this permission
   string group_permission_uid = 2; // group permission uid to assign
 }
 
-// RevokeRolePermissionRequest removes a permission from a role.
-message RevokeRolePermissionRequest {
+// RevokePermissionRequest removes a permission from a role.
+message RevokePermissionRequest {
   string role_uid = 1; // role uid for the role that owns this permission
   string group_permission_uid = 2; // group permission uid to revoke
 }
 
-// ListRolePermissionsRequest is used to list a role's permissions.
-message ListRolePermissionsRequest {
+// ListPermissionsRequest is used to list a role's permissions.
+message ListPermissionsRequest {
   string role_uid = 1; // role uid for the role that owns this permission
   common.Pagination pagination = 2; // pagination controls the page size and ordering
   FilterPermissionRequest filter = 3; // filter controls the filtering of roles
@@ -113,37 +118,26 @@ message FilterPermissionRequest {
   optional string query = 4; // query for the permission to retrieve, fuzzy match
 }
 
-// ListRolePermissionsResponse returns the role's permissions.
-message ListRolePermissionsResponse {
+// ListPermissionsResponse returns the role's permissions.
+message ListPermissionsResponse {
   repeated RolePermission items = 1; // list of role permissions
   common.Meta meta = 2; // pagination metadata
 }
 
 // RoleService provides CRUD operations for managing roles.
 service RoleService {
-  // CreateRole creates a new role within a group.
-  rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse);
+  // retreive
+  rpc List(ListRequest) returns (ListResponse); // List returns a paginated list of all roles.
+  rpc Get(GetRequest) returns (Role); // Get retrieves a role by its public UID.
 
-  // GetRole retrieves a role by its public UID.
-  rpc GetRole(GetRoleRequest) returns (Role);
+  // Management
+  rpc Create(CreateRequest) returns (CreateResponse); // Create creates a new role.
+  rpc Update(UpdateRequest) returns (common.Success); // Update modifies an existing role's details.
+  rpc Delete(DeleteRequest) returns (common.Success); // Delete permanently removes a role by its UID. This will cascade to remove all subject assignments for this role.
 
-  // UpdateRole modifies an existing role's details.
-  rpc UpdateRole(UpdateRoleRequest) returns (common.Success);
-
-  // DeleteRole permanently removes a role by its UID.
-  // This will cascade to remove all subject assignments for this role.
-  rpc DeleteRole(DeleteRoleRequest) returns (common.Success);
-
-  // ListRoles returns a paginated list of roles.
-  // Can optionally filter by group_uid.
-  rpc ListRoles(ListRolesRequest) returns (ListRolesResponse);
-
-  // AssignRolePermission adds a permission to a role.
-  rpc AssignRolePermission(AssignRolePermissionRequest) returns (common.Success);
-
-  // RevokeRolePermission removes a permission from a role.
-  rpc RevokeRolePermission(RevokeRolePermissionRequest) returns (common.Success);
-
-  // ListRolePermissions returns all permissions assigned to a role.
-  rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse);
+  // Role Permission
+  rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse); // ListPermissions returns all permissions assigned to a role.
+  rpc UpdatePermission(UpdatePermissionRequest) returns (common.Success); // UpdatePermission replaces an existing role permission.
+  rpc AssignPermission(AssignPermissionRequest) returns (common.Success); // AssignPermission adds a permission to a role.
+  rpc RevokePermission(RevokePermissionRequest) returns (common.Success); // RevokePermission removes a permission from a role.
 }

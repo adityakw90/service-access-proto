@@ -729,7 +729,8 @@ func (x *AssignPermissionRequest) GetPermissionUid() string {
 // RevokePermissionRequest removes a permission from a group.
 type RevokePermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // uid of the group permission to revoke
+	GroupUid      string                 `protobuf:"bytes,1,opt,name=group_uid,json=groupUid,proto3" json:"group_uid,omitempty"`                // group_uid identifies which group to receive the permission.
+	PermissionUid string                 `protobuf:"bytes,2,opt,name=permission_uid,json=permissionUid,proto3" json:"permission_uid,omitempty"` // permission_uid identifies which permission to revoke.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -764,9 +765,16 @@ func (*RevokePermissionRequest) Descriptor() ([]byte, []int) {
 	return file_group_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *RevokePermissionRequest) GetUid() string {
+func (x *RevokePermissionRequest) GetGroupUid() string {
 	if x != nil {
-		return x.Uid
+		return x.GroupUid
+	}
+	return ""
+}
+
+func (x *RevokePermissionRequest) GetPermissionUid() string {
+	if x != nil {
+		return x.PermissionUid
 	}
 	return ""
 }
@@ -1017,9 +1025,10 @@ const file_group_proto_rawDesc = "" +
 	"\x0fpermission_uids\x18\x02 \x03(\tR\x0epermissionUids\"]\n" +
 	"\x17AssignPermissionRequest\x12\x1b\n" +
 	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"+\n" +
-	"\x17RevokePermissionRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xa1\x01\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"]\n" +
+	"\x17RevokePermissionRequest\x12\x1b\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"\xa1\x01\n" +
 	"\x16ListPermissionsRequest\x12\x1b\n" +
 	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x122\n" +
 	"\n" +

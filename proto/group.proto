@@ -98,7 +98,8 @@ message AssignPermissionRequest {
 
 // RevokePermissionRequest removes a permission from a group.
 message RevokePermissionRequest {
-  string uid = 1; // uid of the group permission to revoke
+  string group_uid = 1; // group_uid identifies which group to receive the permission.
+  string permission_uid = 2; // permission_uid identifies which permission to revoke.
 }
 
 // ListPermissionsRequest is used to list a group's permissions.

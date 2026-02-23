@@ -89,7 +89,7 @@ message DeleteRequest {
 // UpdatePermissionRequest contains fields to update an existing role permission.
 message UpdatePermissionRequest {
   string role_uid = 1; // role_uid identifies which role to receive the permission.
-  repeated string permission_uids = 2; // permission_uids identify which permissions to assign.
+  repeated string group_permission_uids = 2; // permission_uids identify which permissions to assign.
 }
 
 // AssignPermissionRequest adds a permission to a role.

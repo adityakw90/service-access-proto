@@ -1,4 +1,4 @@
-name: Service User Proto CI
+name: Service Access Proto CI
 
 on:
   push:

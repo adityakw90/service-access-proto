@@ -645,11 +645,11 @@ func (x *DeleteRequest) GetUid() string {
 
 // UpdatePermissionRequest contains fields to update an existing role permission.
 type UpdatePermissionRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	RoleUid        string                 `protobuf:"bytes,1,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`                      // role_uid identifies which role to receive the permission.
-	PermissionUids []string               `protobuf:"bytes,2,rep,name=permission_uids,json=permissionUids,proto3" json:"permission_uids,omitempty"` // permission_uids identify which permissions to assign.
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	RoleUid             string                 `protobuf:"bytes,1,opt,name=role_uid,json=roleUid,proto3" json:"role_uid,omitempty"`                                       // role_uid identifies which role to receive the permission.
+	GroupPermissionUids []string               `protobuf:"bytes,2,rep,name=group_permission_uids,json=groupPermissionUids,proto3" json:"group_permission_uids,omitempty"` // permission_uids identify which permissions to assign.
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *UpdatePermissionRequest) Reset() {
@@ -689,9 +689,9 @@ func (x *UpdatePermissionRequest) GetRoleUid() string {
 	return ""
 }
 
-func (x *UpdatePermissionRequest) GetPermissionUids() []string {
+func (x *UpdatePermissionRequest) GetGroupPermissionUids() []string {
 	if x != nil {
-		return x.PermissionUids
+		return x.GroupPermissionUids
 	}
 	return nil
 }
@@ -1039,10 +1039,10 @@ const file_role_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\"!\n" +
 	"\rDeleteRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"]\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"h\n" +
 	"\x17UpdatePermissionRequest\x12\x19\n" +
-	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x12'\n" +
-	"\x0fpermission_uids\x18\x02 \x03(\tR\x0epermissionUids\"f\n" +
+	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x122\n" +
+	"\x15group_permission_uids\x18\x02 \x03(\tR\x13groupPermissionUids\"f\n" +
 	"\x17AssignPermissionRequest\x12\x19\n" +
 	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x120\n" +
 	"\x14group_permission_uid\x18\x02 \x01(\tR\x12groupPermissionUid\"f\n" +

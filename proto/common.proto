@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package common;
+package access.common;
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/common";
 

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+// Access Control Service provides authorization and subject assignment operations.
+// This service is the main entry point for access control decisions.
+//
+// The CheckAccess RPC is called by other services to determine if a subject
+// (user, service, or system) is allowed to perform a specific action on a resource.
+package access.access;
+
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/access";
+
+// CheckAccessRequest contains the parameters for an authorization check.
+message CheckAccessRequest {
+  string subject_id = 1; // subject_id is the id of the entity requesting access. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity requesting access. e.g "user", "service", "system"
+  string resource = 3; // resource is the resource being accessed. e.g "user-123", "service-abc"
+  string action = 4; // action is the action being performed. e.g "read", "write", "delete"
+}
+
+// CheckAccessResponse contains the authorization decision.
+message CheckAccessResponse {
+  bool allowed = 1; // allowed is true if the subject has permission for the requested action
+  string reason = 2; // reason provides an explanation for the decision. For granted access: may explain which roles/permissions granted access. For denied access: explains why access was denied (e.g., "no matching permissions")
+}
+
+
+// AccessControlService provides authorization and subject assignment operations.
+service AccessControlService {
+  // CheckAccess determines if a subject is allowed to perform an action on a resource.
+  //
+  // This is the core authorization decision point. The service evaluates the subject's
+  // assigned roles and their permissions to determine if access should be granted.
+  //
+  // The reason field provides transparency for debugging and audit purposes,
+  // explaining why access was granted or denied.
+  rpc CheckAccess(CheckAccessRequest) returns (CheckAccessResponse);
+}

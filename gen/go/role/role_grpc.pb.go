@@ -31,15 +31,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RoleService_List_FullMethodName             = "/role.RoleService/List"
-	RoleService_Get_FullMethodName              = "/role.RoleService/Get"
-	RoleService_Create_FullMethodName           = "/role.RoleService/Create"
-	RoleService_Update_FullMethodName           = "/role.RoleService/Update"
-	RoleService_Delete_FullMethodName           = "/role.RoleService/Delete"
-	RoleService_ListPermissions_FullMethodName  = "/role.RoleService/ListPermissions"
-	RoleService_UpdatePermission_FullMethodName = "/role.RoleService/UpdatePermission"
-	RoleService_AssignPermission_FullMethodName = "/role.RoleService/AssignPermission"
-	RoleService_RevokePermission_FullMethodName = "/role.RoleService/RevokePermission"
+	RoleService_List_FullMethodName             = "/access.role.RoleService/List"
+	RoleService_Get_FullMethodName              = "/access.role.RoleService/Get"
+	RoleService_Create_FullMethodName           = "/access.role.RoleService/Create"
+	RoleService_Update_FullMethodName           = "/access.role.RoleService/Update"
+	RoleService_Delete_FullMethodName           = "/access.role.RoleService/Delete"
+	RoleService_ListPermissions_FullMethodName  = "/access.role.RoleService/ListPermissions"
+	RoleService_UpdatePermission_FullMethodName = "/access.role.RoleService/UpdatePermission"
+	RoleService_AssignPermission_FullMethodName = "/access.role.RoleService/AssignPermission"
+	RoleService_RevokePermission_FullMethodName = "/access.role.RoleService/RevokePermission"
 )
 
 // RoleServiceClient is the client API for RoleService service.
@@ -402,7 +402,7 @@ func _RoleService_RevokePermission_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var RoleService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "role.RoleService",
+	ServiceName: "access.role.RoleService",
 	HandlerType: (*RoleServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

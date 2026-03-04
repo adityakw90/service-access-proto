@@ -974,7 +974,7 @@ var File_group_proto protoreflect.FileDescriptor
 
 const file_group_proto_rawDesc = "" +
 	"\n" +
-	"\vgroup.proto\x12\x05group\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xc5\x01\n" +
+	"\vgroup.proto\x12\faccess.group\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xc5\x01\n" +
 	"\x05Group\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -991,21 +991,21 @@ const file_group_proto_rawDesc = "" +
 	"\x11permission_action\x18\x05 \x01(\tR\x10permissionAction\x125\n" +
 	"\x16permission_description\x18\x06 \x01(\tR\x15permissionDescription\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"o\n" +
-	"\vListRequest\x122\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"}\n" +
+	"\vListRequest\x129\n" +
 	"\n" +
-	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\x12,\n" +
-	"\x06filter\x18\x02 \x01(\v2\x14.group.FilterRequestR\x06filter\"j\n" +
+	"pagination\x18\x01 \x01(\v2\x19.access.common.PaginationR\n" +
+	"pagination\x123\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1b.access.group.FilterRequestR\x06filter\"j\n" +
 	"\rFilterRequest\x12\x12\n" +
 	"\x04uids\x18\x01 \x03(\tR\x04uids\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
 	"\x05query\x18\x03 \x01(\tH\x01R\x05query\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
-	"\x06_query\"T\n" +
-	"\fListResponse\x12\"\n" +
-	"\x05items\x18\x01 \x03(\v2\f.group.GroupR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"\x1e\n" +
+	"\x06_query\"b\n" +
+	"\fListResponse\x12)\n" +
+	"\x05items\x18\x01 \x03(\v2\x13.access.group.GroupR\x05items\x12'\n" +
+	"\x04meta\x18\x02 \x01(\v2\x13.access.common.MetaR\x04meta\"\x1e\n" +
 	"\n" +
 	"GetRequest\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\"E\n" +
@@ -1028,13 +1028,13 @@ const file_group_proto_rawDesc = "" +
 	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"]\n" +
 	"\x17RevokePermissionRequest\x12\x1b\n" +
 	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x12%\n" +
-	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"\xa1\x01\n" +
+	"\x0epermission_uid\x18\x02 \x01(\tR\rpermissionUid\"\xaf\x01\n" +
 	"\x16ListPermissionsRequest\x12\x1b\n" +
-	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x122\n" +
+	"\tgroup_uid\x18\x01 \x01(\tR\bgroupUid\x129\n" +
 	"\n" +
-	"pagination\x18\x02 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\x126\n" +
-	"\x06filter\x18\x03 \x01(\v2\x1e.group.FilterPermissionRequestR\x06filter\"\xd1\x01\n" +
+	"pagination\x18\x02 \x01(\v2\x19.access.common.PaginationR\n" +
+	"pagination\x12=\n" +
+	"\x06filter\x18\x03 \x01(\v2%.access.group.FilterPermissionRequestR\x06filter\"\xd1\x01\n" +
 	"\x17FilterPermissionRequest\x12\x12\n" +
 	"\x04uids\x18\x01 \x03(\tR\x04uids\x12'\n" +
 	"\x0fpermission_uids\x18\x02 \x03(\tR\x0epermissionUids\x12\x1f\n" +
@@ -1043,20 +1043,20 @@ const file_group_proto_rawDesc = "" +
 	"\x05query\x18\x05 \x01(\tH\x02R\x05query\x88\x01\x01B\v\n" +
 	"\t_resourceB\t\n" +
 	"\a_actionB\b\n" +
-	"\x06_query\"i\n" +
-	"\x17ListPermissionsResponse\x12,\n" +
-	"\x05items\x18\x01 \x03(\v2\x16.group.GroupPermissionR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xa1\x04\n" +
-	"\fGroupService\x12/\n" +
-	"\x04List\x12\x12.group.ListRequest\x1a\x13.group.ListResponse\x12&\n" +
-	"\x03Get\x12\x11.group.GetRequest\x1a\f.group.Group\x125\n" +
-	"\x06Create\x12\x14.group.CreateRequest\x1a\x15.group.CreateResponse\x12/\n" +
-	"\x06Update\x12\x14.group.UpdateRequest\x1a\x0f.common.Success\x12/\n" +
-	"\x06Delete\x12\x14.group.DeleteRequest\x1a\x0f.common.Success\x12P\n" +
-	"\x0fListPermissions\x12\x1d.group.ListPermissionsRequest\x1a\x1e.group.ListPermissionsResponse\x12C\n" +
-	"\x10UpdatePermission\x12\x1e.group.UpdatePermissionRequest\x1a\x0f.common.Success\x12C\n" +
-	"\x10AssignPermission\x12\x1e.group.AssignPermissionRequest\x1a\x0f.common.Success\x12C\n" +
-	"\x10RevokePermission\x12\x1e.group.RevokePermissionRequest\x1a\x0f.common.SuccessB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
+	"\x06_query\"w\n" +
+	"\x17ListPermissionsResponse\x123\n" +
+	"\x05items\x18\x01 \x03(\v2\x1d.access.group.GroupPermissionR\x05items\x12'\n" +
+	"\x04meta\x18\x02 \x01(\v2\x13.access.common.MetaR\x04meta2\x9f\x05\n" +
+	"\fGroupService\x12=\n" +
+	"\x04List\x12\x19.access.group.ListRequest\x1a\x1a.access.group.ListResponse\x124\n" +
+	"\x03Get\x12\x18.access.group.GetRequest\x1a\x13.access.group.Group\x12C\n" +
+	"\x06Create\x12\x1b.access.group.CreateRequest\x1a\x1c.access.group.CreateResponse\x12=\n" +
+	"\x06Update\x12\x1b.access.group.UpdateRequest\x1a\x16.access.common.Success\x12=\n" +
+	"\x06Delete\x12\x1b.access.group.DeleteRequest\x1a\x16.access.common.Success\x12^\n" +
+	"\x0fListPermissions\x12$.access.group.ListPermissionsRequest\x1a%.access.group.ListPermissionsResponse\x12Q\n" +
+	"\x10UpdatePermission\x12%.access.group.UpdatePermissionRequest\x1a\x16.access.common.Success\x12Q\n" +
+	"\x10AssignPermission\x12%.access.group.AssignPermissionRequest\x1a\x16.access.common.Success\x12Q\n" +
+	"\x10RevokePermission\x12%.access.group.RevokePermissionRequest\x1a\x16.access.common.SuccessB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
 
 var (
 	file_group_proto_rawDescOnce sync.Once
@@ -1072,57 +1072,57 @@ func file_group_proto_rawDescGZIP() []byte {
 
 var file_group_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_group_proto_goTypes = []any{
-	(*Group)(nil),                   // 0: group.Group
-	(*GroupPermission)(nil),         // 1: group.GroupPermission
-	(*ListRequest)(nil),             // 2: group.ListRequest
-	(*FilterRequest)(nil),           // 3: group.FilterRequest
-	(*ListResponse)(nil),            // 4: group.ListResponse
-	(*GetRequest)(nil),              // 5: group.GetRequest
-	(*CreateRequest)(nil),           // 6: group.CreateRequest
-	(*CreateResponse)(nil),          // 7: group.CreateResponse
-	(*UpdateRequest)(nil),           // 8: group.UpdateRequest
-	(*DeleteRequest)(nil),           // 9: group.DeleteRequest
-	(*UpdatePermissionRequest)(nil), // 10: group.UpdatePermissionRequest
-	(*AssignPermissionRequest)(nil), // 11: group.AssignPermissionRequest
-	(*RevokePermissionRequest)(nil), // 12: group.RevokePermissionRequest
-	(*ListPermissionsRequest)(nil),  // 13: group.ListPermissionsRequest
-	(*FilterPermissionRequest)(nil), // 14: group.FilterPermissionRequest
-	(*ListPermissionsResponse)(nil), // 15: group.ListPermissionsResponse
+	(*Group)(nil),                   // 0: access.group.Group
+	(*GroupPermission)(nil),         // 1: access.group.GroupPermission
+	(*ListRequest)(nil),             // 2: access.group.ListRequest
+	(*FilterRequest)(nil),           // 3: access.group.FilterRequest
+	(*ListResponse)(nil),            // 4: access.group.ListResponse
+	(*GetRequest)(nil),              // 5: access.group.GetRequest
+	(*CreateRequest)(nil),           // 6: access.group.CreateRequest
+	(*CreateResponse)(nil),          // 7: access.group.CreateResponse
+	(*UpdateRequest)(nil),           // 8: access.group.UpdateRequest
+	(*DeleteRequest)(nil),           // 9: access.group.DeleteRequest
+	(*UpdatePermissionRequest)(nil), // 10: access.group.UpdatePermissionRequest
+	(*AssignPermissionRequest)(nil), // 11: access.group.AssignPermissionRequest
+	(*RevokePermissionRequest)(nil), // 12: access.group.RevokePermissionRequest
+	(*ListPermissionsRequest)(nil),  // 13: access.group.ListPermissionsRequest
+	(*FilterPermissionRequest)(nil), // 14: access.group.FilterPermissionRequest
+	(*ListPermissionsResponse)(nil), // 15: access.group.ListPermissionsResponse
 	(*timestamppb.Timestamp)(nil),   // 16: google.protobuf.Timestamp
-	(*common.Pagination)(nil),       // 17: common.Pagination
-	(*common.Meta)(nil),             // 18: common.Meta
-	(*common.Success)(nil),          // 19: common.Success
+	(*common.Pagination)(nil),       // 17: access.common.Pagination
+	(*common.Meta)(nil),             // 18: access.common.Meta
+	(*common.Success)(nil),          // 19: access.common.Success
 }
 var file_group_proto_depIdxs = []int32{
-	16, // 0: group.Group.created_at:type_name -> google.protobuf.Timestamp
-	16, // 1: group.Group.updated_at:type_name -> google.protobuf.Timestamp
-	16, // 2: group.GroupPermission.created_at:type_name -> google.protobuf.Timestamp
-	17, // 3: group.ListRequest.pagination:type_name -> common.Pagination
-	3,  // 4: group.ListRequest.filter:type_name -> group.FilterRequest
-	0,  // 5: group.ListResponse.items:type_name -> group.Group
-	18, // 6: group.ListResponse.meta:type_name -> common.Meta
-	17, // 7: group.ListPermissionsRequest.pagination:type_name -> common.Pagination
-	14, // 8: group.ListPermissionsRequest.filter:type_name -> group.FilterPermissionRequest
-	1,  // 9: group.ListPermissionsResponse.items:type_name -> group.GroupPermission
-	18, // 10: group.ListPermissionsResponse.meta:type_name -> common.Meta
-	2,  // 11: group.GroupService.List:input_type -> group.ListRequest
-	5,  // 12: group.GroupService.Get:input_type -> group.GetRequest
-	6,  // 13: group.GroupService.Create:input_type -> group.CreateRequest
-	8,  // 14: group.GroupService.Update:input_type -> group.UpdateRequest
-	9,  // 15: group.GroupService.Delete:input_type -> group.DeleteRequest
-	13, // 16: group.GroupService.ListPermissions:input_type -> group.ListPermissionsRequest
-	10, // 17: group.GroupService.UpdatePermission:input_type -> group.UpdatePermissionRequest
-	11, // 18: group.GroupService.AssignPermission:input_type -> group.AssignPermissionRequest
-	12, // 19: group.GroupService.RevokePermission:input_type -> group.RevokePermissionRequest
-	4,  // 20: group.GroupService.List:output_type -> group.ListResponse
-	0,  // 21: group.GroupService.Get:output_type -> group.Group
-	7,  // 22: group.GroupService.Create:output_type -> group.CreateResponse
-	19, // 23: group.GroupService.Update:output_type -> common.Success
-	19, // 24: group.GroupService.Delete:output_type -> common.Success
-	15, // 25: group.GroupService.ListPermissions:output_type -> group.ListPermissionsResponse
-	19, // 26: group.GroupService.UpdatePermission:output_type -> common.Success
-	19, // 27: group.GroupService.AssignPermission:output_type -> common.Success
-	19, // 28: group.GroupService.RevokePermission:output_type -> common.Success
+	16, // 0: access.group.Group.created_at:type_name -> google.protobuf.Timestamp
+	16, // 1: access.group.Group.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 2: access.group.GroupPermission.created_at:type_name -> google.protobuf.Timestamp
+	17, // 3: access.group.ListRequest.pagination:type_name -> access.common.Pagination
+	3,  // 4: access.group.ListRequest.filter:type_name -> access.group.FilterRequest
+	0,  // 5: access.group.ListResponse.items:type_name -> access.group.Group
+	18, // 6: access.group.ListResponse.meta:type_name -> access.common.Meta
+	17, // 7: access.group.ListPermissionsRequest.pagination:type_name -> access.common.Pagination
+	14, // 8: access.group.ListPermissionsRequest.filter:type_name -> access.group.FilterPermissionRequest
+	1,  // 9: access.group.ListPermissionsResponse.items:type_name -> access.group.GroupPermission
+	18, // 10: access.group.ListPermissionsResponse.meta:type_name -> access.common.Meta
+	2,  // 11: access.group.GroupService.List:input_type -> access.group.ListRequest
+	5,  // 12: access.group.GroupService.Get:input_type -> access.group.GetRequest
+	6,  // 13: access.group.GroupService.Create:input_type -> access.group.CreateRequest
+	8,  // 14: access.group.GroupService.Update:input_type -> access.group.UpdateRequest
+	9,  // 15: access.group.GroupService.Delete:input_type -> access.group.DeleteRequest
+	13, // 16: access.group.GroupService.ListPermissions:input_type -> access.group.ListPermissionsRequest
+	10, // 17: access.group.GroupService.UpdatePermission:input_type -> access.group.UpdatePermissionRequest
+	11, // 18: access.group.GroupService.AssignPermission:input_type -> access.group.AssignPermissionRequest
+	12, // 19: access.group.GroupService.RevokePermission:input_type -> access.group.RevokePermissionRequest
+	4,  // 20: access.group.GroupService.List:output_type -> access.group.ListResponse
+	0,  // 21: access.group.GroupService.Get:output_type -> access.group.Group
+	7,  // 22: access.group.GroupService.Create:output_type -> access.group.CreateResponse
+	19, // 23: access.group.GroupService.Update:output_type -> access.common.Success
+	19, // 24: access.group.GroupService.Delete:output_type -> access.common.Success
+	15, // 25: access.group.GroupService.ListPermissions:output_type -> access.group.ListPermissionsResponse
+	19, // 26: access.group.GroupService.UpdatePermission:output_type -> access.common.Success
+	19, // 27: access.group.GroupService.AssignPermission:output_type -> access.common.Success
+	19, // 28: access.group.GroupService.RevokePermission:output_type -> access.common.Success
 	20, // [20:29] is the sub-list for method output_type
 	11, // [11:20] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name

@@ -989,7 +989,7 @@ var File_role_proto protoreflect.FileDescriptor
 const file_role_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"role.proto\x12\x04role\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xe1\x01\n" +
+	"role.proto\x12\vaccess.role\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xe1\x01\n" +
 	"\x04Role\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1b\n" +
 	"\tgroup_uid\x18\x02 \x01(\tR\bgroupUid\x12\x12\n" +
@@ -1007,12 +1007,12 @@ const file_role_proto_rawDesc = "" +
 	"\x11permission_action\x18\x05 \x01(\tR\x10permissionAction\x125\n" +
 	"\x16permission_description\x18\x06 \x01(\tR\x15permissionDescription\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"n\n" +
-	"\vListRequest\x122\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"|\n" +
+	"\vListRequest\x129\n" +
 	"\n" +
-	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\x12+\n" +
-	"\x06filter\x18\x02 \x01(\v2\x13.role.FilterRequestR\x06filter\"\x89\x01\n" +
+	"pagination\x18\x01 \x01(\v2\x19.access.common.PaginationR\n" +
+	"pagination\x122\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1a.access.role.FilterRequestR\x06filter\"\x89\x01\n" +
 	"\rFilterRequest\x12\x12\n" +
 	"\x04uids\x18\x01 \x03(\tR\x04uids\x12\x1d\n" +
 	"\n" +
@@ -1020,11 +1020,10 @@ const file_role_proto_rawDesc = "" +
 	"\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
 	"\x05query\x18\x04 \x01(\tH\x01R\x05query\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
-	"\x06_query\"R\n" +
-	"\fListResponse\x12 \n" +
-	"\x05items\x18\x01 \x03(\v2\n" +
-	".role.RoleR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta\"\x1e\n" +
+	"\x06_query\"`\n" +
+	"\fListResponse\x12'\n" +
+	"\x05items\x18\x01 \x03(\v2\x11.access.role.RoleR\x05items\x12'\n" +
+	"\x04meta\x18\x02 \x01(\v2\x13.access.common.MetaR\x04meta\"\x1e\n" +
 	"\n" +
 	"GetRequest\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\"b\n" +
@@ -1048,13 +1047,13 @@ const file_role_proto_rawDesc = "" +
 	"\x14group_permission_uid\x18\x02 \x01(\tR\x12groupPermissionUid\"f\n" +
 	"\x17RevokePermissionRequest\x12\x19\n" +
 	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x120\n" +
-	"\x14group_permission_uid\x18\x02 \x01(\tR\x12groupPermissionUid\"\x9e\x01\n" +
+	"\x14group_permission_uid\x18\x02 \x01(\tR\x12groupPermissionUid\"\xac\x01\n" +
 	"\x16ListPermissionsRequest\x12\x19\n" +
-	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x122\n" +
+	"\brole_uid\x18\x01 \x01(\tR\aroleUid\x129\n" +
 	"\n" +
-	"pagination\x18\x02 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\x125\n" +
-	"\x06filter\x18\x03 \x01(\v2\x1d.role.FilterPermissionRequestR\x06filter\"\xbd\x01\n" +
+	"pagination\x18\x02 \x01(\v2\x19.access.common.PaginationR\n" +
+	"pagination\x12<\n" +
+	"\x06filter\x18\x03 \x01(\v2$.access.role.FilterPermissionRequestR\x06filter\"\xbd\x01\n" +
 	"\x17FilterPermissionRequest\x12'\n" +
 	"\x0fpermission_uids\x18\x01 \x03(\tR\x0epermissionUids\x12\x1f\n" +
 	"\bresource\x18\x02 \x01(\tH\x00R\bresource\x88\x01\x01\x12\x1b\n" +
@@ -1062,21 +1061,20 @@ const file_role_proto_rawDesc = "" +
 	"\x05query\x18\x04 \x01(\tH\x02R\x05query\x88\x01\x01B\v\n" +
 	"\t_resourceB\t\n" +
 	"\a_actionB\b\n" +
-	"\x06_query\"g\n" +
-	"\x17ListPermissionsResponse\x12*\n" +
-	"\x05items\x18\x01 \x03(\v2\x14.role.RolePermissionR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\x92\x04\n" +
-	"\vRoleService\x12-\n" +
-	"\x04List\x12\x11.role.ListRequest\x1a\x12.role.ListResponse\x12#\n" +
-	"\x03Get\x12\x10.role.GetRequest\x1a\n" +
-	".role.Role\x123\n" +
-	"\x06Create\x12\x13.role.CreateRequest\x1a\x14.role.CreateResponse\x12.\n" +
-	"\x06Update\x12\x13.role.UpdateRequest\x1a\x0f.common.Success\x12.\n" +
-	"\x06Delete\x12\x13.role.DeleteRequest\x1a\x0f.common.Success\x12N\n" +
-	"\x0fListPermissions\x12\x1c.role.ListPermissionsRequest\x1a\x1d.role.ListPermissionsResponse\x12B\n" +
-	"\x10UpdatePermission\x12\x1d.role.UpdatePermissionRequest\x1a\x0f.common.Success\x12B\n" +
-	"\x10AssignPermission\x12\x1d.role.AssignPermissionRequest\x1a\x0f.common.Success\x12B\n" +
-	"\x10RevokePermission\x12\x1d.role.RevokePermissionRequest\x1a\x0f.common.SuccessB8Z6github.com/adityakw90/service-access-proto/gen/go/roleb\x06proto3"
+	"\x06_query\"u\n" +
+	"\x17ListPermissionsResponse\x121\n" +
+	"\x05items\x18\x01 \x03(\v2\x1b.access.role.RolePermissionR\x05items\x12'\n" +
+	"\x04meta\x18\x02 \x01(\v2\x13.access.common.MetaR\x04meta2\x90\x05\n" +
+	"\vRoleService\x12;\n" +
+	"\x04List\x12\x18.access.role.ListRequest\x1a\x19.access.role.ListResponse\x121\n" +
+	"\x03Get\x12\x17.access.role.GetRequest\x1a\x11.access.role.Role\x12A\n" +
+	"\x06Create\x12\x1a.access.role.CreateRequest\x1a\x1b.access.role.CreateResponse\x12<\n" +
+	"\x06Update\x12\x1a.access.role.UpdateRequest\x1a\x16.access.common.Success\x12<\n" +
+	"\x06Delete\x12\x1a.access.role.DeleteRequest\x1a\x16.access.common.Success\x12\\\n" +
+	"\x0fListPermissions\x12#.access.role.ListPermissionsRequest\x1a$.access.role.ListPermissionsResponse\x12P\n" +
+	"\x10UpdatePermission\x12$.access.role.UpdatePermissionRequest\x1a\x16.access.common.Success\x12P\n" +
+	"\x10AssignPermission\x12$.access.role.AssignPermissionRequest\x1a\x16.access.common.Success\x12P\n" +
+	"\x10RevokePermission\x12$.access.role.RevokePermissionRequest\x1a\x16.access.common.SuccessB8Z6github.com/adityakw90/service-access-proto/gen/go/roleb\x06proto3"
 
 var (
 	file_role_proto_rawDescOnce sync.Once
@@ -1092,57 +1090,57 @@ func file_role_proto_rawDescGZIP() []byte {
 
 var file_role_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_role_proto_goTypes = []any{
-	(*Role)(nil),                    // 0: role.Role
-	(*RolePermission)(nil),          // 1: role.RolePermission
-	(*ListRequest)(nil),             // 2: role.ListRequest
-	(*FilterRequest)(nil),           // 3: role.FilterRequest
-	(*ListResponse)(nil),            // 4: role.ListResponse
-	(*GetRequest)(nil),              // 5: role.GetRequest
-	(*CreateRequest)(nil),           // 6: role.CreateRequest
-	(*CreateResponse)(nil),          // 7: role.CreateResponse
-	(*UpdateRequest)(nil),           // 8: role.UpdateRequest
-	(*DeleteRequest)(nil),           // 9: role.DeleteRequest
-	(*UpdatePermissionRequest)(nil), // 10: role.UpdatePermissionRequest
-	(*AssignPermissionRequest)(nil), // 11: role.AssignPermissionRequest
-	(*RevokePermissionRequest)(nil), // 12: role.RevokePermissionRequest
-	(*ListPermissionsRequest)(nil),  // 13: role.ListPermissionsRequest
-	(*FilterPermissionRequest)(nil), // 14: role.FilterPermissionRequest
-	(*ListPermissionsResponse)(nil), // 15: role.ListPermissionsResponse
+	(*Role)(nil),                    // 0: access.role.Role
+	(*RolePermission)(nil),          // 1: access.role.RolePermission
+	(*ListRequest)(nil),             // 2: access.role.ListRequest
+	(*FilterRequest)(nil),           // 3: access.role.FilterRequest
+	(*ListResponse)(nil),            // 4: access.role.ListResponse
+	(*GetRequest)(nil),              // 5: access.role.GetRequest
+	(*CreateRequest)(nil),           // 6: access.role.CreateRequest
+	(*CreateResponse)(nil),          // 7: access.role.CreateResponse
+	(*UpdateRequest)(nil),           // 8: access.role.UpdateRequest
+	(*DeleteRequest)(nil),           // 9: access.role.DeleteRequest
+	(*UpdatePermissionRequest)(nil), // 10: access.role.UpdatePermissionRequest
+	(*AssignPermissionRequest)(nil), // 11: access.role.AssignPermissionRequest
+	(*RevokePermissionRequest)(nil), // 12: access.role.RevokePermissionRequest
+	(*ListPermissionsRequest)(nil),  // 13: access.role.ListPermissionsRequest
+	(*FilterPermissionRequest)(nil), // 14: access.role.FilterPermissionRequest
+	(*ListPermissionsResponse)(nil), // 15: access.role.ListPermissionsResponse
 	(*timestamppb.Timestamp)(nil),   // 16: google.protobuf.Timestamp
-	(*common.Pagination)(nil),       // 17: common.Pagination
-	(*common.Meta)(nil),             // 18: common.Meta
-	(*common.Success)(nil),          // 19: common.Success
+	(*common.Pagination)(nil),       // 17: access.common.Pagination
+	(*common.Meta)(nil),             // 18: access.common.Meta
+	(*common.Success)(nil),          // 19: access.common.Success
 }
 var file_role_proto_depIdxs = []int32{
-	16, // 0: role.Role.created_at:type_name -> google.protobuf.Timestamp
-	16, // 1: role.Role.updated_at:type_name -> google.protobuf.Timestamp
-	16, // 2: role.RolePermission.created_at:type_name -> google.protobuf.Timestamp
-	17, // 3: role.ListRequest.pagination:type_name -> common.Pagination
-	3,  // 4: role.ListRequest.filter:type_name -> role.FilterRequest
-	0,  // 5: role.ListResponse.items:type_name -> role.Role
-	18, // 6: role.ListResponse.meta:type_name -> common.Meta
-	17, // 7: role.ListPermissionsRequest.pagination:type_name -> common.Pagination
-	14, // 8: role.ListPermissionsRequest.filter:type_name -> role.FilterPermissionRequest
-	1,  // 9: role.ListPermissionsResponse.items:type_name -> role.RolePermission
-	18, // 10: role.ListPermissionsResponse.meta:type_name -> common.Meta
-	2,  // 11: role.RoleService.List:input_type -> role.ListRequest
-	5,  // 12: role.RoleService.Get:input_type -> role.GetRequest
-	6,  // 13: role.RoleService.Create:input_type -> role.CreateRequest
-	8,  // 14: role.RoleService.Update:input_type -> role.UpdateRequest
-	9,  // 15: role.RoleService.Delete:input_type -> role.DeleteRequest
-	13, // 16: role.RoleService.ListPermissions:input_type -> role.ListPermissionsRequest
-	10, // 17: role.RoleService.UpdatePermission:input_type -> role.UpdatePermissionRequest
-	11, // 18: role.RoleService.AssignPermission:input_type -> role.AssignPermissionRequest
-	12, // 19: role.RoleService.RevokePermission:input_type -> role.RevokePermissionRequest
-	4,  // 20: role.RoleService.List:output_type -> role.ListResponse
-	0,  // 21: role.RoleService.Get:output_type -> role.Role
-	7,  // 22: role.RoleService.Create:output_type -> role.CreateResponse
-	19, // 23: role.RoleService.Update:output_type -> common.Success
-	19, // 24: role.RoleService.Delete:output_type -> common.Success
-	15, // 25: role.RoleService.ListPermissions:output_type -> role.ListPermissionsResponse
-	19, // 26: role.RoleService.UpdatePermission:output_type -> common.Success
-	19, // 27: role.RoleService.AssignPermission:output_type -> common.Success
-	19, // 28: role.RoleService.RevokePermission:output_type -> common.Success
+	16, // 0: access.role.Role.created_at:type_name -> google.protobuf.Timestamp
+	16, // 1: access.role.Role.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 2: access.role.RolePermission.created_at:type_name -> google.protobuf.Timestamp
+	17, // 3: access.role.ListRequest.pagination:type_name -> access.common.Pagination
+	3,  // 4: access.role.ListRequest.filter:type_name -> access.role.FilterRequest
+	0,  // 5: access.role.ListResponse.items:type_name -> access.role.Role
+	18, // 6: access.role.ListResponse.meta:type_name -> access.common.Meta
+	17, // 7: access.role.ListPermissionsRequest.pagination:type_name -> access.common.Pagination
+	14, // 8: access.role.ListPermissionsRequest.filter:type_name -> access.role.FilterPermissionRequest
+	1,  // 9: access.role.ListPermissionsResponse.items:type_name -> access.role.RolePermission
+	18, // 10: access.role.ListPermissionsResponse.meta:type_name -> access.common.Meta
+	2,  // 11: access.role.RoleService.List:input_type -> access.role.ListRequest
+	5,  // 12: access.role.RoleService.Get:input_type -> access.role.GetRequest
+	6,  // 13: access.role.RoleService.Create:input_type -> access.role.CreateRequest
+	8,  // 14: access.role.RoleService.Update:input_type -> access.role.UpdateRequest
+	9,  // 15: access.role.RoleService.Delete:input_type -> access.role.DeleteRequest
+	13, // 16: access.role.RoleService.ListPermissions:input_type -> access.role.ListPermissionsRequest
+	10, // 17: access.role.RoleService.UpdatePermission:input_type -> access.role.UpdatePermissionRequest
+	11, // 18: access.role.RoleService.AssignPermission:input_type -> access.role.AssignPermissionRequest
+	12, // 19: access.role.RoleService.RevokePermission:input_type -> access.role.RevokePermissionRequest
+	4,  // 20: access.role.RoleService.List:output_type -> access.role.ListResponse
+	0,  // 21: access.role.RoleService.Get:output_type -> access.role.Role
+	7,  // 22: access.role.RoleService.Create:output_type -> access.role.CreateResponse
+	19, // 23: access.role.RoleService.Update:output_type -> access.common.Success
+	19, // 24: access.role.RoleService.Delete:output_type -> access.common.Success
+	15, // 25: access.role.RoleService.ListPermissions:output_type -> access.role.ListPermissionsResponse
+	19, // 26: access.role.RoleService.UpdatePermission:output_type -> access.common.Success
+	19, // 27: access.role.RoleService.AssignPermission:output_type -> access.common.Success
+	19, // 28: access.role.RoleService.RevokePermission:output_type -> access.common.Success
 	20, // [20:29] is the sub-list for method output_type
 	11, // [11:20] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name

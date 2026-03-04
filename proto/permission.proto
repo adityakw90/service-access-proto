@@ -10,7 +10,7 @@ syntax = "proto3";
 // - resource: "invoices", action: "read" → permission to read invoices
 // - resource: "users", action: "write" → permission to modify users
 // - resource: "settings", action: "admin" → full administrative access
-package permission;
+package access.permission;
 
 import "google/protobuf/timestamp.proto";
 import "common.proto";

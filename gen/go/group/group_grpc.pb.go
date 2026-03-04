@@ -31,15 +31,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GroupService_List_FullMethodName             = "/group.GroupService/List"
-	GroupService_Get_FullMethodName              = "/group.GroupService/Get"
-	GroupService_Create_FullMethodName           = "/group.GroupService/Create"
-	GroupService_Update_FullMethodName           = "/group.GroupService/Update"
-	GroupService_Delete_FullMethodName           = "/group.GroupService/Delete"
-	GroupService_ListPermissions_FullMethodName  = "/group.GroupService/ListPermissions"
-	GroupService_UpdatePermission_FullMethodName = "/group.GroupService/UpdatePermission"
-	GroupService_AssignPermission_FullMethodName = "/group.GroupService/AssignPermission"
-	GroupService_RevokePermission_FullMethodName = "/group.GroupService/RevokePermission"
+	GroupService_List_FullMethodName             = "/access.group.GroupService/List"
+	GroupService_Get_FullMethodName              = "/access.group.GroupService/Get"
+	GroupService_Create_FullMethodName           = "/access.group.GroupService/Create"
+	GroupService_Update_FullMethodName           = "/access.group.GroupService/Update"
+	GroupService_Delete_FullMethodName           = "/access.group.GroupService/Delete"
+	GroupService_ListPermissions_FullMethodName  = "/access.group.GroupService/ListPermissions"
+	GroupService_UpdatePermission_FullMethodName = "/access.group.GroupService/UpdatePermission"
+	GroupService_AssignPermission_FullMethodName = "/access.group.GroupService/AssignPermission"
+	GroupService_RevokePermission_FullMethodName = "/access.group.GroupService/RevokePermission"
 )
 
 // GroupServiceClient is the client API for GroupService service.
@@ -402,7 +402,7 @@ func _GroupService_RevokePermission_Handler(srv interface{}, ctx context.Context
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var GroupService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "group.GroupService",
+	ServiceName: "access.group.GroupService",
 	HandlerType: (*GroupServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

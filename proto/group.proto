@@ -10,7 +10,7 @@ syntax = "proto3";
 // Roles are always created within a specific Group, and a Role's
 // permissions must be a subset of its parent Group's permissions
 // (the Subset Constraint).
-package group;
+package access.group;
 
 import "google/protobuf/timestamp.proto";
 import "common.proto";

@@ -563,8 +563,7 @@ var File_permission_proto protoreflect.FileDescriptor
 
 const file_permission_proto_rawDesc = "" +
 	"\n" +
-	"\x10permission.proto\x12\n" +
-	"permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xea\x01\n" +
+	"\x10permission.proto\x12\x11access.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xea\x01\n" +
 	"\n" +
 	"Permission\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
@@ -590,12 +589,12 @@ const file_permission_proto_rawDesc = "" +
 	"\x06action\x18\x03 \x01(\tR\x06action\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\"!\n" +
 	"\rDeleteRequest\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"t\n" +
-	"\vListRequest\x122\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x82\x01\n" +
+	"\vListRequest\x129\n" +
 	"\n" +
-	"pagination\x18\x01 \x01(\v2\x12.common.PaginationR\n" +
-	"pagination\x121\n" +
-	"\x06filter\x18\x02 \x01(\v2\x19.permission.FilterRequestR\x06filter\"\x9e\x01\n" +
+	"pagination\x18\x01 \x01(\v2\x19.access.common.PaginationR\n" +
+	"pagination\x128\n" +
+	"\x06filter\x18\x02 \x01(\v2 .access.permission.FilterRequestR\x06filter\"\x9e\x01\n" +
 	"\rFilterRequest\x12\x12\n" +
 	"\x04uids\x18\x01 \x03(\tR\x04uids\x12\x1f\n" +
 	"\bresource\x18\x02 \x01(\tH\x00R\bresource\x88\x01\x01\x12\x1b\n" +
@@ -603,16 +602,16 @@ const file_permission_proto_rawDesc = "" +
 	"\x05query\x18\x04 \x01(\tH\x02R\x05query\x88\x01\x01B\v\n" +
 	"\t_resourceB\t\n" +
 	"\a_actionB\b\n" +
-	"\x06_query\"^\n" +
-	"\fListResponse\x12,\n" +
-	"\x05items\x18\x01 \x03(\v2\x16.permission.PermissionR\x05items\x12 \n" +
-	"\x04meta\x18\x02 \x01(\v2\f.common.MetaR\x04meta2\xb2\x02\n" +
-	"\x11PermissionService\x129\n" +
-	"\x04List\x12\x17.permission.ListRequest\x1a\x18.permission.ListResponse\x125\n" +
-	"\x03Get\x12\x16.permission.GetRequest\x1a\x16.permission.Permission\x12?\n" +
-	"\x06Create\x12\x19.permission.CreateRequest\x1a\x1a.permission.CreateResponse\x124\n" +
-	"\x06Update\x12\x19.permission.UpdateRequest\x1a\x0f.common.Success\x124\n" +
-	"\x06Delete\x12\x19.permission.DeleteRequest\x1a\x0f.common.SuccessB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
+	"\x06_query\"l\n" +
+	"\fListResponse\x123\n" +
+	"\x05items\x18\x01 \x03(\v2\x1d.access.permission.PermissionR\x05items\x12'\n" +
+	"\x04meta\x18\x02 \x01(\v2\x13.access.common.MetaR\x04meta2\xf8\x02\n" +
+	"\x11PermissionService\x12G\n" +
+	"\x04List\x12\x1e.access.permission.ListRequest\x1a\x1f.access.permission.ListResponse\x12C\n" +
+	"\x03Get\x12\x1d.access.permission.GetRequest\x1a\x1d.access.permission.Permission\x12M\n" +
+	"\x06Create\x12 .access.permission.CreateRequest\x1a!.access.permission.CreateResponse\x12B\n" +
+	"\x06Update\x12 .access.permission.UpdateRequest\x1a\x16.access.common.Success\x12B\n" +
+	"\x06Delete\x12 .access.permission.DeleteRequest\x1a\x16.access.common.SuccessB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
 
 var (
 	file_permission_proto_rawDescOnce sync.Once
@@ -628,37 +627,37 @@ func file_permission_proto_rawDescGZIP() []byte {
 
 var file_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_permission_proto_goTypes = []any{
-	(*Permission)(nil),            // 0: permission.Permission
-	(*CreateRequest)(nil),         // 1: permission.CreateRequest
-	(*CreateResponse)(nil),        // 2: permission.CreateResponse
-	(*GetRequest)(nil),            // 3: permission.GetRequest
-	(*UpdateRequest)(nil),         // 4: permission.UpdateRequest
-	(*DeleteRequest)(nil),         // 5: permission.DeleteRequest
-	(*ListRequest)(nil),           // 6: permission.ListRequest
-	(*FilterRequest)(nil),         // 7: permission.FilterRequest
-	(*ListResponse)(nil),          // 8: permission.ListResponse
+	(*Permission)(nil),            // 0: access.permission.Permission
+	(*CreateRequest)(nil),         // 1: access.permission.CreateRequest
+	(*CreateResponse)(nil),        // 2: access.permission.CreateResponse
+	(*GetRequest)(nil),            // 3: access.permission.GetRequest
+	(*UpdateRequest)(nil),         // 4: access.permission.UpdateRequest
+	(*DeleteRequest)(nil),         // 5: access.permission.DeleteRequest
+	(*ListRequest)(nil),           // 6: access.permission.ListRequest
+	(*FilterRequest)(nil),         // 7: access.permission.FilterRequest
+	(*ListResponse)(nil),          // 8: access.permission.ListResponse
 	(*timestamppb.Timestamp)(nil), // 9: google.protobuf.Timestamp
-	(*common.Pagination)(nil),     // 10: common.Pagination
-	(*common.Meta)(nil),           // 11: common.Meta
-	(*common.Success)(nil),        // 12: common.Success
+	(*common.Pagination)(nil),     // 10: access.common.Pagination
+	(*common.Meta)(nil),           // 11: access.common.Meta
+	(*common.Success)(nil),        // 12: access.common.Success
 }
 var file_permission_proto_depIdxs = []int32{
-	9,  // 0: permission.Permission.created_at:type_name -> google.protobuf.Timestamp
-	9,  // 1: permission.Permission.updated_at:type_name -> google.protobuf.Timestamp
-	10, // 2: permission.ListRequest.pagination:type_name -> common.Pagination
-	7,  // 3: permission.ListRequest.filter:type_name -> permission.FilterRequest
-	0,  // 4: permission.ListResponse.items:type_name -> permission.Permission
-	11, // 5: permission.ListResponse.meta:type_name -> common.Meta
-	6,  // 6: permission.PermissionService.List:input_type -> permission.ListRequest
-	3,  // 7: permission.PermissionService.Get:input_type -> permission.GetRequest
-	1,  // 8: permission.PermissionService.Create:input_type -> permission.CreateRequest
-	4,  // 9: permission.PermissionService.Update:input_type -> permission.UpdateRequest
-	5,  // 10: permission.PermissionService.Delete:input_type -> permission.DeleteRequest
-	8,  // 11: permission.PermissionService.List:output_type -> permission.ListResponse
-	0,  // 12: permission.PermissionService.Get:output_type -> permission.Permission
-	2,  // 13: permission.PermissionService.Create:output_type -> permission.CreateResponse
-	12, // 14: permission.PermissionService.Update:output_type -> common.Success
-	12, // 15: permission.PermissionService.Delete:output_type -> common.Success
+	9,  // 0: access.permission.Permission.created_at:type_name -> google.protobuf.Timestamp
+	9,  // 1: access.permission.Permission.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 2: access.permission.ListRequest.pagination:type_name -> access.common.Pagination
+	7,  // 3: access.permission.ListRequest.filter:type_name -> access.permission.FilterRequest
+	0,  // 4: access.permission.ListResponse.items:type_name -> access.permission.Permission
+	11, // 5: access.permission.ListResponse.meta:type_name -> access.common.Meta
+	6,  // 6: access.permission.PermissionService.List:input_type -> access.permission.ListRequest
+	3,  // 7: access.permission.PermissionService.Get:input_type -> access.permission.GetRequest
+	1,  // 8: access.permission.PermissionService.Create:input_type -> access.permission.CreateRequest
+	4,  // 9: access.permission.PermissionService.Update:input_type -> access.permission.UpdateRequest
+	5,  // 10: access.permission.PermissionService.Delete:input_type -> access.permission.DeleteRequest
+	8,  // 11: access.permission.PermissionService.List:output_type -> access.permission.ListResponse
+	0,  // 12: access.permission.PermissionService.Get:output_type -> access.permission.Permission
+	2,  // 13: access.permission.PermissionService.Create:output_type -> access.permission.CreateResponse
+	12, // 14: access.permission.PermissionService.Update:output_type -> access.common.Success
+	12, // 15: access.permission.PermissionService.Delete:output_type -> access.common.Success
 	11, // [11:16] is the sub-list for method output_type
 	6,  // [6:11] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name

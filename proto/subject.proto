@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package access.subject;
+
+import "google/protobuf/timestamp.proto";
+import "common.proto";
+
+option go_package = "github.com/adityakw90/service-access-proto/gen/go/subject";
+
+// SubjectRole represents a role assigned to a subject.
+message SubjectRole {
+  string subject_id = 1; // subject_id is the id of the entity. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity. e.g "user", "service", "system"
+  string role_uid = 3; // role_uid is the id of the role. e.g "role-123", "role-abc"
+  google.protobuf.Timestamp assigned_at = 4; // assigned_at is the Unix timestamp when the role was assigned
+}
+
+// ListRequest lists all roles for a subject.
+message ListRequest {
+  common.Pagination pagination = 1; // pagination controls the page size and ordering
+  FilterRequest filter = 2; // filter controls the filtering of roles
+}
+
+message FilterRequest {
+  optional string subject_id = 1; // subject_id is the id of the entity. e.g "user-123", "service-abc"
+  optional string subject_type = 2; // subject_type is the type of the entity. e.g "user", "service", "system"
+  optional string role_uid = 3; // role_uid is the id of the role. e.g "role-123", "role-abc"
+  optional string query = 4; // query for the role to retrieve, fuzzy match
+}
+
+// ListResponse returns the subject's roles.
+message ListResponse {
+  repeated SubjectRole items = 1; // items is the list of role assignments for this subject.
+  common.Meta meta = 2; // meta contains pagination metadata.
+}
+
+// AssignRoleRequest assigns a role to a subject.
+message AssignRoleRequest {
+  string subject_id = 1; // subject_id is the id of the entity receiving the role. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity receiving the role. e.g "user", "service", "system"
+  string role_uid = 3; // role_uid is the id of the role to assign. e.g "role-123", "role-abc"
+}
+
+// RevokeRoleRequest removes a role assignment from a subject.
+message RevokeRoleRequest {
+  string subject_id = 1; // subject_id is the id of the entity revoking the role. e.g "user-123", "service-abc"
+  string subject_type = 2; // subject_type is the type of the entity revoking the role. e.g "user", "service", "system"
+  string role_uid = 3; // role_uid is the id of the role to revoke. e.g "role-123", "role-abc"
+}
+
+// SubjectService provides operations for managing subject roles.
+service SubjectService {
+  // retreive
+  rpc List(ListRequest) returns (ListResponse);
+
+  // Management
+  rpc AssignRole(AssignRoleRequest) returns (common.Success);
+  rpc RevokeRole(RevokeRoleRequest) returns (common.Success);
+}

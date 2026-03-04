@@ -10,7 +10,7 @@ syntax = "proto3";
 // Key constraint: A Role's permissions must always be a subset of
 // its parent Group's permissions (the Subset Constraint). This is
 // enforced at the service implementation layer.
-package role;
+package access.role;
 
 import "google/protobuf/timestamp.proto";
 import "common.proto";

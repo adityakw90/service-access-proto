@@ -4,8 +4,9 @@
 // - protoc             v5.28.1
 // source: access.proto
 
-// Access Control Service provides authorization and subject assignment operations.
-// This service is the main entry point for access control decisions.
+// Access Control Service provides authorization checks for access control decisions.
+// The CheckAccess RPC is the primary entry point for determining if a subject
+// is allowed to perform a specific action on a resource.
 //
 // The CheckAccess RPC is called by other services to determine if a subject
 // (user, service, or system) is allowed to perform a specific action on a resource.
@@ -32,7 +33,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// AccessControlService provides authorization and subject assignment operations.
+// AccessControlService provides authorization checks. The CheckAccess RPC determines
+// if a subject is allowed to perform an action on a resource.
 type AccessControlServiceClient interface {
 	// CheckAccess determines if a subject is allowed to perform an action on a resource.
 	//
@@ -66,7 +68,8 @@ func (c *accessControlServiceClient) CheckAccess(ctx context.Context, in *CheckA
 // All implementations must embed UnimplementedAccessControlServiceServer
 // for forward compatibility.
 //
-// AccessControlService provides authorization and subject assignment operations.
+// AccessControlService provides authorization checks. The CheckAccess RPC determines
+// if a subject is allowed to perform an action on a resource.
 type AccessControlServiceServer interface {
 	// CheckAccess determines if a subject is allowed to perform an action on a resource.
 	//

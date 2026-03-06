@@ -20,7 +20,7 @@ message SubjectRole {
 
 // ListRequest lists all roles for a subject.
 message ListRequest {
-  common.Pagination pagination = 1; // pagination controls the page size and ordering
+  access.common.Pagination pagination = 1; // pagination controls the page size and ordering
   FilterRequest filter = 2; // filter controls the filtering of roles
 }
 
@@ -34,7 +34,7 @@ message FilterRequest {
 // ListResponse returns the subject's roles.
 message ListResponse {
   repeated SubjectRole items = 1; // items is the list of role assignments for this subject.
-  common.Meta meta = 2; // meta contains pagination metadata.
+  access.common.Meta meta = 2; // meta contains pagination metadata.
 }
 
 // AssignRoleRequest assigns a role to a subject.

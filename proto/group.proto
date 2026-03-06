@@ -40,7 +40,7 @@ message GroupPermission {
 
 // ListRequest is used to list groups with pagination.
 message ListRequest {
-  common.Pagination pagination = 1; // pagination controls the page size and ordering.
+  access.common.Pagination pagination = 1; // pagination controls the page size and ordering.
   FilterRequest filter = 2; // filter for the list of groups
 }
 
@@ -53,7 +53,7 @@ message FilterRequest {
 // ListResponse returns a paginated list of groups.
 message ListResponse {
   repeated Group items = 1; // list of groups
-  common.Meta meta = 2; // meta contains pagination metadata.
+  access.common.Meta meta = 2; // meta contains pagination metadata.
 }
 
 // GetRequest is used to retrieve a group by its UID.
@@ -121,7 +121,7 @@ message FilterPermissionRequest {
 // Reuses the permission.ListPermissionsResponse pattern.
 message ListPermissionsResponse {
   repeated GroupPermission items = 1; // list of permissions
-  common.Meta meta = 2; // meta contains pagination metadata.
+  access.common.Meta meta = 2; // meta contains pagination metadata.
 }
 
 // GroupService provides CRUD operations for managing groups.
@@ -132,12 +132,12 @@ service GroupService {
 
   // Management
   rpc Create(CreateRequest) returns (CreateResponse); // Create creates a new group.
-  rpc Update(UpdateRequest) returns (common.Success); // Update modifies an existing group's details.
-  rpc Delete(DeleteRequest) returns (common.Success); // Delete permanently removes a group by its UID. This will cascade to delete all roles within the group.
+  rpc Update(UpdateRequest) returns (access.common.Success); // Update modifies an existing group's details.
+  rpc Delete(DeleteRequest) returns (access.common.Success); // Delete permanently removes a group by its UID. This will cascade to delete all roles within the group.
 
   // Group Permission
   rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse); // ListPermissions returns all permissions assigned to a group.
-  rpc UpdatePermission(UpdatePermissionRequest) returns (common.Success); // UpdatePermission replaces an existing group permission.
-  rpc AssignPermission(AssignPermissionRequest) returns (common.Success); // AssignPermission adds a permission to a group.
-  rpc RevokePermission(RevokePermissionRequest) returns (common.Success); // RevokePermission removes a permission from a group.
+  rpc UpdatePermission(UpdatePermissionRequest) returns (access.common.Success); // UpdatePermission replaces an existing group permission.
+  rpc AssignPermission(AssignPermissionRequest) returns (access.common.Success); // AssignPermission adds a permission to a group.
+  rpc RevokePermission(RevokePermissionRequest) returns (access.common.Success); // RevokePermission removes a permission from a group.
 }

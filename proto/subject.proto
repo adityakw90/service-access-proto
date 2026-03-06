@@ -4,6 +4,9 @@ package access.subject;
 
 import "google/protobuf/timestamp.proto";
 import "common.proto";
+import "group.proto";
+import "role.proto";
+import "permission.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/subject";
 
@@ -48,6 +51,35 @@ message RevokeRoleRequest {
   string role_uid = 3; // role_uid is the id of the role to revoke. e.g "role-123", "role-abc"
 }
 
+message GetSubjectRequest {
+  string subject_id = 1;
+  string subject_type = 2;
+}
+
+message GetSubjectResponse {
+  repeated access.group.Group groups = 1;       // All subject's groups
+  repeated access.role.Role roles = 2;         // All subject's roles (from groups + direct)
+  repeated access.permission.Permission permissions = 3;  // All unique permissions
+  int32 total_group = 4;
+  int32 total_role = 5;
+  int32 total_permission = 6;
+}
+
+message ListGroupResponse {
+  repeated access.group.Group groups = 1;  // All groups the subject belongs to
+  int32 total = 2;
+}
+
+message ListRoleResponse {
+  repeated access.role.Role roles = 1;  // All roles assigned (directly or via groups)
+  int32 total = 2;
+}
+
+message ListPermissionResponse {
+  repeated access.permission.Permission permissions = 1;  // All unique permissions from all roles/groups
+  int32 total = 2;                     // Total count of unique permissions
+}
+
 // SubjectService provides operations for managing subject roles.
 service SubjectService {
   // retreive
@@ -56,4 +88,10 @@ service SubjectService {
   // Management
   rpc AssignRole(AssignRoleRequest) returns (common.Success);
   rpc RevokeRole(RevokeRoleRequest) returns (common.Success);
+
+  // Detail Resource
+  rpc Get(GetSubjectRequest) returns (GetSubjectResponse);
+  rpc ListGroup(GetSubjectRequest) returns (ListGroupResponse);
+  rpc ListRole(GetSubjectRequest) returns (ListRoleResponse);
+  rpc ListPermission(GetSubjectRequest) returns (ListPermissionResponse);
 }

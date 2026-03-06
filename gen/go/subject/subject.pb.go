@@ -8,6 +8,9 @@ package subject
 
 import (
 	common "github.com/adityakw90/service-access-proto/gen/go/common"
+	group "github.com/adityakw90/service-access-proto/gen/go/group"
+	permission "github.com/adityakw90/service-access-proto/gen/go/permission"
+	role "github.com/adityakw90/service-access-proto/gen/go/role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -388,11 +391,304 @@ func (x *RevokeRoleRequest) GetRoleUid() string {
 	return ""
 }
 
+type GetSubjectRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SubjectId     string                 `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
+	SubjectType   string                 `protobuf:"bytes,2,opt,name=subject_type,json=subjectType,proto3" json:"subject_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSubjectRequest) Reset() {
+	*x = GetSubjectRequest{}
+	mi := &file_subject_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSubjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSubjectRequest) ProtoMessage() {}
+
+func (x *GetSubjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_subject_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSubjectRequest.ProtoReflect.Descriptor instead.
+func (*GetSubjectRequest) Descriptor() ([]byte, []int) {
+	return file_subject_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetSubjectRequest) GetSubjectId() string {
+	if x != nil {
+		return x.SubjectId
+	}
+	return ""
+}
+
+func (x *GetSubjectRequest) GetSubjectType() string {
+	if x != nil {
+		return x.SubjectType
+	}
+	return ""
+}
+
+type GetSubjectResponse struct {
+	state           protoimpl.MessageState   `protogen:"open.v1"`
+	Groups          []*group.Group           `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`           // All subject's groups
+	Roles           []*role.Role             `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`             // All subject's roles (from groups + direct)
+	Permissions     []*permission.Permission `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"` // All unique permissions
+	TotalGroup      int32                    `protobuf:"varint,4,opt,name=total_group,json=totalGroup,proto3" json:"total_group,omitempty"`
+	TotalRole       int32                    `protobuf:"varint,5,opt,name=total_role,json=totalRole,proto3" json:"total_role,omitempty"`
+	TotalPermission int32                    `protobuf:"varint,6,opt,name=total_permission,json=totalPermission,proto3" json:"total_permission,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetSubjectResponse) Reset() {
+	*x = GetSubjectResponse{}
+	mi := &file_subject_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSubjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSubjectResponse) ProtoMessage() {}
+
+func (x *GetSubjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_subject_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSubjectResponse.ProtoReflect.Descriptor instead.
+func (*GetSubjectResponse) Descriptor() ([]byte, []int) {
+	return file_subject_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetSubjectResponse) GetGroups() []*group.Group {
+	if x != nil {
+		return x.Groups
+	}
+	return nil
+}
+
+func (x *GetSubjectResponse) GetRoles() []*role.Role {
+	if x != nil {
+		return x.Roles
+	}
+	return nil
+}
+
+func (x *GetSubjectResponse) GetPermissions() []*permission.Permission {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
+}
+
+func (x *GetSubjectResponse) GetTotalGroup() int32 {
+	if x != nil {
+		return x.TotalGroup
+	}
+	return 0
+}
+
+func (x *GetSubjectResponse) GetTotalRole() int32 {
+	if x != nil {
+		return x.TotalRole
+	}
+	return 0
+}
+
+func (x *GetSubjectResponse) GetTotalPermission() int32 {
+	if x != nil {
+		return x.TotalPermission
+	}
+	return 0
+}
+
+type ListGroupResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Groups        []*group.Group         `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"` // All groups the subject belongs to
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGroupResponse) Reset() {
+	*x = ListGroupResponse{}
+	mi := &file_subject_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGroupResponse) ProtoMessage() {}
+
+func (x *ListGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_subject_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGroupResponse.ProtoReflect.Descriptor instead.
+func (*ListGroupResponse) Descriptor() ([]byte, []int) {
+	return file_subject_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListGroupResponse) GetGroups() []*group.Group {
+	if x != nil {
+		return x.Groups
+	}
+	return nil
+}
+
+func (x *ListGroupResponse) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type ListRoleResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Roles         []*role.Role           `protobuf:"bytes,1,rep,name=roles,proto3" json:"roles,omitempty"` // All roles assigned (directly or via groups)
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListRoleResponse) Reset() {
+	*x = ListRoleResponse{}
+	mi := &file_subject_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRoleResponse) ProtoMessage() {}
+
+func (x *ListRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_subject_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRoleResponse.ProtoReflect.Descriptor instead.
+func (*ListRoleResponse) Descriptor() ([]byte, []int) {
+	return file_subject_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListRoleResponse) GetRoles() []*role.Role {
+	if x != nil {
+		return x.Roles
+	}
+	return nil
+}
+
+func (x *ListRoleResponse) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type ListPermissionResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Permissions   []*permission.Permission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"` // All unique permissions from all roles/groups
+	Total         int32                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`            // Total count of unique permissions
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPermissionResponse) Reset() {
+	*x = ListPermissionResponse{}
+	mi := &file_subject_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPermissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPermissionResponse) ProtoMessage() {}
+
+func (x *ListPermissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_subject_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPermissionResponse.ProtoReflect.Descriptor instead.
+func (*ListPermissionResponse) Descriptor() ([]byte, []int) {
+	return file_subject_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListPermissionResponse) GetPermissions() []*permission.Permission {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
+}
+
+func (x *ListPermissionResponse) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
 var File_subject_proto protoreflect.FileDescriptor
 
 const file_subject_proto_rawDesc = "" +
 	"\n" +
-	"\rsubject.proto\x12\x0eaccess.subject\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xa7\x01\n" +
+	"\rsubject.proto\x12\x0eaccess.subject\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\x1a\vgroup.proto\x1a\n" +
+	"role.proto\x1a\x10permission.proto\"\xa7\x01\n" +
 	"\vSubjectRole\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
@@ -427,13 +723,39 @@ const file_subject_proto_rawDesc = "" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
 	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\x12\x19\n" +
-	"\brole_uid\x18\x03 \x01(\tR\aroleUid2\xe5\x01\n" +
+	"\brole_uid\x18\x03 \x01(\tR\aroleUid\"U\n" +
+	"\x11GetSubjectRequest\x12\x1d\n" +
+	"\n" +
+	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
+	"\fsubject_type\x18\x02 \x01(\tR\vsubjectType\"\x96\x02\n" +
+	"\x12GetSubjectResponse\x12+\n" +
+	"\x06groups\x18\x01 \x03(\v2\x13.access.group.GroupR\x06groups\x12'\n" +
+	"\x05roles\x18\x02 \x03(\v2\x11.access.role.RoleR\x05roles\x12?\n" +
+	"\vpermissions\x18\x03 \x03(\v2\x1d.access.permission.PermissionR\vpermissions\x12\x1f\n" +
+	"\vtotal_group\x18\x04 \x01(\x05R\n" +
+	"totalGroup\x12\x1d\n" +
+	"\n" +
+	"total_role\x18\x05 \x01(\x05R\ttotalRole\x12)\n" +
+	"\x10total_permission\x18\x06 \x01(\x05R\x0ftotalPermission\"V\n" +
+	"\x11ListGroupResponse\x12+\n" +
+	"\x06groups\x18\x01 \x03(\v2\x13.access.group.GroupR\x06groups\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"Q\n" +
+	"\x10ListRoleResponse\x12'\n" +
+	"\x05roles\x18\x01 \x03(\v2\x11.access.role.RoleR\x05roles\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"o\n" +
+	"\x16ListPermissionResponse\x12?\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x1d.access.permission.PermissionR\vpermissions\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xb4\x04\n" +
 	"\x0eSubjectService\x12A\n" +
 	"\x04List\x12\x1b.access.subject.ListRequest\x1a\x1c.access.subject.ListResponse\x12G\n" +
 	"\n" +
 	"AssignRole\x12!.access.subject.AssignRoleRequest\x1a\x16.access.common.Success\x12G\n" +
 	"\n" +
-	"RevokeRole\x12!.access.subject.RevokeRoleRequest\x1a\x16.access.common.SuccessB;Z9github.com/adityakw90/service-access-proto/gen/go/subjectb\x06proto3"
+	"RevokeRole\x12!.access.subject.RevokeRoleRequest\x1a\x16.access.common.Success\x12L\n" +
+	"\x03Get\x12!.access.subject.GetSubjectRequest\x1a\".access.subject.GetSubjectResponse\x12Q\n" +
+	"\tListGroup\x12!.access.subject.GetSubjectRequest\x1a!.access.subject.ListGroupResponse\x12O\n" +
+	"\bListRole\x12!.access.subject.GetSubjectRequest\x1a .access.subject.ListRoleResponse\x12[\n" +
+	"\x0eListPermission\x12!.access.subject.GetSubjectRequest\x1a&.access.subject.ListPermissionResponseB;Z9github.com/adityakw90/service-access-proto/gen/go/subjectb\x06proto3"
 
 var (
 	file_subject_proto_rawDescOnce sync.Once
@@ -447,36 +769,58 @@ func file_subject_proto_rawDescGZIP() []byte {
 	return file_subject_proto_rawDescData
 }
 
-var file_subject_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_subject_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_subject_proto_goTypes = []any{
-	(*SubjectRole)(nil),           // 0: access.subject.SubjectRole
-	(*ListRequest)(nil),           // 1: access.subject.ListRequest
-	(*FilterRequest)(nil),         // 2: access.subject.FilterRequest
-	(*ListResponse)(nil),          // 3: access.subject.ListResponse
-	(*AssignRoleRequest)(nil),     // 4: access.subject.AssignRoleRequest
-	(*RevokeRoleRequest)(nil),     // 5: access.subject.RevokeRoleRequest
-	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
-	(*common.Pagination)(nil),     // 7: access.common.Pagination
-	(*common.Meta)(nil),           // 8: access.common.Meta
-	(*common.Success)(nil),        // 9: access.common.Success
+	(*SubjectRole)(nil),            // 0: access.subject.SubjectRole
+	(*ListRequest)(nil),            // 1: access.subject.ListRequest
+	(*FilterRequest)(nil),          // 2: access.subject.FilterRequest
+	(*ListResponse)(nil),           // 3: access.subject.ListResponse
+	(*AssignRoleRequest)(nil),      // 4: access.subject.AssignRoleRequest
+	(*RevokeRoleRequest)(nil),      // 5: access.subject.RevokeRoleRequest
+	(*GetSubjectRequest)(nil),      // 6: access.subject.GetSubjectRequest
+	(*GetSubjectResponse)(nil),     // 7: access.subject.GetSubjectResponse
+	(*ListGroupResponse)(nil),      // 8: access.subject.ListGroupResponse
+	(*ListRoleResponse)(nil),       // 9: access.subject.ListRoleResponse
+	(*ListPermissionResponse)(nil), // 10: access.subject.ListPermissionResponse
+	(*timestamppb.Timestamp)(nil),  // 11: google.protobuf.Timestamp
+	(*common.Pagination)(nil),      // 12: access.common.Pagination
+	(*common.Meta)(nil),            // 13: access.common.Meta
+	(*group.Group)(nil),            // 14: access.group.Group
+	(*role.Role)(nil),              // 15: access.role.Role
+	(*permission.Permission)(nil),  // 16: access.permission.Permission
+	(*common.Success)(nil),         // 17: access.common.Success
 }
 var file_subject_proto_depIdxs = []int32{
-	6, // 0: access.subject.SubjectRole.assigned_at:type_name -> google.protobuf.Timestamp
-	7, // 1: access.subject.ListRequest.pagination:type_name -> access.common.Pagination
-	2, // 2: access.subject.ListRequest.filter:type_name -> access.subject.FilterRequest
-	0, // 3: access.subject.ListResponse.items:type_name -> access.subject.SubjectRole
-	8, // 4: access.subject.ListResponse.meta:type_name -> access.common.Meta
-	1, // 5: access.subject.SubjectService.List:input_type -> access.subject.ListRequest
-	4, // 6: access.subject.SubjectService.AssignRole:input_type -> access.subject.AssignRoleRequest
-	5, // 7: access.subject.SubjectService.RevokeRole:input_type -> access.subject.RevokeRoleRequest
-	3, // 8: access.subject.SubjectService.List:output_type -> access.subject.ListResponse
-	9, // 9: access.subject.SubjectService.AssignRole:output_type -> access.common.Success
-	9, // 10: access.subject.SubjectService.RevokeRole:output_type -> access.common.Success
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	11, // 0: access.subject.SubjectRole.assigned_at:type_name -> google.protobuf.Timestamp
+	12, // 1: access.subject.ListRequest.pagination:type_name -> access.common.Pagination
+	2,  // 2: access.subject.ListRequest.filter:type_name -> access.subject.FilterRequest
+	0,  // 3: access.subject.ListResponse.items:type_name -> access.subject.SubjectRole
+	13, // 4: access.subject.ListResponse.meta:type_name -> access.common.Meta
+	14, // 5: access.subject.GetSubjectResponse.groups:type_name -> access.group.Group
+	15, // 6: access.subject.GetSubjectResponse.roles:type_name -> access.role.Role
+	16, // 7: access.subject.GetSubjectResponse.permissions:type_name -> access.permission.Permission
+	14, // 8: access.subject.ListGroupResponse.groups:type_name -> access.group.Group
+	15, // 9: access.subject.ListRoleResponse.roles:type_name -> access.role.Role
+	16, // 10: access.subject.ListPermissionResponse.permissions:type_name -> access.permission.Permission
+	1,  // 11: access.subject.SubjectService.List:input_type -> access.subject.ListRequest
+	4,  // 12: access.subject.SubjectService.AssignRole:input_type -> access.subject.AssignRoleRequest
+	5,  // 13: access.subject.SubjectService.RevokeRole:input_type -> access.subject.RevokeRoleRequest
+	6,  // 14: access.subject.SubjectService.Get:input_type -> access.subject.GetSubjectRequest
+	6,  // 15: access.subject.SubjectService.ListGroup:input_type -> access.subject.GetSubjectRequest
+	6,  // 16: access.subject.SubjectService.ListRole:input_type -> access.subject.GetSubjectRequest
+	6,  // 17: access.subject.SubjectService.ListPermission:input_type -> access.subject.GetSubjectRequest
+	3,  // 18: access.subject.SubjectService.List:output_type -> access.subject.ListResponse
+	17, // 19: access.subject.SubjectService.AssignRole:output_type -> access.common.Success
+	17, // 20: access.subject.SubjectService.RevokeRole:output_type -> access.common.Success
+	7,  // 21: access.subject.SubjectService.Get:output_type -> access.subject.GetSubjectResponse
+	8,  // 22: access.subject.SubjectService.ListGroup:output_type -> access.subject.ListGroupResponse
+	9,  // 23: access.subject.SubjectService.ListRole:output_type -> access.subject.ListRoleResponse
+	10, // 24: access.subject.SubjectService.ListPermission:output_type -> access.subject.ListPermissionResponse
+	18, // [18:25] is the sub-list for method output_type
+	11, // [11:18] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_subject_proto_init() }
@@ -491,7 +835,7 @@ func file_subject_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_subject_proto_rawDesc), len(file_subject_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

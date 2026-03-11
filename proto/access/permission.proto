@@ -13,7 +13,7 @@ syntax = "proto3";
 package access.permission;
 
 import "google/protobuf/timestamp.proto";
-import "common.proto";
+import "access/common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/permission";
 

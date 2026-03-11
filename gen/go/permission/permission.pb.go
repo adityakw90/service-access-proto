@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v5.28.1
-// source: permission.proto
+// source: access/permission.proto
 
 // Permission Service provides CRUD operations for managing access control permissions.
 // A permission defines a specific action that can be performed on a resource.
@@ -50,7 +50,7 @@ type Permission struct {
 
 func (x *Permission) Reset() {
 	*x = Permission{}
-	mi := &file_permission_proto_msgTypes[0]
+	mi := &file_access_permission_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -62,7 +62,7 @@ func (x *Permission) String() string {
 func (*Permission) ProtoMessage() {}
 
 func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[0]
+	mi := &file_access_permission_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -75,7 +75,7 @@ func (x *Permission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permission.ProtoReflect.Descriptor instead.
 func (*Permission) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{0}
+	return file_access_permission_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Permission) GetUid() string {
@@ -132,7 +132,7 @@ type CreateRequest struct {
 
 func (x *CreateRequest) Reset() {
 	*x = CreateRequest{}
-	mi := &file_permission_proto_msgTypes[1]
+	mi := &file_access_permission_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -144,7 +144,7 @@ func (x *CreateRequest) String() string {
 func (*CreateRequest) ProtoMessage() {}
 
 func (x *CreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[1]
+	mi := &file_access_permission_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -157,7 +157,7 @@ func (x *CreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
 func (*CreateRequest) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{1}
+	return file_access_permission_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateRequest) GetResource() string {
@@ -191,7 +191,7 @@ type CreateResponse struct {
 
 func (x *CreateResponse) Reset() {
 	*x = CreateResponse{}
-	mi := &file_permission_proto_msgTypes[2]
+	mi := &file_access_permission_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -203,7 +203,7 @@ func (x *CreateResponse) String() string {
 func (*CreateResponse) ProtoMessage() {}
 
 func (x *CreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[2]
+	mi := &file_access_permission_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -216,7 +216,7 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{2}
+	return file_access_permission_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateResponse) GetUid() string {
@@ -236,7 +236,7 @@ type GetRequest struct {
 
 func (x *GetRequest) Reset() {
 	*x = GetRequest{}
-	mi := &file_permission_proto_msgTypes[3]
+	mi := &file_access_permission_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -248,7 +248,7 @@ func (x *GetRequest) String() string {
 func (*GetRequest) ProtoMessage() {}
 
 func (x *GetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[3]
+	mi := &file_access_permission_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -261,7 +261,7 @@ func (x *GetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
 func (*GetRequest) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{3}
+	return file_access_permission_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetRequest) GetUid() string {
@@ -284,7 +284,7 @@ type UpdateRequest struct {
 
 func (x *UpdateRequest) Reset() {
 	*x = UpdateRequest{}
-	mi := &file_permission_proto_msgTypes[4]
+	mi := &file_access_permission_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -296,7 +296,7 @@ func (x *UpdateRequest) String() string {
 func (*UpdateRequest) ProtoMessage() {}
 
 func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[4]
+	mi := &file_access_permission_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -309,7 +309,7 @@ func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRequest) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{4}
+	return file_access_permission_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UpdateRequest) GetUid() string {
@@ -350,7 +350,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_permission_proto_msgTypes[5]
+	mi := &file_access_permission_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -362,7 +362,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[5]
+	mi := &file_access_permission_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -375,7 +375,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{5}
+	return file_access_permission_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeleteRequest) GetUid() string {
@@ -396,7 +396,7 @@ type ListRequest struct {
 
 func (x *ListRequest) Reset() {
 	*x = ListRequest{}
-	mi := &file_permission_proto_msgTypes[6]
+	mi := &file_access_permission_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -408,7 +408,7 @@ func (x *ListRequest) String() string {
 func (*ListRequest) ProtoMessage() {}
 
 func (x *ListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[6]
+	mi := &file_access_permission_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +421,7 @@ func (x *ListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
 func (*ListRequest) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{6}
+	return file_access_permission_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListRequest) GetPagination() *common.Pagination {
@@ -450,7 +450,7 @@ type FilterRequest struct {
 
 func (x *FilterRequest) Reset() {
 	*x = FilterRequest{}
-	mi := &file_permission_proto_msgTypes[7]
+	mi := &file_access_permission_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -462,7 +462,7 @@ func (x *FilterRequest) String() string {
 func (*FilterRequest) ProtoMessage() {}
 
 func (x *FilterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[7]
+	mi := &file_access_permission_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -475,7 +475,7 @@ func (x *FilterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterRequest.ProtoReflect.Descriptor instead.
 func (*FilterRequest) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{7}
+	return file_access_permission_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *FilterRequest) GetUids() []string {
@@ -517,7 +517,7 @@ type ListResponse struct {
 
 func (x *ListResponse) Reset() {
 	*x = ListResponse{}
-	mi := &file_permission_proto_msgTypes[8]
+	mi := &file_access_permission_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -529,7 +529,7 @@ func (x *ListResponse) String() string {
 func (*ListResponse) ProtoMessage() {}
 
 func (x *ListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_permission_proto_msgTypes[8]
+	mi := &file_access_permission_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -542,7 +542,7 @@ func (x *ListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
 func (*ListResponse) Descriptor() ([]byte, []int) {
-	return file_permission_proto_rawDescGZIP(), []int{8}
+	return file_access_permission_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListResponse) GetItems() []*Permission {
@@ -559,11 +559,11 @@ func (x *ListResponse) GetMeta() *common.Meta {
 	return nil
 }
 
-var File_permission_proto protoreflect.FileDescriptor
+var File_access_permission_proto protoreflect.FileDescriptor
 
-const file_permission_proto_rawDesc = "" +
+const file_access_permission_proto_rawDesc = "" +
 	"\n" +
-	"\x10permission.proto\x12\x11access.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xea\x01\n" +
+	"\x17access/permission.proto\x12\x11access.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13access/common.proto\"\xea\x01\n" +
 	"\n" +
 	"Permission\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
@@ -614,19 +614,19 @@ const file_permission_proto_rawDesc = "" +
 	"\x06Delete\x12 .access.permission.DeleteRequest\x1a\x16.access.common.SuccessB>Z<github.com/adityakw90/service-access-proto/gen/go/permissionb\x06proto3"
 
 var (
-	file_permission_proto_rawDescOnce sync.Once
-	file_permission_proto_rawDescData []byte
+	file_access_permission_proto_rawDescOnce sync.Once
+	file_access_permission_proto_rawDescData []byte
 )
 
-func file_permission_proto_rawDescGZIP() []byte {
-	file_permission_proto_rawDescOnce.Do(func() {
-		file_permission_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_permission_proto_rawDesc), len(file_permission_proto_rawDesc)))
+func file_access_permission_proto_rawDescGZIP() []byte {
+	file_access_permission_proto_rawDescOnce.Do(func() {
+		file_access_permission_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_access_permission_proto_rawDesc), len(file_access_permission_proto_rawDesc)))
 	})
-	return file_permission_proto_rawDescData
+	return file_access_permission_proto_rawDescData
 }
 
-var file_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
-var file_permission_proto_goTypes = []any{
+var file_access_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_access_permission_proto_goTypes = []any{
 	(*Permission)(nil),            // 0: access.permission.Permission
 	(*CreateRequest)(nil),         // 1: access.permission.CreateRequest
 	(*CreateResponse)(nil),        // 2: access.permission.CreateResponse
@@ -641,7 +641,7 @@ var file_permission_proto_goTypes = []any{
 	(*common.Meta)(nil),           // 11: access.common.Meta
 	(*common.Success)(nil),        // 12: access.common.Success
 }
-var file_permission_proto_depIdxs = []int32{
+var file_access_permission_proto_depIdxs = []int32{
 	9,  // 0: access.permission.Permission.created_at:type_name -> google.protobuf.Timestamp
 	9,  // 1: access.permission.Permission.updated_at:type_name -> google.protobuf.Timestamp
 	10, // 2: access.permission.ListRequest.pagination:type_name -> access.common.Pagination
@@ -665,27 +665,27 @@ var file_permission_proto_depIdxs = []int32{
 	0,  // [0:6] is the sub-list for field type_name
 }
 
-func init() { file_permission_proto_init() }
-func file_permission_proto_init() {
-	if File_permission_proto != nil {
+func init() { file_access_permission_proto_init() }
+func file_access_permission_proto_init() {
+	if File_access_permission_proto != nil {
 		return
 	}
-	file_permission_proto_msgTypes[7].OneofWrappers = []any{}
+	file_access_permission_proto_msgTypes[7].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_permission_proto_rawDesc), len(file_permission_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_permission_proto_rawDesc), len(file_access_permission_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_permission_proto_goTypes,
-		DependencyIndexes: file_permission_proto_depIdxs,
-		MessageInfos:      file_permission_proto_msgTypes,
+		GoTypes:           file_access_permission_proto_goTypes,
+		DependencyIndexes: file_access_permission_proto_depIdxs,
+		MessageInfos:      file_access_permission_proto_msgTypes,
 	}.Build()
-	File_permission_proto = out.File
-	file_permission_proto_goTypes = nil
-	file_permission_proto_depIdxs = nil
+	File_access_permission_proto = out.File
+	file_access_permission_proto_goTypes = nil
+	file_access_permission_proto_depIdxs = nil
 }

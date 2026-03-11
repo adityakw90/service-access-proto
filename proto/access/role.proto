@@ -13,7 +13,7 @@ syntax = "proto3";
 package access.role;
 
 import "google/protobuf/timestamp.proto";
-import "common.proto";
+import "access/common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/role";
 
@@ -107,7 +107,7 @@ message RevokePermissionRequest {
 // ListPermissionsRequest is used to list a role's permissions.
 message ListPermissionsRequest {
   string role_uid = 1; // role uid for the role that owns this permission
-  common.Pagination pagination = 2; // pagination controls the page size and ordering
+  access.common.Pagination pagination = 2; // pagination controls the page size and ordering
   FilterPermissionRequest filter = 3; // filter controls the filtering of roles
 }
 

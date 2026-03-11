@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v5.28.1
-// source: subject.proto
+// source: access/subject.proto
 
 package subject
 
@@ -356,5 +356,5 @@ var SubjectService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "subject.proto",
+	Metadata: "access/subject.proto",
 }

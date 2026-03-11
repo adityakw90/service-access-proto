@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v5.28.1
-// source: subject.proto
+// source: access/subject.proto
 
 package subject
 
@@ -39,7 +39,7 @@ type SubjectRole struct {
 
 func (x *SubjectRole) Reset() {
 	*x = SubjectRole{}
-	mi := &file_subject_proto_msgTypes[0]
+	mi := &file_access_subject_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +51,7 @@ func (x *SubjectRole) String() string {
 func (*SubjectRole) ProtoMessage() {}
 
 func (x *SubjectRole) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[0]
+	mi := &file_access_subject_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +64,7 @@ func (x *SubjectRole) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubjectRole.ProtoReflect.Descriptor instead.
 func (*SubjectRole) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{0}
+	return file_access_subject_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *SubjectRole) GetSubjectId() string {
@@ -106,7 +106,7 @@ type ListRequest struct {
 
 func (x *ListRequest) Reset() {
 	*x = ListRequest{}
-	mi := &file_subject_proto_msgTypes[1]
+	mi := &file_access_subject_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -118,7 +118,7 @@ func (x *ListRequest) String() string {
 func (*ListRequest) ProtoMessage() {}
 
 func (x *ListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[1]
+	mi := &file_access_subject_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -131,7 +131,7 @@ func (x *ListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
 func (*ListRequest) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{1}
+	return file_access_subject_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListRequest) GetPagination() *common.Pagination {
@@ -160,7 +160,7 @@ type FilterRequest struct {
 
 func (x *FilterRequest) Reset() {
 	*x = FilterRequest{}
-	mi := &file_subject_proto_msgTypes[2]
+	mi := &file_access_subject_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -172,7 +172,7 @@ func (x *FilterRequest) String() string {
 func (*FilterRequest) ProtoMessage() {}
 
 func (x *FilterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[2]
+	mi := &file_access_subject_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -185,7 +185,7 @@ func (x *FilterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterRequest.ProtoReflect.Descriptor instead.
 func (*FilterRequest) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{2}
+	return file_access_subject_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *FilterRequest) GetSubjectId() string {
@@ -227,7 +227,7 @@ type ListResponse struct {
 
 func (x *ListResponse) Reset() {
 	*x = ListResponse{}
-	mi := &file_subject_proto_msgTypes[3]
+	mi := &file_access_subject_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -239,7 +239,7 @@ func (x *ListResponse) String() string {
 func (*ListResponse) ProtoMessage() {}
 
 func (x *ListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[3]
+	mi := &file_access_subject_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -252,7 +252,7 @@ func (x *ListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
 func (*ListResponse) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{3}
+	return file_access_subject_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListResponse) GetItems() []*SubjectRole {
@@ -281,7 +281,7 @@ type AssignRoleRequest struct {
 
 func (x *AssignRoleRequest) Reset() {
 	*x = AssignRoleRequest{}
-	mi := &file_subject_proto_msgTypes[4]
+	mi := &file_access_subject_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -293,7 +293,7 @@ func (x *AssignRoleRequest) String() string {
 func (*AssignRoleRequest) ProtoMessage() {}
 
 func (x *AssignRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[4]
+	mi := &file_access_subject_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -306,7 +306,7 @@ func (x *AssignRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignRoleRequest.ProtoReflect.Descriptor instead.
 func (*AssignRoleRequest) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{4}
+	return file_access_subject_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AssignRoleRequest) GetSubjectId() string {
@@ -342,7 +342,7 @@ type RevokeRoleRequest struct {
 
 func (x *RevokeRoleRequest) Reset() {
 	*x = RevokeRoleRequest{}
-	mi := &file_subject_proto_msgTypes[5]
+	mi := &file_access_subject_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -354,7 +354,7 @@ func (x *RevokeRoleRequest) String() string {
 func (*RevokeRoleRequest) ProtoMessage() {}
 
 func (x *RevokeRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[5]
+	mi := &file_access_subject_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -367,7 +367,7 @@ func (x *RevokeRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRoleRequest.ProtoReflect.Descriptor instead.
 func (*RevokeRoleRequest) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{5}
+	return file_access_subject_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RevokeRoleRequest) GetSubjectId() string {
@@ -401,7 +401,7 @@ type GetSubjectRequest struct {
 
 func (x *GetSubjectRequest) Reset() {
 	*x = GetSubjectRequest{}
-	mi := &file_subject_proto_msgTypes[6]
+	mi := &file_access_subject_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -413,7 +413,7 @@ func (x *GetSubjectRequest) String() string {
 func (*GetSubjectRequest) ProtoMessage() {}
 
 func (x *GetSubjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[6]
+	mi := &file_access_subject_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -426,7 +426,7 @@ func (x *GetSubjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubjectRequest.ProtoReflect.Descriptor instead.
 func (*GetSubjectRequest) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{6}
+	return file_access_subject_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetSubjectRequest) GetSubjectId() string {
@@ -457,7 +457,7 @@ type GetSubjectResponse struct {
 
 func (x *GetSubjectResponse) Reset() {
 	*x = GetSubjectResponse{}
-	mi := &file_subject_proto_msgTypes[7]
+	mi := &file_access_subject_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -469,7 +469,7 @@ func (x *GetSubjectResponse) String() string {
 func (*GetSubjectResponse) ProtoMessage() {}
 
 func (x *GetSubjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[7]
+	mi := &file_access_subject_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -482,7 +482,7 @@ func (x *GetSubjectResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubjectResponse.ProtoReflect.Descriptor instead.
 func (*GetSubjectResponse) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{7}
+	return file_access_subject_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetSubjectResponse) GetGroups() []*group.Group {
@@ -537,7 +537,7 @@ type ListGroupResponse struct {
 
 func (x *ListGroupResponse) Reset() {
 	*x = ListGroupResponse{}
-	mi := &file_subject_proto_msgTypes[8]
+	mi := &file_access_subject_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -549,7 +549,7 @@ func (x *ListGroupResponse) String() string {
 func (*ListGroupResponse) ProtoMessage() {}
 
 func (x *ListGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[8]
+	mi := &file_access_subject_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -562,7 +562,7 @@ func (x *ListGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGroupResponse.ProtoReflect.Descriptor instead.
 func (*ListGroupResponse) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{8}
+	return file_access_subject_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListGroupResponse) GetGroups() []*group.Group {
@@ -589,7 +589,7 @@ type ListRoleResponse struct {
 
 func (x *ListRoleResponse) Reset() {
 	*x = ListRoleResponse{}
-	mi := &file_subject_proto_msgTypes[9]
+	mi := &file_access_subject_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -601,7 +601,7 @@ func (x *ListRoleResponse) String() string {
 func (*ListRoleResponse) ProtoMessage() {}
 
 func (x *ListRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[9]
+	mi := &file_access_subject_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -614,7 +614,7 @@ func (x *ListRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoleResponse.ProtoReflect.Descriptor instead.
 func (*ListRoleResponse) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{9}
+	return file_access_subject_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListRoleResponse) GetRoles() []*role.Role {
@@ -641,7 +641,7 @@ type ListPermissionResponse struct {
 
 func (x *ListPermissionResponse) Reset() {
 	*x = ListPermissionResponse{}
-	mi := &file_subject_proto_msgTypes[10]
+	mi := &file_access_subject_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -653,7 +653,7 @@ func (x *ListPermissionResponse) String() string {
 func (*ListPermissionResponse) ProtoMessage() {}
 
 func (x *ListPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_subject_proto_msgTypes[10]
+	mi := &file_access_subject_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -666,7 +666,7 @@ func (x *ListPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermissionResponse.ProtoReflect.Descriptor instead.
 func (*ListPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_subject_proto_rawDescGZIP(), []int{10}
+	return file_access_subject_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListPermissionResponse) GetPermissions() []*permission.Permission {
@@ -683,12 +683,11 @@ func (x *ListPermissionResponse) GetTotal() int32 {
 	return 0
 }
 
-var File_subject_proto protoreflect.FileDescriptor
+var File_access_subject_proto protoreflect.FileDescriptor
 
-const file_subject_proto_rawDesc = "" +
+const file_access_subject_proto_rawDesc = "" +
 	"\n" +
-	"\rsubject.proto\x12\x0eaccess.subject\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\x1a\vgroup.proto\x1a\n" +
-	"role.proto\x1a\x10permission.proto\"\xa7\x01\n" +
+	"\x14access/subject.proto\x12\x0eaccess.subject\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13access/common.proto\x1a\x12access/group.proto\x1a\x11access/role.proto\x1a\x17access/permission.proto\"\xa7\x01\n" +
 	"\vSubjectRole\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
@@ -758,19 +757,19 @@ const file_subject_proto_rawDesc = "" +
 	"\x0eListPermission\x12!.access.subject.GetSubjectRequest\x1a&.access.subject.ListPermissionResponseB;Z9github.com/adityakw90/service-access-proto/gen/go/subjectb\x06proto3"
 
 var (
-	file_subject_proto_rawDescOnce sync.Once
-	file_subject_proto_rawDescData []byte
+	file_access_subject_proto_rawDescOnce sync.Once
+	file_access_subject_proto_rawDescData []byte
 )
 
-func file_subject_proto_rawDescGZIP() []byte {
-	file_subject_proto_rawDescOnce.Do(func() {
-		file_subject_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_subject_proto_rawDesc), len(file_subject_proto_rawDesc)))
+func file_access_subject_proto_rawDescGZIP() []byte {
+	file_access_subject_proto_rawDescOnce.Do(func() {
+		file_access_subject_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_access_subject_proto_rawDesc), len(file_access_subject_proto_rawDesc)))
 	})
-	return file_subject_proto_rawDescData
+	return file_access_subject_proto_rawDescData
 }
 
-var file_subject_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
-var file_subject_proto_goTypes = []any{
+var file_access_subject_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_access_subject_proto_goTypes = []any{
 	(*SubjectRole)(nil),            // 0: access.subject.SubjectRole
 	(*ListRequest)(nil),            // 1: access.subject.ListRequest
 	(*FilterRequest)(nil),          // 2: access.subject.FilterRequest
@@ -790,7 +789,7 @@ var file_subject_proto_goTypes = []any{
 	(*permission.Permission)(nil),  // 16: access.permission.Permission
 	(*common.Success)(nil),         // 17: access.common.Success
 }
-var file_subject_proto_depIdxs = []int32{
+var file_access_subject_proto_depIdxs = []int32{
 	11, // 0: access.subject.SubjectRole.assigned_at:type_name -> google.protobuf.Timestamp
 	12, // 1: access.subject.ListRequest.pagination:type_name -> access.common.Pagination
 	2,  // 2: access.subject.ListRequest.filter:type_name -> access.subject.FilterRequest
@@ -823,27 +822,27 @@ var file_subject_proto_depIdxs = []int32{
 	0,  // [0:11] is the sub-list for field type_name
 }
 
-func init() { file_subject_proto_init() }
-func file_subject_proto_init() {
-	if File_subject_proto != nil {
+func init() { file_access_subject_proto_init() }
+func file_access_subject_proto_init() {
+	if File_access_subject_proto != nil {
 		return
 	}
-	file_subject_proto_msgTypes[2].OneofWrappers = []any{}
+	file_access_subject_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_subject_proto_rawDesc), len(file_subject_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_subject_proto_rawDesc), len(file_access_subject_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_subject_proto_goTypes,
-		DependencyIndexes: file_subject_proto_depIdxs,
-		MessageInfos:      file_subject_proto_msgTypes,
+		GoTypes:           file_access_subject_proto_goTypes,
+		DependencyIndexes: file_access_subject_proto_depIdxs,
+		MessageInfos:      file_access_subject_proto_msgTypes,
 	}.Build()
-	File_subject_proto = out.File
-	file_subject_proto_goTypes = nil
-	file_subject_proto_depIdxs = nil
+	File_access_subject_proto = out.File
+	file_access_subject_proto_goTypes = nil
+	file_access_subject_proto_depIdxs = nil
 }

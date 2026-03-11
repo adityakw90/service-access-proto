@@ -3,10 +3,10 @@ syntax = "proto3";
 package access.subject;
 
 import "google/protobuf/timestamp.proto";
-import "common.proto";
-import "group.proto";
-import "role.proto";
-import "permission.proto";
+import "access/common.proto";
+import "access/group.proto";
+import "access/role.proto";
+import "access/permission.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/subject";
 
@@ -86,8 +86,8 @@ service SubjectService {
   rpc List(ListRequest) returns (ListResponse);
 
   // Management
-  rpc AssignRole(AssignRoleRequest) returns (common.Success);
-  rpc RevokeRole(RevokeRoleRequest) returns (common.Success);
+  rpc AssignRole(AssignRoleRequest) returns (access.common.Success);
+  rpc RevokeRole(RevokeRoleRequest) returns (access.common.Success);
 
   // Detail Resource
   rpc Get(GetSubjectRequest) returns (GetSubjectResponse);

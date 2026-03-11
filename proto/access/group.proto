@@ -13,7 +13,7 @@ syntax = "proto3";
 package access.group;
 
 import "google/protobuf/timestamp.proto";
-import "common.proto";
+import "access/common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/group";
 
@@ -105,7 +105,7 @@ message RevokePermissionRequest {
 // ListPermissionsRequest is used to list a group's permissions.
 message ListPermissionsRequest {
   string group_uid = 1; // group_uid identifies which group's permissions to list.
-  common.Pagination pagination = 2; // pagination controls the page size and ordering.
+  access.common.Pagination pagination = 2; // pagination controls the page size and ordering.
   FilterPermissionRequest filter = 3; // filter for the list of group permissions
 }
 

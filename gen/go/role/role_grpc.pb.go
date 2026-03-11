@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v5.28.1
-// source: role.proto
+// source: access/role.proto
 
 // Role Service provides CRUD operations for managing roles within groups.
 // A Role is a named subset of permissions drawn from its parent Group.
@@ -443,5 +443,5 @@ var RoleService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "role.proto",
+	Metadata: "access/role.proto",
 }

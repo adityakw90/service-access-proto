@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v5.28.1
-// source: group.proto
+// source: access/group.proto
 
 // Group Service provides CRUD operations for managing permission groups.
 // A Group is a collection of permissions that can be assigned to Roles.
@@ -443,5 +443,5 @@ var GroupService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "group.proto",
+	Metadata: "access/group.proto",
 }

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v5.28.1
-// source: access.proto
+// source: access/access.proto
 
 // Access Control Service provides authorization checks for access control decisions.
 // The CheckAccess RPC is the primary entry point for determining if a subject
@@ -41,7 +41,7 @@ type CheckAccessRequest struct {
 
 func (x *CheckAccessRequest) Reset() {
 	*x = CheckAccessRequest{}
-	mi := &file_access_proto_msgTypes[0]
+	mi := &file_access_access_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -53,7 +53,7 @@ func (x *CheckAccessRequest) String() string {
 func (*CheckAccessRequest) ProtoMessage() {}
 
 func (x *CheckAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_access_proto_msgTypes[0]
+	mi := &file_access_access_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +66,7 @@ func (x *CheckAccessRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAccessRequest.ProtoReflect.Descriptor instead.
 func (*CheckAccessRequest) Descriptor() ([]byte, []int) {
-	return file_access_proto_rawDescGZIP(), []int{0}
+	return file_access_access_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CheckAccessRequest) GetSubjectId() string {
@@ -108,7 +108,7 @@ type CheckAccessResponse struct {
 
 func (x *CheckAccessResponse) Reset() {
 	*x = CheckAccessResponse{}
-	mi := &file_access_proto_msgTypes[1]
+	mi := &file_access_access_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -120,7 +120,7 @@ func (x *CheckAccessResponse) String() string {
 func (*CheckAccessResponse) ProtoMessage() {}
 
 func (x *CheckAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_access_proto_msgTypes[1]
+	mi := &file_access_access_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -133,7 +133,7 @@ func (x *CheckAccessResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAccessResponse.ProtoReflect.Descriptor instead.
 func (*CheckAccessResponse) Descriptor() ([]byte, []int) {
-	return file_access_proto_rawDescGZIP(), []int{1}
+	return file_access_access_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CheckAccessResponse) GetAllowed() bool {
@@ -150,11 +150,11 @@ func (x *CheckAccessResponse) GetReason() string {
 	return ""
 }
 
-var File_access_proto protoreflect.FileDescriptor
+var File_access_access_proto protoreflect.FileDescriptor
 
-const file_access_proto_rawDesc = "" +
+const file_access_access_proto_rawDesc = "" +
 	"\n" +
-	"\faccess.proto\x12\raccess.access\"\x8a\x01\n" +
+	"\x13access/access.proto\x12\raccess.access\"\x8a\x01\n" +
 	"\x12CheckAccessRequest\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12!\n" +
@@ -168,23 +168,23 @@ const file_access_proto_rawDesc = "" +
 	"\vCheckAccess\x12!.access.access.CheckAccessRequest\x1a\".access.access.CheckAccessResponseB:Z8github.com/adityakw90/service-access-proto/gen/go/accessb\x06proto3"
 
 var (
-	file_access_proto_rawDescOnce sync.Once
-	file_access_proto_rawDescData []byte
+	file_access_access_proto_rawDescOnce sync.Once
+	file_access_access_proto_rawDescData []byte
 )
 
-func file_access_proto_rawDescGZIP() []byte {
-	file_access_proto_rawDescOnce.Do(func() {
-		file_access_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_access_proto_rawDesc), len(file_access_proto_rawDesc)))
+func file_access_access_proto_rawDescGZIP() []byte {
+	file_access_access_proto_rawDescOnce.Do(func() {
+		file_access_access_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_access_access_proto_rawDesc), len(file_access_access_proto_rawDesc)))
 	})
-	return file_access_proto_rawDescData
+	return file_access_access_proto_rawDescData
 }
 
-var file_access_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_access_proto_goTypes = []any{
+var file_access_access_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_access_access_proto_goTypes = []any{
 	(*CheckAccessRequest)(nil),  // 0: access.access.CheckAccessRequest
 	(*CheckAccessResponse)(nil), // 1: access.access.CheckAccessResponse
 }
-var file_access_proto_depIdxs = []int32{
+var file_access_access_proto_depIdxs = []int32{
 	0, // 0: access.access.AccessControlService.CheckAccess:input_type -> access.access.CheckAccessRequest
 	1, // 1: access.access.AccessControlService.CheckAccess:output_type -> access.access.CheckAccessResponse
 	1, // [1:2] is the sub-list for method output_type
@@ -194,26 +194,26 @@ var file_access_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_access_proto_init() }
-func file_access_proto_init() {
-	if File_access_proto != nil {
+func init() { file_access_access_proto_init() }
+func file_access_access_proto_init() {
+	if File_access_access_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_proto_rawDesc), len(file_access_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_access_proto_rawDesc), len(file_access_access_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_access_proto_goTypes,
-		DependencyIndexes: file_access_proto_depIdxs,
-		MessageInfos:      file_access_proto_msgTypes,
+		GoTypes:           file_access_access_proto_goTypes,
+		DependencyIndexes: file_access_access_proto_depIdxs,
+		MessageInfos:      file_access_access_proto_msgTypes,
 	}.Build()
-	File_access_proto = out.File
-	file_access_proto_goTypes = nil
-	file_access_proto_depIdxs = nil
+	File_access_access_proto = out.File
+	file_access_access_proto_goTypes = nil
+	file_access_access_proto_depIdxs = nil
 }

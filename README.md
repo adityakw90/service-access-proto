@@ -228,6 +228,7 @@ Contains shared message definitions used across multiple services:
 - `Create(CreateRequest) → CreateResponse`
 - `Update(UpdateRequest) → access.common.Success`
 - `Delete(DeleteRequest) → access.common.Success`
+- `UpdatePermission(UpdatePermissionRequest) → access.common.Success`
 - `AssignPermission(AssignPermissionRequest) → access.common.Success`
 - `RevokePermission(RevokePermissionRequest) → access.common.Success`
 - `ListPermissions(ListPermissionsRequest) → ListPermissionsResponse`
@@ -270,6 +271,7 @@ Contains shared message definitions used across multiple services:
 - `Create(CreateRequest) → CreateResponse`
 - `Update(UpdateRequest) → access.common.Success`
 - `Delete(DeleteRequest) → access.common.Success`
+- `UpdatePermission(UpdatePermissionRequest) → access.common.Success`
 - `AssignPermission(AssignPermissionRequest) → access.common.Success`
 - `RevokePermission(RevokePermissionRequest) → access.common.Success`
 - `ListPermissions(ListPermissionsRequest) → ListPermissionsResponse`

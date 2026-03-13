@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v5.28.1
-// source: common.proto
+// source: access/common.proto
 
 package common
 
@@ -29,7 +29,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_common_proto_msgTypes[0]
+	mi := &file_access_common_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +41,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[0]
+	mi := &file_access_common_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +54,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{0}
+	return file_access_common_proto_rawDescGZIP(), []int{0}
 }
 
 type Success struct {
@@ -66,7 +66,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_common_proto_msgTypes[1]
+	mi := &file_access_common_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +78,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[1]
+	mi := &file_access_common_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +91,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{1}
+	return file_access_common_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -114,7 +114,7 @@ type Meta struct {
 
 func (x *Meta) Reset() {
 	*x = Meta{}
-	mi := &file_common_proto_msgTypes[2]
+	mi := &file_access_common_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +126,7 @@ func (x *Meta) String() string {
 func (*Meta) ProtoMessage() {}
 
 func (x *Meta) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[2]
+	mi := &file_access_common_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +139,7 @@ func (x *Meta) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Meta.ProtoReflect.Descriptor instead.
 func (*Meta) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{2}
+	return file_access_common_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Meta) GetPage() int32 {
@@ -183,7 +183,7 @@ type Pagination struct {
 
 func (x *Pagination) Reset() {
 	*x = Pagination{}
-	mi := &file_common_proto_msgTypes[3]
+	mi := &file_access_common_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +195,7 @@ func (x *Pagination) String() string {
 func (*Pagination) ProtoMessage() {}
 
 func (x *Pagination) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[3]
+	mi := &file_access_common_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +208,7 @@ func (x *Pagination) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Pagination.ProtoReflect.Descriptor instead.
 func (*Pagination) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{3}
+	return file_access_common_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Pagination) GetPage() int32 {
@@ -239,11 +239,11 @@ func (x *Pagination) GetSort() string {
 	return ""
 }
 
-var File_common_proto protoreflect.FileDescriptor
+var File_access_common_proto protoreflect.FileDescriptor
 
-const file_common_proto_rawDesc = "" +
+const file_access_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\raccess.common\"\a\n" +
+	"\x13access/common.proto\x12\raccess.common\"\a\n" +
 	"\x05Empty\"#\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"\\\n" +
@@ -260,25 +260,25 @@ const file_common_proto_rawDesc = "" +
 	"\x04sort\x18\x04 \x01(\tR\x04sortB:Z8github.com/adityakw90/service-access-proto/gen/go/commonb\x06proto3"
 
 var (
-	file_common_proto_rawDescOnce sync.Once
-	file_common_proto_rawDescData []byte
+	file_access_common_proto_rawDescOnce sync.Once
+	file_access_common_proto_rawDescData []byte
 )
 
-func file_common_proto_rawDescGZIP() []byte {
-	file_common_proto_rawDescOnce.Do(func() {
-		file_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)))
+func file_access_common_proto_rawDescGZIP() []byte {
+	file_access_common_proto_rawDescOnce.Do(func() {
+		file_access_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_access_common_proto_rawDesc), len(file_access_common_proto_rawDesc)))
 	})
-	return file_common_proto_rawDescData
+	return file_access_common_proto_rawDescData
 }
 
-var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_common_proto_goTypes = []any{
+var file_access_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_access_common_proto_goTypes = []any{
 	(*Empty)(nil),      // 0: access.common.Empty
 	(*Success)(nil),    // 1: access.common.Success
 	(*Meta)(nil),       // 2: access.common.Meta
 	(*Pagination)(nil), // 3: access.common.Pagination
 }
-var file_common_proto_depIdxs = []int32{
+var file_access_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -286,26 +286,26 @@ var file_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_common_proto_init() }
-func file_common_proto_init() {
-	if File_common_proto != nil {
+func init() { file_access_common_proto_init() }
+func file_access_common_proto_init() {
+	if File_access_common_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_common_proto_rawDesc), len(file_access_common_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_common_proto_goTypes,
-		DependencyIndexes: file_common_proto_depIdxs,
-		MessageInfos:      file_common_proto_msgTypes,
+		GoTypes:           file_access_common_proto_goTypes,
+		DependencyIndexes: file_access_common_proto_depIdxs,
+		MessageInfos:      file_access_common_proto_msgTypes,
 	}.Build()
-	File_common_proto = out.File
-	file_common_proto_goTypes = nil
-	file_common_proto_depIdxs = nil
+	File_access_common_proto = out.File
+	file_access_common_proto_goTypes = nil
+	file_access_common_proto_depIdxs = nil
 }

@@ -13,7 +13,7 @@ syntax = "proto3";
 package access.permission;
 
 import "google/protobuf/timestamp.proto";
-import "common.proto";
+import "access/common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/permission";
 
@@ -60,7 +60,7 @@ message DeleteRequest {
 
 // ListRequest is used to list permissions with pagination.
 message ListRequest {
-  common.Pagination pagination = 1; // pagination controls the page size and ordering.
+  access.common.Pagination pagination = 1; // pagination controls the page size and ordering.
   FilterRequest filter = 2; // filter for the list of permissions
 }
 
@@ -74,7 +74,7 @@ message FilterRequest {
 // ListResponse returns a paginated list of permissions.
 message ListResponse {
   repeated Permission items = 1; // list of permissions
-  common.Meta meta = 2; // meta contains pagination metadata (total, pages, etc.).
+  access.common.Meta meta = 2; // meta contains pagination metadata (total, pages, etc.).
 }
 
 // PermissionService provides CRUD operations for managing permissions.
@@ -85,6 +85,6 @@ service PermissionService {
 
   // manage
   rpc Create(CreateRequest) returns (CreateResponse); // Create creates a new permission.
-  rpc Update(UpdateRequest) returns (common.Success); // Update updates an existing permission.
-  rpc Delete(DeleteRequest) returns (common.Success); // Delete deletes a permission by its UID.
+  rpc Update(UpdateRequest) returns (access.common.Success); // Update updates an existing permission.
+  rpc Delete(DeleteRequest) returns (access.common.Success); // Delete deletes a permission by its UID.
 }

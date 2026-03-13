@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v5.28.1
-// source: permission.proto
+// source: access/permission.proto
 
 // Permission Service provides CRUD operations for managing access control permissions.
 // A permission defines a specific action that can be performed on a resource.
@@ -289,5 +289,5 @@ var PermissionService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "permission.proto",
+	Metadata: "access/permission.proto",
 }

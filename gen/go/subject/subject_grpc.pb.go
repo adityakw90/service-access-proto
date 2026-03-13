@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v5.28.1
-// source: subject.proto
+// source: access/subject.proto
 
 package subject
 
@@ -20,9 +20,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SubjectService_List_FullMethodName       = "/access.subject.SubjectService/List"
-	SubjectService_AssignRole_FullMethodName = "/access.subject.SubjectService/AssignRole"
-	SubjectService_RevokeRole_FullMethodName = "/access.subject.SubjectService/RevokeRole"
+	SubjectService_List_FullMethodName           = "/access.subject.SubjectService/List"
+	SubjectService_AssignRole_FullMethodName     = "/access.subject.SubjectService/AssignRole"
+	SubjectService_RevokeRole_FullMethodName     = "/access.subject.SubjectService/RevokeRole"
+	SubjectService_Get_FullMethodName            = "/access.subject.SubjectService/Get"
+	SubjectService_ListGroup_FullMethodName      = "/access.subject.SubjectService/ListGroup"
+	SubjectService_ListRole_FullMethodName       = "/access.subject.SubjectService/ListRole"
+	SubjectService_ListPermission_FullMethodName = "/access.subject.SubjectService/ListPermission"
 )
 
 // SubjectServiceClient is the client API for SubjectService service.
@@ -36,6 +40,11 @@ type SubjectServiceClient interface {
 	// Management
 	AssignRole(ctx context.Context, in *AssignRoleRequest, opts ...grpc.CallOption) (*common.Success, error)
 	RevokeRole(ctx context.Context, in *RevokeRoleRequest, opts ...grpc.CallOption) (*common.Success, error)
+	// Detail Resource
+	Get(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*GetSubjectResponse, error)
+	ListGroup(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*ListGroupResponse, error)
+	ListRole(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*ListRoleResponse, error)
+	ListPermission(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*ListPermissionResponse, error)
 }
 
 type subjectServiceClient struct {
@@ -76,6 +85,46 @@ func (c *subjectServiceClient) RevokeRole(ctx context.Context, in *RevokeRoleReq
 	return out, nil
 }
 
+func (c *subjectServiceClient) Get(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*GetSubjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSubjectResponse)
+	err := c.cc.Invoke(ctx, SubjectService_Get_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *subjectServiceClient) ListGroup(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*ListGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListGroupResponse)
+	err := c.cc.Invoke(ctx, SubjectService_ListGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *subjectServiceClient) ListRole(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*ListRoleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRoleResponse)
+	err := c.cc.Invoke(ctx, SubjectService_ListRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *subjectServiceClient) ListPermission(ctx context.Context, in *GetSubjectRequest, opts ...grpc.CallOption) (*ListPermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPermissionResponse)
+	err := c.cc.Invoke(ctx, SubjectService_ListPermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SubjectServiceServer is the server API for SubjectService service.
 // All implementations must embed UnimplementedSubjectServiceServer
 // for forward compatibility.
@@ -87,6 +136,11 @@ type SubjectServiceServer interface {
 	// Management
 	AssignRole(context.Context, *AssignRoleRequest) (*common.Success, error)
 	RevokeRole(context.Context, *RevokeRoleRequest) (*common.Success, error)
+	// Detail Resource
+	Get(context.Context, *GetSubjectRequest) (*GetSubjectResponse, error)
+	ListGroup(context.Context, *GetSubjectRequest) (*ListGroupResponse, error)
+	ListRole(context.Context, *GetSubjectRequest) (*ListRoleResponse, error)
+	ListPermission(context.Context, *GetSubjectRequest) (*ListPermissionResponse, error)
 	mustEmbedUnimplementedSubjectServiceServer()
 }
 
@@ -105,6 +159,18 @@ func (UnimplementedSubjectServiceServer) AssignRole(context.Context, *AssignRole
 }
 func (UnimplementedSubjectServiceServer) RevokeRole(context.Context, *RevokeRoleRequest) (*common.Success, error) {
 	return nil, status.Error(codes.Unimplemented, "method RevokeRole not implemented")
+}
+func (UnimplementedSubjectServiceServer) Get(context.Context, *GetSubjectRequest) (*GetSubjectResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method Get not implemented")
+}
+func (UnimplementedSubjectServiceServer) ListGroup(context.Context, *GetSubjectRequest) (*ListGroupResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListGroup not implemented")
+}
+func (UnimplementedSubjectServiceServer) ListRole(context.Context, *GetSubjectRequest) (*ListRoleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListRole not implemented")
+}
+func (UnimplementedSubjectServiceServer) ListPermission(context.Context, *GetSubjectRequest) (*ListPermissionResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListPermission not implemented")
 }
 func (UnimplementedSubjectServiceServer) mustEmbedUnimplementedSubjectServiceServer() {}
 func (UnimplementedSubjectServiceServer) testEmbeddedByValue()                        {}
@@ -181,6 +247,78 @@ func _SubjectService_RevokeRole_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubjectService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSubjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubjectServiceServer).Get(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SubjectService_Get_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubjectServiceServer).Get(ctx, req.(*GetSubjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SubjectService_ListGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSubjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubjectServiceServer).ListGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SubjectService_ListGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubjectServiceServer).ListGroup(ctx, req.(*GetSubjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SubjectService_ListRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSubjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubjectServiceServer).ListRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SubjectService_ListRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubjectServiceServer).ListRole(ctx, req.(*GetSubjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SubjectService_ListPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSubjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubjectServiceServer).ListPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SubjectService_ListPermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubjectServiceServer).ListPermission(ctx, req.(*GetSubjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SubjectService_ServiceDesc is the grpc.ServiceDesc for SubjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -200,7 +338,23 @@ var SubjectService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "RevokeRole",
 			Handler:    _SubjectService_RevokeRole_Handler,
 		},
+		{
+			MethodName: "Get",
+			Handler:    _SubjectService_Get_Handler,
+		},
+		{
+			MethodName: "ListGroup",
+			Handler:    _SubjectService_ListGroup_Handler,
+		},
+		{
+			MethodName: "ListRole",
+			Handler:    _SubjectService_ListRole_Handler,
+		},
+		{
+			MethodName: "ListPermission",
+			Handler:    _SubjectService_ListPermission_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "subject.proto",
+	Metadata: "access/subject.proto",
 }

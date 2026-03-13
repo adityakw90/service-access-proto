@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v5.28.1
-// source: access.proto
+// source: access/access.proto
 
 // Access Control Service provides authorization checks for access control decisions.
 // The CheckAccess RPC is the primary entry point for determining if a subject
@@ -144,5 +144,5 @@ var AccessControlService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "access.proto",
+	Metadata: "access/access.proto",
 }

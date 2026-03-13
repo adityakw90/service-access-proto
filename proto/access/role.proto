@@ -13,7 +13,7 @@ syntax = "proto3";
 package access.role;
 
 import "google/protobuf/timestamp.proto";
-import "common.proto";
+import "access/common.proto";
 
 option go_package = "github.com/adityakw90/service-access-proto/gen/go/role";
 
@@ -40,7 +40,7 @@ message RolePermission {
 
 // ListRequest is used to list roles with optional filtering.
 message ListRequest {
-  common.Pagination pagination = 1; // pagination controls the page size and ordering
+  access.common.Pagination pagination = 1; // pagination controls the page size and ordering
   FilterRequest filter = 2; // filter controls the filtering of roles
 }
 
@@ -54,7 +54,7 @@ message FilterRequest {
 // ListResponse returns a paginated list of roles.
 message ListResponse {
   repeated Role items = 1; // list of roles
-  common.Meta meta = 2; // pagination metadata
+  access.common.Meta meta = 2; // pagination metadata
 }
 
 // GetRequest is used to retrieve a role by its UID.
@@ -107,7 +107,7 @@ message RevokePermissionRequest {
 // ListPermissionsRequest is used to list a role's permissions.
 message ListPermissionsRequest {
   string role_uid = 1; // role uid for the role that owns this permission
-  common.Pagination pagination = 2; // pagination controls the page size and ordering
+  access.common.Pagination pagination = 2; // pagination controls the page size and ordering
   FilterPermissionRequest filter = 3; // filter controls the filtering of roles
 }
 
@@ -121,7 +121,7 @@ message FilterPermissionRequest {
 // ListPermissionsResponse returns the role's permissions.
 message ListPermissionsResponse {
   repeated RolePermission items = 1; // list of role permissions
-  common.Meta meta = 2; // pagination metadata
+  access.common.Meta meta = 2; // pagination metadata
 }
 
 // RoleService provides CRUD operations for managing roles.
@@ -132,12 +132,12 @@ service RoleService {
 
   // Management
   rpc Create(CreateRequest) returns (CreateResponse); // Create creates a new role.
-  rpc Update(UpdateRequest) returns (common.Success); // Update modifies an existing role's details.
-  rpc Delete(DeleteRequest) returns (common.Success); // Delete permanently removes a role by its UID. This will cascade to remove all subject assignments for this role.
+  rpc Update(UpdateRequest) returns (access.common.Success); // Update modifies an existing role's details.
+  rpc Delete(DeleteRequest) returns (access.common.Success); // Delete permanently removes a role by its UID. This will cascade to remove all subject assignments for this role.
 
   // Role Permission
   rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse); // ListPermissions returns all permissions assigned to a role.
-  rpc UpdatePermission(UpdatePermissionRequest) returns (common.Success); // UpdatePermission replaces an existing role permission.
-  rpc AssignPermission(AssignPermissionRequest) returns (common.Success); // AssignPermission adds a permission to a role.
-  rpc RevokePermission(RevokePermissionRequest) returns (common.Success); // RevokePermission removes a permission from a role.
+  rpc UpdatePermission(UpdatePermissionRequest) returns (access.common.Success); // UpdatePermission replaces an existing role permission.
+  rpc AssignPermission(AssignPermissionRequest) returns (access.common.Success); // AssignPermission adds a permission to a role.
+  rpc RevokePermission(RevokePermissionRequest) returns (access.common.Success); // RevokePermission removes a permission from a role.
 }

@@ -14,7 +14,7 @@ go:
 		--proto_path=proto \
 		--go_out=. --go_opt=module=github.com/adityakw90/service-access-proto \
 		--go-grpc_out=. --go-grpc_opt=module=github.com/adityakw90/service-access-proto \
-		proto/*.proto
+		proto/**/*.proto
 	@echo "Go code generated successfully."
 
 clean:

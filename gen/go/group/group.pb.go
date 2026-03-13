@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v5.28.1
-// source: group.proto
+// source: access/group.proto
 
 // Group Service provides CRUD operations for managing permission groups.
 // A Group is a collection of permissions that can be assigned to Roles.
@@ -49,7 +49,7 @@ type Group struct {
 
 func (x *Group) Reset() {
 	*x = Group{}
-	mi := &file_group_proto_msgTypes[0]
+	mi := &file_access_group_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -61,7 +61,7 @@ func (x *Group) String() string {
 func (*Group) ProtoMessage() {}
 
 func (x *Group) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[0]
+	mi := &file_access_group_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -74,7 +74,7 @@ func (x *Group) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Group.ProtoReflect.Descriptor instead.
 func (*Group) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{0}
+	return file_access_group_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Group) GetUid() string {
@@ -128,7 +128,7 @@ type GroupPermission struct {
 
 func (x *GroupPermission) Reset() {
 	*x = GroupPermission{}
-	mi := &file_group_proto_msgTypes[1]
+	mi := &file_access_group_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -140,7 +140,7 @@ func (x *GroupPermission) String() string {
 func (*GroupPermission) ProtoMessage() {}
 
 func (x *GroupPermission) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[1]
+	mi := &file_access_group_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +153,7 @@ func (x *GroupPermission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupPermission.ProtoReflect.Descriptor instead.
 func (*GroupPermission) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{1}
+	return file_access_group_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GroupPermission) GetUid() string {
@@ -216,7 +216,7 @@ type ListRequest struct {
 
 func (x *ListRequest) Reset() {
 	*x = ListRequest{}
-	mi := &file_group_proto_msgTypes[2]
+	mi := &file_access_group_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +228,7 @@ func (x *ListRequest) String() string {
 func (*ListRequest) ProtoMessage() {}
 
 func (x *ListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[2]
+	mi := &file_access_group_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +241,7 @@ func (x *ListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
 func (*ListRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{2}
+	return file_access_group_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListRequest) GetPagination() *common.Pagination {
@@ -269,7 +269,7 @@ type FilterRequest struct {
 
 func (x *FilterRequest) Reset() {
 	*x = FilterRequest{}
-	mi := &file_group_proto_msgTypes[3]
+	mi := &file_access_group_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -281,7 +281,7 @@ func (x *FilterRequest) String() string {
 func (*FilterRequest) ProtoMessage() {}
 
 func (x *FilterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[3]
+	mi := &file_access_group_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +294,7 @@ func (x *FilterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterRequest.ProtoReflect.Descriptor instead.
 func (*FilterRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{3}
+	return file_access_group_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *FilterRequest) GetUids() []string {
@@ -329,7 +329,7 @@ type ListResponse struct {
 
 func (x *ListResponse) Reset() {
 	*x = ListResponse{}
-	mi := &file_group_proto_msgTypes[4]
+	mi := &file_access_group_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -341,7 +341,7 @@ func (x *ListResponse) String() string {
 func (*ListResponse) ProtoMessage() {}
 
 func (x *ListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[4]
+	mi := &file_access_group_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -354,7 +354,7 @@ func (x *ListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
 func (*ListResponse) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{4}
+	return file_access_group_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListResponse) GetItems() []*Group {
@@ -381,7 +381,7 @@ type GetRequest struct {
 
 func (x *GetRequest) Reset() {
 	*x = GetRequest{}
-	mi := &file_group_proto_msgTypes[5]
+	mi := &file_access_group_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -393,7 +393,7 @@ func (x *GetRequest) String() string {
 func (*GetRequest) ProtoMessage() {}
 
 func (x *GetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[5]
+	mi := &file_access_group_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -406,7 +406,7 @@ func (x *GetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
 func (*GetRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{5}
+	return file_access_group_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetRequest) GetUid() string {
@@ -427,7 +427,7 @@ type CreateRequest struct {
 
 func (x *CreateRequest) Reset() {
 	*x = CreateRequest{}
-	mi := &file_group_proto_msgTypes[6]
+	mi := &file_access_group_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -439,7 +439,7 @@ func (x *CreateRequest) String() string {
 func (*CreateRequest) ProtoMessage() {}
 
 func (x *CreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[6]
+	mi := &file_access_group_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -452,7 +452,7 @@ func (x *CreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
 func (*CreateRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{6}
+	return file_access_group_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateRequest) GetName() string {
@@ -479,7 +479,7 @@ type CreateResponse struct {
 
 func (x *CreateResponse) Reset() {
 	*x = CreateResponse{}
-	mi := &file_group_proto_msgTypes[7]
+	mi := &file_access_group_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -491,7 +491,7 @@ func (x *CreateResponse) String() string {
 func (*CreateResponse) ProtoMessage() {}
 
 func (x *CreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[7]
+	mi := &file_access_group_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -504,7 +504,7 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{7}
+	return file_access_group_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateResponse) GetUid() string {
@@ -526,7 +526,7 @@ type UpdateRequest struct {
 
 func (x *UpdateRequest) Reset() {
 	*x = UpdateRequest{}
-	mi := &file_group_proto_msgTypes[8]
+	mi := &file_access_group_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -538,7 +538,7 @@ func (x *UpdateRequest) String() string {
 func (*UpdateRequest) ProtoMessage() {}
 
 func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[8]
+	mi := &file_access_group_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -551,7 +551,7 @@ func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{8}
+	return file_access_group_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateRequest) GetUid() string {
@@ -585,7 +585,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_group_proto_msgTypes[9]
+	mi := &file_access_group_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -597,7 +597,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[9]
+	mi := &file_access_group_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -610,7 +610,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{9}
+	return file_access_group_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteRequest) GetUid() string {
@@ -631,7 +631,7 @@ type UpdatePermissionRequest struct {
 
 func (x *UpdatePermissionRequest) Reset() {
 	*x = UpdatePermissionRequest{}
-	mi := &file_group_proto_msgTypes[10]
+	mi := &file_access_group_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -643,7 +643,7 @@ func (x *UpdatePermissionRequest) String() string {
 func (*UpdatePermissionRequest) ProtoMessage() {}
 
 func (x *UpdatePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[10]
+	mi := &file_access_group_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -656,7 +656,7 @@ func (x *UpdatePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePermissionRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{10}
+	return file_access_group_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdatePermissionRequest) GetGroupUid() string {
@@ -684,7 +684,7 @@ type AssignPermissionRequest struct {
 
 func (x *AssignPermissionRequest) Reset() {
 	*x = AssignPermissionRequest{}
-	mi := &file_group_proto_msgTypes[11]
+	mi := &file_access_group_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -696,7 +696,7 @@ func (x *AssignPermissionRequest) String() string {
 func (*AssignPermissionRequest) ProtoMessage() {}
 
 func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[11]
+	mi := &file_access_group_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -709,7 +709,7 @@ func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AssignPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{11}
+	return file_access_group_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AssignPermissionRequest) GetGroupUid() string {
@@ -737,7 +737,7 @@ type RevokePermissionRequest struct {
 
 func (x *RevokePermissionRequest) Reset() {
 	*x = RevokePermissionRequest{}
-	mi := &file_group_proto_msgTypes[12]
+	mi := &file_access_group_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -749,7 +749,7 @@ func (x *RevokePermissionRequest) String() string {
 func (*RevokePermissionRequest) ProtoMessage() {}
 
 func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[12]
+	mi := &file_access_group_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -762,7 +762,7 @@ func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokePermissionRequest.ProtoReflect.Descriptor instead.
 func (*RevokePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{12}
+	return file_access_group_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RevokePermissionRequest) GetGroupUid() string {
@@ -791,7 +791,7 @@ type ListPermissionsRequest struct {
 
 func (x *ListPermissionsRequest) Reset() {
 	*x = ListPermissionsRequest{}
-	mi := &file_group_proto_msgTypes[13]
+	mi := &file_access_group_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -803,7 +803,7 @@ func (x *ListPermissionsRequest) String() string {
 func (*ListPermissionsRequest) ProtoMessage() {}
 
 func (x *ListPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[13]
+	mi := &file_access_group_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -816,7 +816,7 @@ func (x *ListPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{13}
+	return file_access_group_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListPermissionsRequest) GetGroupUid() string {
@@ -853,7 +853,7 @@ type FilterPermissionRequest struct {
 
 func (x *FilterPermissionRequest) Reset() {
 	*x = FilterPermissionRequest{}
-	mi := &file_group_proto_msgTypes[14]
+	mi := &file_access_group_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -865,7 +865,7 @@ func (x *FilterPermissionRequest) String() string {
 func (*FilterPermissionRequest) ProtoMessage() {}
 
 func (x *FilterPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[14]
+	mi := &file_access_group_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -878,7 +878,7 @@ func (x *FilterPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterPermissionRequest.ProtoReflect.Descriptor instead.
 func (*FilterPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{14}
+	return file_access_group_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *FilterPermissionRequest) GetUids() []string {
@@ -928,7 +928,7 @@ type ListPermissionsResponse struct {
 
 func (x *ListPermissionsResponse) Reset() {
 	*x = ListPermissionsResponse{}
-	mi := &file_group_proto_msgTypes[15]
+	mi := &file_access_group_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -940,7 +940,7 @@ func (x *ListPermissionsResponse) String() string {
 func (*ListPermissionsResponse) ProtoMessage() {}
 
 func (x *ListPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_group_proto_msgTypes[15]
+	mi := &file_access_group_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -953,7 +953,7 @@ func (x *ListPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_group_proto_rawDescGZIP(), []int{15}
+	return file_access_group_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListPermissionsResponse) GetItems() []*GroupPermission {
@@ -970,11 +970,11 @@ func (x *ListPermissionsResponse) GetMeta() *common.Meta {
 	return nil
 }
 
-var File_group_proto protoreflect.FileDescriptor
+var File_access_group_proto protoreflect.FileDescriptor
 
-const file_group_proto_rawDesc = "" +
+const file_access_group_proto_rawDesc = "" +
 	"\n" +
-	"\vgroup.proto\x12\faccess.group\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\fcommon.proto\"\xc5\x01\n" +
+	"\x12access/group.proto\x12\faccess.group\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13access/common.proto\"\xc5\x01\n" +
 	"\x05Group\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -1059,19 +1059,19 @@ const file_group_proto_rawDesc = "" +
 	"\x10RevokePermission\x12%.access.group.RevokePermissionRequest\x1a\x16.access.common.SuccessB9Z7github.com/adityakw90/service-access-proto/gen/go/groupb\x06proto3"
 
 var (
-	file_group_proto_rawDescOnce sync.Once
-	file_group_proto_rawDescData []byte
+	file_access_group_proto_rawDescOnce sync.Once
+	file_access_group_proto_rawDescData []byte
 )
 
-func file_group_proto_rawDescGZIP() []byte {
-	file_group_proto_rawDescOnce.Do(func() {
-		file_group_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_group_proto_rawDesc), len(file_group_proto_rawDesc)))
+func file_access_group_proto_rawDescGZIP() []byte {
+	file_access_group_proto_rawDescOnce.Do(func() {
+		file_access_group_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_access_group_proto_rawDesc), len(file_access_group_proto_rawDesc)))
 	})
-	return file_group_proto_rawDescData
+	return file_access_group_proto_rawDescData
 }
 
-var file_group_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
-var file_group_proto_goTypes = []any{
+var file_access_group_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_access_group_proto_goTypes = []any{
 	(*Group)(nil),                   // 0: access.group.Group
 	(*GroupPermission)(nil),         // 1: access.group.GroupPermission
 	(*ListRequest)(nil),             // 2: access.group.ListRequest
@@ -1093,7 +1093,7 @@ var file_group_proto_goTypes = []any{
 	(*common.Meta)(nil),             // 18: access.common.Meta
 	(*common.Success)(nil),          // 19: access.common.Success
 }
-var file_group_proto_depIdxs = []int32{
+var file_access_group_proto_depIdxs = []int32{
 	16, // 0: access.group.Group.created_at:type_name -> google.protobuf.Timestamp
 	16, // 1: access.group.Group.updated_at:type_name -> google.protobuf.Timestamp
 	16, // 2: access.group.GroupPermission.created_at:type_name -> google.protobuf.Timestamp
@@ -1130,28 +1130,28 @@ var file_group_proto_depIdxs = []int32{
 	0,  // [0:11] is the sub-list for field type_name
 }
 
-func init() { file_group_proto_init() }
-func file_group_proto_init() {
-	if File_group_proto != nil {
+func init() { file_access_group_proto_init() }
+func file_access_group_proto_init() {
+	if File_access_group_proto != nil {
 		return
 	}
-	file_group_proto_msgTypes[3].OneofWrappers = []any{}
-	file_group_proto_msgTypes[14].OneofWrappers = []any{}
+	file_access_group_proto_msgTypes[3].OneofWrappers = []any{}
+	file_access_group_proto_msgTypes[14].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_group_proto_rawDesc), len(file_group_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_access_group_proto_rawDesc), len(file_access_group_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_group_proto_goTypes,
-		DependencyIndexes: file_group_proto_depIdxs,
-		MessageInfos:      file_group_proto_msgTypes,
+		GoTypes:           file_access_group_proto_goTypes,
+		DependencyIndexes: file_access_group_proto_depIdxs,
+		MessageInfos:      file_access_group_proto_msgTypes,
 	}.Build()
-	File_group_proto = out.File
-	file_group_proto_goTypes = nil
-	file_group_proto_depIdxs = nil
+	File_access_group_proto = out.File
+	file_access_group_proto_goTypes = nil
+	file_access_group_proto_depIdxs = nil
 }

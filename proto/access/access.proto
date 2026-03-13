@@ -24,7 +24,6 @@ message CheckAccessResponse {
   string reason = 2; // reason provides an explanation for the decision. For granted access: may explain which roles/permissions granted access. For denied access: explains why access was denied (e.g., "no matching permissions")
 }
 
-
 // AccessControlService provides authorization checks. The CheckAccess RPC determines
 // if a subject is allowed to perform an action on a resource.
 service AccessControlService {
